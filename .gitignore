@@ -19,3 +19,5 @@ buildNumber.properties
 /.settings/
 /etc/html/
 /src/main/resources/META-INF/sql/data.sql
+.vscode
+x.txt

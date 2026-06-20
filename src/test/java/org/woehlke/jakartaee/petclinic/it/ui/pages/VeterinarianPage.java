@@ -6,6 +6,7 @@ Not for reuse without permission.
 
 package org.woehlke.jakartaee.petclinic.it.ui.pages;
 import java.util.Map;
+import java.time.Duration;
 
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.graphene.Graphene;
@@ -21,7 +22,7 @@ public class VeterinarianPage implements CrudFlowStatePage {
     private Map<String, String> data;
     @Drone
     private WebDriver driver;
-    private int timeout = 15;
+    private Duration timeout = Duration.ofSeconds(15);
 
     @FindBy(id="vetViewFlowFlowState")
     private WebElement crudFlowState;
@@ -243,6 +244,6 @@ public class VeterinarianPage implements CrudFlowStatePage {
 
     public VeterinarianPage(WebDriver driver, Map<String, String> data, int timeout) {
         this(driver, data);
-        this.timeout = timeout;
+        this.timeout = Duration.ofSeconds(timeout);
     }
 }

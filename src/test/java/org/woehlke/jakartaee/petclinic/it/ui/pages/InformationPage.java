@@ -5,7 +5,9 @@ Not for reuse without permission.
 */
 
 package org.woehlke.jakartaee.petclinic.it.ui.pages;
+
 import java.util.Map;
+import java.time.Duration;
 
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.graphene.page.Location;
@@ -21,7 +23,7 @@ public class InformationPage {
     private Map<String, String> data;
     @Drone
     private WebDriver driver;
-    private int timeout = 15;
+    private Duration timeout = Duration.ofSeconds(15);
 
     @FindBy(id = "listEntityHeaderId")
     private WebElement pageTitle;
@@ -51,6 +53,6 @@ public class InformationPage {
 
     public InformationPage(WebDriver driver, Map<String, String> data, int timeout) {
         this(driver, data);
-        this.timeout = timeout;
+        this.timeout = Duration.ofSeconds(timeout);
     }
 }

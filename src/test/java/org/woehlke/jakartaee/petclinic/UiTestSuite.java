@@ -23,11 +23,15 @@ public class UiTestSuite {
 
     @BeforeAll
     public void runBeforeSuite(){
-        log.info("START");
+        log.info("--------------------");
+        log.info("START Suite");
+        log.info("--------------------");
     }
 
     @AfterAll
     public void runAfterSuite(){
-        log.info("DONE");
+        log.info("--------------------");
+        log.info("DONE Suite");
+        log.info("--------------------");
     }
 }

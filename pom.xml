@@ -58,10 +58,10 @@
     </distributionManagement>
 
     <properties>
-        <java.version>11</java.version>
+        <java.version>21</java.version>
         <version.maven>3.6.3</version.maven>
         <junit.version>5.8.2</junit.version>
-        <version.junit-platform-suite-engine>1.9.1</version.junit-platform-suite-engine>
+        <version.junit-platform-suite-engine>1.14.4</version.junit-platform-suite-engine>
         <version.org.apache.maven.scm>1.13.0</version.org.apache.maven.scm>
         <maven.compiler.source>${java.version}</maven.compiler.source>
         <maven.compiler.target>${java.version}</maven.compiler.target>
@@ -87,10 +87,10 @@
         <version.org.eclipse.microprofile>6.0</version.org.eclipse.microprofile>
 
         <!-- Database JDBC Driver -->
-        <version.postgresql.driver>42.5.1</version.postgresql.driver>
+        <version.postgresql.driver>42.7.11</version.postgresql.driver>
 
         <!-- JAX-RS JSON -->
-        <version.org.jboss.resteasy>6.0.1.Final</version.org.jboss.resteasy>
+        <version.org.jboss.resteasy>6.2.16.Final</version.org.jboss.resteasy>
 
         <!-- webjars Frontend -->
         <version.webjars.jquery>3.6.0</version.webjars.jquery>
@@ -98,7 +98,7 @@
         <version.webjars.bootstrap>5.2.3</version.webjars.bootstrap>
         <version.webjars.font-awesome>6.4.0</version.webjars.font-awesome>
         <version.webjars.primeflex>3.3.0</version.webjars.primeflex>
-        <version.org.primefaces>13.0.0-RC2</version.org.primefaces>
+        <version.org.primefaces>13.0.9</version.org.primefaces>
 
         <!-- OpenLiberty -->
         <version.openliberty-runtime>23.0.0.6</version.openliberty-runtime>
@@ -113,16 +113,16 @@
         <liberty.runtime.version>${version.openliberty-runtime}</liberty.runtime.version>
 
         <!-- Wildfly -->
-        <version.wildfly-runtime>28.0.1.Final</version.wildfly-runtime>
-        <version.wildfly-maven-plugin>4.1.0.Final</version.wildfly-maven-plugin>
-        <version.wildfly-jar-maven-plugin>9.0.0.Final</version.wildfly-jar-maven-plugin>
+        <version.wildfly-runtime>39.0.0.Final</version.wildfly-runtime>
+        <version.wildfly-maven-plugin>6.0.0.Final</version.wildfly-maven-plugin>
+        <version.wildfly-jar-maven-plugin>13.0.0.Final</version.wildfly-jar-maven-plugin>
         <version.wildfly-galleon-maven-plugin>5.2.8.Final</version.wildfly-galleon-maven-plugin>
-        <version.jboss-logmanager>2.1.19.Final</version.jboss-logmanager>
+        <version.jboss-logmanager>3.2.2.Final</version.jboss-logmanager>
         <plugin.fork.embedded>true</plugin.fork.embedded>
         <wildfly.version>${version.wildfly-runtime}</wildfly.version>
         <jersey.version>3.0.4</jersey.version>
-        <version.wildfly-arquillian-container-managed>5.0.0.Final</version.wildfly-arquillian-container-managed>
-        <version.wildfly-arquillian>5.0.0.Final</version.wildfly-arquillian>
+        <version.wildfly-arquillian-container-managed>5.1.0.Final</version.wildfly-arquillian-container-managed>
+        <version.wildfly-arquillian>5.1.0.Final</version.wildfly-arquillian>
 
         <!-- Payara -->
         <version.payara-runtime>6.2023.6</version.payara-runtime>
@@ -136,22 +136,22 @@
         <version.arquillian-glassfish-server-managed>1.4</version.arquillian-glassfish-server-managed>
 
         <!-- maven Plugin Versions -->
-        <version.org.projectlombok.lombok>1.18.24</version.org.projectlombok.lombok>
+        <version.org.projectlombok.lombok>1.18.46</version.org.projectlombok.lombok>
         <version.lombok-maven-plugin>1.18.20.0</version.lombok-maven-plugin>
-        <version.cargo-maven3-plugin>1.10.4</version.cargo-maven3-plugin>
-        <version.maven-compiler-plugin>3.10.1</version.maven-compiler-plugin>
+        <version.cargo-maven3-plugin>1.10.27</version.cargo-maven3-plugin>
+        <version.maven-compiler-plugin>3.15.0</version.maven-compiler-plugin>
         <version.maven-source-plugin>3.2.1</version.maven-source-plugin>
         <version.maven-jxr-plugin>3.2.0</version.maven-jxr-plugin>
-        <version.maven-war-plugin>3.3.2</version.maven-war-plugin>
-        <version.maven-dependency-plugin>3.3.0</version.maven-dependency-plugin>
-        <version.maven-resources-plugin>3.3.0</version.maven-resources-plugin>
+        <version.maven-war-plugin>3.5.1</version.maven-war-plugin>
+        <version.maven-dependency-plugin>3.11.0</version.maven-dependency-plugin>
+        <version.maven-resources-plugin>3.5.0</version.maven-resources-plugin>
         <version.maven-javadoc-plugin>3.4.0</version.maven-javadoc-plugin>
         <version.maven-clean-plugin>3.2.0</version.maven-clean-plugin>
         <version.maven-install-plugin>3.0.0</version.maven-install-plugin>
         <version.maven-deploy-plugin>3.0.0</version.maven-deploy-plugin>
         <version.maven-release-plugin>3.0.0-M7</version.maven-release-plugin>
-        <version.maven-failsafe-plugin>3.0.0-M7</version.maven-failsafe-plugin>
-        <version.maven-surefire-plugin>3.0.0-M7</version.maven-surefire-plugin>
+        <version.maven-failsafe-plugin>3.5.6</version.maven-failsafe-plugin>
+        <version.maven-surefire-plugin>3.5.6</version.maven-surefire-plugin>
         <version.maven-invoker-plugin>3.3.0</version.maven-invoker-plugin>
         <version.maven-site-plugin>4.0.0-M8</version.maven-site-plugin>
         <version.maven-project-info-reports-plugin>3.3.0</version.maven-project-info-reports-plugin>
@@ -167,11 +167,11 @@
         <version.docker-compose-maven-plugin>4.0.0</version.docker-compose-maven-plugin>
 
         <!-- Arquillian 1.7.0 adds Jakarta EE 10 and JUnit 5 support-->
-        <junit-jupiter.version>5.8.2</junit-jupiter.version>
-        <selenium.version>4.1.2</selenium.version>
-        <version.arquillian.core>1.7.0.Alpha11</version.arquillian.core>
-        <arquillian-drone-bom.version>3.0.0-alpha.3</arquillian-drone-bom.version>
-        <graphene-webdriver.version>3.0.0-alpha.3</graphene-webdriver.version>
+        <junit-jupiter.version>5.14.4</junit-jupiter.version>
+        <selenium.version>4.45.0</selenium.version>
+        <version.arquillian.core>1.9.5.Final</version.arquillian.core>
+        <arquillian-drone-bom.version>3.0.1.Final</arquillian-drone-bom.version>
+        <graphene-webdriver.version>3.0.1.Final</graphene-webdriver.version>
 
         <!-- Test Utilities -->
         <mockito.version>4.6.1</mockito.version>
@@ -531,12 +531,14 @@
                 <version>${graphene-webdriver.version}</version>
                 <scope>test</scope>
             </dependency>
+            <!--
             <dependency>
                 <groupId>org.jboss.arquillian.graphene</groupId>
                 <artifactId>graphene-webdriver-ftest</artifactId>
                 <version>${graphene-webdriver.version}</version>
                 <scope>test</scope>
             </dependency>
+            -->
             <dependency>
                 <groupId>org.jboss.arquillian.graphene</groupId>
                 <artifactId>graphene-webdriver-spi</artifactId>
@@ -574,17 +576,58 @@
                 <scope>test</scope>
             </dependency>
 
+            <!-- 
             <dependency>
                 <groupId>jakarta.xml.bind</groupId>
                 <artifactId>jakarta.xml.bind-api</artifactId>
-                <version>2.3.2</version>
+                <version>2.3.3</version>
                 <scope>test</scope>
             </dependency>
 
             <dependency>
                 <groupId>org.glassfish.jaxb</groupId>
                 <artifactId>jaxb-runtime</artifactId>
-                <version>2.3.2</version>
+                <version>2.3.3</version>
+                <scope>test</scope>
+            </dependency>
+ --> 
+
+            <!-- Source: https://mvnrepository.com/artifact/javax.xml.bind/jaxb-api -->
+            <dependency>
+                <groupId>javax.xml.bind</groupId>
+                <artifactId>jaxb-api</artifactId>
+                <version>2.3.1</version>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.sun.xml.bind</groupId>
+                <artifactId>jaxb-impl</artifactId>
+                <version>2.3.9</version>
+                <scope>test</scope>
+            </dependency>
+
+
+            <!-- Source: https://mvnrepository.com/artifact/javax.xml.bind/jaxb-impl -->
+            <!--
+            <dependency>
+                <groupId>javax.xml.bind</groupId>
+                <artifactId>jaxb-impl</artifactId>
+                <version>2.0.2</version>
+                <scope>test</scope>
+            </dependency>
+            -->
+            <dependency>
+                <groupId>jakarta.xml.bind</groupId>
+                <artifactId>jakarta.xml.bind-api</artifactId>
+                <version>4.0.5</version>
+                <scope>test</scope>
+            </dependency>
+           
+            <dependency>
+                <groupId>org.glassfish.jaxb</groupId>
+                <artifactId>jaxb-runtime</artifactId>
+                <version>4.0.7</version>
                 <scope>test</scope>
             </dependency>
 
@@ -748,14 +791,14 @@
             <dependency>
                 <groupId>org.primefaces</groupId>
                 <artifactId>primefaces-integration-tests</artifactId>
-                <version>${version.org.primefaces}</version>
+                <version>13.0.9</version>
                 <type>war</type>
                 <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.primefaces</groupId>
                 <artifactId>primefaces-cli</artifactId>
-                <version>${version.org.primefaces}</version>
+                <version>13.0.9</version>
                 <scope>test</scope>
             </dependency>
 
@@ -781,33 +824,35 @@
             <dependency>
                 <groupId>org.seleniumhq.selenium</groupId>
                 <artifactId>selenium-remote-driver</artifactId>
-                <version>4.1.2</version>
+                <version>4.45.0</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.seleniumhq.selenium</groupId>
                 <artifactId>selenium-api</artifactId>
-                <version>4.1.2</version>
+                <version>4.45.0</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.seleniumhq.selenium</groupId>
                 <artifactId>selenium-chrome-driver</artifactId>
-                <version>4.1.2</version>
+                <version>4.45.0</version>
                 <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.seleniumhq.selenium</groupId>
                 <artifactId>selenium-firefox-driver</artifactId>
-                <version>4.1.2</version>
+                <version>4.45.0</version>
                 <scope>test</scope>
             </dependency>
+            <!-- 
             <dependency>
                 <groupId>org.seleniumhq.selenium</groupId>
                 <artifactId>selenium-opera-driver</artifactId>
-                <version>4.1.2</version>
+                <version>4.45.0</version>
                 <scope>test</scope>
             </dependency>
+            -->
             <dependency>
                 <groupId>com.codeborne</groupId>
                 <artifactId>phantomjsdriver</artifactId>
@@ -1075,11 +1120,13 @@
             <artifactId>arquillian-junit5-container</artifactId>
             <scope>test</scope>
         </dependency>
+        <!---
         <dependency>
             <groupId>org.jboss.arquillian.protocol</groupId>
             <artifactId>arquillian-protocol-servlet-jakarta</artifactId>
             <scope>test</scope>
         </dependency>
+        -->
         <dependency>
             <groupId>org.jboss.arquillian.extension</groupId>
             <artifactId>arquillian-drone-api</artifactId>
@@ -1136,11 +1183,13 @@
             <artifactId>graphene-webdriver-impl</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--
         <dependency>
             <groupId>org.jboss.arquillian.graphene</groupId>
             <artifactId>graphene-webdriver-ftest</artifactId>
             <scope>test</scope>
         </dependency>
+        -->
         <dependency>
             <groupId>org.jboss.shrinkwrap</groupId>
             <artifactId>shrinkwrap-impl-base</artifactId>
@@ -1199,11 +1248,13 @@
             <artifactId>selenium-firefox-driver</artifactId>
             <scope>test</scope>
         </dependency>
+        <!--
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-opera-driver</artifactId>
             <scope>test</scope>
         </dependency>
+        -->
         <dependency>
             <groupId>com.codeborne</groupId>
             <artifactId>phantomjsdriver</artifactId>
@@ -1246,6 +1297,30 @@
 			<scope>test</scope>
 		</dependency>
 		-->
+            <dependency>
+                <groupId>javax.xml.bind</groupId>
+                <artifactId>jaxb-api</artifactId>
+                <scope>test</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.sun.xml.bind</groupId>
+                <artifactId>jaxb-impl</artifactId>
+                <scope>test</scope>
+            </dependency>
+            
+            <dependency>
+                <groupId>jakarta.xml.bind</groupId>
+                <artifactId>jakarta.xml.bind-api</artifactId>
+                <scope>test</scope>
+            </dependency>
+           
+            <dependency>
+                <groupId>org.glassfish.jaxb</groupId>
+                <artifactId>jaxb-runtime</artifactId>
+                <scope>test</scope>
+            </dependency>
+
 		<dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
@@ -2853,7 +2928,7 @@
                         <artifactId>cargo-maven3-plugin</artifactId>
                         <configuration>
                             <container>
-                                <containerId>wildfly27x</containerId>
+                                <containerId>wildfly39x</containerId>
                                 <artifactInstaller>
                                     <groupId>org.wildfly</groupId>
                                     <artifactId>wildfly-dist</artifactId>
@@ -3218,7 +3293,7 @@
                     <scope>test</scope>
                 </dependency>
                 <!--
-				<dependency>
+            	<dependency>
 					<groupId>org.jboss.logmanager</groupId>
 					<artifactId>jboss-logmanager</artifactId>
 					<version>${version.jboss-logmanager}</version>

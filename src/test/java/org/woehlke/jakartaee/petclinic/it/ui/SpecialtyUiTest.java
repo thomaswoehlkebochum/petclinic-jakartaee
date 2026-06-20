@@ -46,10 +46,10 @@ public class SpecialtyUiTest extends UnitTestData {
     private URL deploymentUrl;
 
     @Page
-    private HomePage homePage;
+    HomePage homePage;
 
     @Page
-    private SpecialtyPage specialtyPage;
+    SpecialtyPage specialtyPage;
 
     private void goToSpecialtyPage(){
         goTo(SpecialtyPage.class);
