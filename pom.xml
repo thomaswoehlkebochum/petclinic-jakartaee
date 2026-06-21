@@ -101,15 +101,15 @@
         <version.org.primefaces>13.0.9</version.org.primefaces>
 
         <!-- OpenLiberty -->
-        <version.openliberty-runtime>23.0.0.6</version.openliberty-runtime>
-        <version.liberty-maven-plugin>3.8</version.liberty-maven-plugin>
+        <version.openliberty-runtime>26.0.0.6</version.openliberty-runtime>
+        <version.liberty-maven-plugin>3.12.0</version.liberty-maven-plugin>
         <generateFeatures>false</generateFeatures>
         <runtime.jakartaee.server.openliberty.remote>/opt/openliberty/wlp</runtime.jakartaee.server.openliberty.remote>
         <runtime.jakartaee.server.openliberty.ServerName>petclinicServer
         </runtime.jakartaee.server.openliberty.ServerName>
         <version.infinispan-jcache-remote>14.0.9.Final</version.infinispan-jcache-remote>
-        <version.arquillian-liberty-support-jakarta>2.1.2</version.arquillian-liberty-support-jakarta>
-        <version.arquillian-liberty-managed-jakarta>2.1.2</version.arquillian-liberty-managed-jakarta>
+        <version.arquillian-liberty-support-jakarta>3.0.0</version.arquillian-liberty-support-jakarta>
+        <version.arquillian-liberty-managed-jakarta>3.0.0</version.arquillian-liberty-managed-jakarta>
         <liberty.runtime.version>${version.openliberty-runtime}</liberty.runtime.version>
 
         <!-- Wildfly -->
@@ -125,7 +125,7 @@
         <version.wildfly-arquillian>5.1.0.Final</version.wildfly-arquillian>
 
         <!-- Payara -->
-        <version.payara-runtime>6.2023.6</version.payara-runtime>
+        <version.payara-runtime>7.2026.5</version.payara-runtime>
         <version.payara>${version.payara-runtime}</version.payara>
         <version.payaramicro.maven.plugin>1.4.0</version.payaramicro.maven.plugin>
         <version.arquillian-payara>3.0.alpha7</version.arquillian-payara>
@@ -2617,7 +2617,7 @@
                                 <configuration>
                                     <artifactItems>
                                         <artifactItem>
-                                            <groupId>io.openliberty.beta</groupId>
+                                            <groupId>io.openliberty</groupId>
                                             <artifactId>openliberty-runtime</artifactId>
                                             <version>${liberty.runtime.version}</version>
                                             <type>zip</type>
