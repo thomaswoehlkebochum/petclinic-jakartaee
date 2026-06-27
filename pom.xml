@@ -36,7 +36,7 @@
     </scm>
 
     <issueManagement>
-        <url>https://github.com/Jakarta-EE-Petclinic/petclinic-jakartaee/issues</url>
+        <url>https://github.com/thomaswoehlkebochum/petclinic-jakartaee/issues</url>
         <system>GitHub</system>
     </issueManagement>
 
@@ -149,17 +149,17 @@
         <version.maven-clean-plugin>3.2.0</version.maven-clean-plugin>
         <version.maven-install-plugin>3.0.0</version.maven-install-plugin>
         <version.maven-deploy-plugin>3.0.0</version.maven-deploy-plugin>
-        <version.maven-release-plugin>3.0.0-M7</version.maven-release-plugin>
+        <version.maven-release-plugin>3.3.1</version.maven-release-plugin>
         <version.maven-failsafe-plugin>3.5.6</version.maven-failsafe-plugin>
         <version.maven-surefire-plugin>3.5.6</version.maven-surefire-plugin>
         <version.maven-invoker-plugin>3.3.0</version.maven-invoker-plugin>
-        <version.maven-site-plugin>4.0.0-M8</version.maven-site-plugin>
-        <version.maven-project-info-reports-plugin>3.3.0</version.maven-project-info-reports-plugin>
+        <version.maven-site-plugin>3.22.0</version.maven-site-plugin>
+        <version.maven-project-info-reports-plugin>3.9.0</version.maven-project-info-reports-plugin>
         <version.maven-checkstyle-plugin>3.1.2</version.maven-checkstyle-plugin>
         <version.maven-checkstyle-plugin.checkstyle>10.4</version.maven-checkstyle-plugin.checkstyle>
         <version.maven-pmd-plugin>3.17.0</version.maven-pmd-plugin>
         <version.maven-pmd-plugin.pmd>6.49.0</version.maven-pmd-plugin.pmd>
-        <version.maven-surefire-report-plugin>3.0.0-M7</version.maven-surefire-report-plugin>
+        <version.maven-surefire-report-plugin>3.5.6</version.maven-surefire-report-plugin>
         <version.spotbugs-maven-plugin>4.7.0.0</version.spotbugs-maven-plugin>
         <version.asciidoctor-maven-plugin>2.2.2</version.asciidoctor-maven-plugin>
 
