@@ -13,8 +13,8 @@
     <url>https://java.woehlke.org/jakartaee/petclinic-jakartaee</url>
 
     <organization>
-        <name>Jakarta-EE-Petclinic</name>
-        <url>https://github.com/Jakarta-EE-Petclinic</url>
+        <name>thomaswoehlkebochum</name>
+        <url>https://github.com/thomaswoehlkebochum/petclinic-jakartaee</url>
     </organization>
     <inceptionYear>2019</inceptionYear>
 
@@ -23,15 +23,15 @@
             <id>thomaswoehlke</id>
             <name>Thomas Woehlke</name>
             <email>thomas.woehlke@gmail.com</email>
-            <url>https://github.com/thomaswoehlke</url>
+            <url>https://github.com/thomaswoehlkebochum</url>
             <timezone>Europe/Paris</timezone>
         </developer>
     </developers>
 
     <scm>
-        <connection>scm:git:git@github.com:Jakarta-EE-Petclinic/petclinic-jakartaee.git</connection>
-        <developerConnection>scm:git:git@github.com:Jakarta-EE-Petclinic/petclinic-jakartaee.git</developerConnection>
-        <url>https://github.com/Jakarta-EE-Petclinic/petclinic-jakartaee/tree/${project.scm.tag}</url>
+        <connection>scm:git:git@github.com:thomaswoehlkebochum/petclinic-jakartaee.git</connection>
+        <developerConnection>scm:git:git@github.com:thomaswoehlkebochum/petclinic-jakartaee.git</developerConnection>
+        <url>https://github.com/thomaswoehlkebochum/petclinic-jakartaee.git/tree/${project.scm.tag}</url>
         <tag>HEAD</tag>
     </scm>
 
