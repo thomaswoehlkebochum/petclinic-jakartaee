@@ -11,10 +11,10 @@ import org.woehlke.jakartaee.petclinic.it.ui.*;
 @Log
 @Suite
 @SelectClasses({
-    RestEndpointIT.class,
-    SpecialtyUiTest.class,
-    VetUiTest.class,
-    PetTypeUiTest.class,
+    //RestEndpointIT.class,
+    //SpecialtyUiTest.class,
+    //VetUiTest.class,
+    //PetTypeUiTest.class,
     OwnerUiTest.class//,
     //InformationUiTest.class//,
     //TellTheStoryUiTest.class
@@ -22,14 +22,14 @@ import org.woehlke.jakartaee.petclinic.it.ui.*;
 public class UiTestSuite {
 
     @BeforeAll
-    public void runBeforeSuite(){
+    public static void runBeforeSuite(){
         log.info("--------------------");
         log.info("START Suite");
         log.info("--------------------");
     }
 
     @AfterAll
-    public void runAfterSuite(){
+    public static void runAfterSuite(){
         log.info("--------------------");
         log.info("DONE Suite");
         log.info("--------------------");

@@ -16,11 +16,13 @@ import org.openqa.selenium.WebDriver;
 import org.woehlke.jakartaee.petclinic.deployments.Deployments;
 import org.woehlke.jakartaee.petclinic.deployments.UnitTestData;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.HomePage;
+import org.woehlke.jakartaee.petclinic.it.ui.pages.SpecialtyPage;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.VeterinarianPage;
 
 import java.net.URL;
 
 import static org.jboss.arquillian.graphene.Graphene.goTo;
+import static org.jboss.arquillian.graphene.Graphene.waitForHttp;
 
 @Log
 @RunAsClient
@@ -44,10 +46,20 @@ public class VetUiTest extends UnitTestData {
     @Page
     private VeterinarianPage veterinarianPage;
 
+    @Page
+    SpecialtyPage specialtyPage;
+
     private void goToVeterinarianPage(){
         goTo(VeterinarianPage.class);
+        waitForHttp(VeterinarianPage.class);
         veterinarianPage.fullscreen();
         Assert.assertTrue(veterinarianPage.isFlowStateList());
+    }
+
+    private void goToSpecialtyPage(){
+        goTo(SpecialtyPage.class);
+        specialtyPage.fullscreen();
+        Assert.assertTrue(specialtyPage.isFlowStateList());
     }
 
     @Test
@@ -65,6 +77,27 @@ public class VetUiTest extends UnitTestData {
 
     @Test
     @InSequence(2)
+    public void addNewSpecialtyPageWithSave() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" addNewSpecialtyPageWithSave ");
+        log.info("------------------------------------------------------------------------------------");
+        goToSpecialtyPage();
+        Assert.assertTrue(specialtyPage.isFlowStateList());
+        for(String name:specialtyNameArray){
+            specialtyPage.clickAddNewEntityButton();
+            Assert.assertTrue(specialtyPage.isFlowStateNew());
+            specialtyPage.addNewEntity(name);
+            Assert.assertTrue(specialtyPage.isFlowStateDetails());
+            specialtyPage.clickCancelDetailsButton();
+            Assert.assertTrue(specialtyPage.isFlowStateList());
+        }
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" addNewSpecialtyPageWithSave DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(3)
     public void openVeterinarianPage() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" openVeterinarianPage ");
@@ -77,7 +110,7 @@ public class VetUiTest extends UnitTestData {
     }
 
     @Test
-    @InSequence(3)
+    @InSequence(4)
     public void addNewVeterinarianPageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" addNewVeterinarianPage ");
@@ -94,7 +127,7 @@ public class VetUiTest extends UnitTestData {
     }
 
     @Test
-    @InSequence(4)
+    @InSequence(5)
     public void addNewVeterinarianPageWithSave() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" addNewSpecialtyPageWithSave ");
@@ -115,7 +148,7 @@ public class VetUiTest extends UnitTestData {
     }
 
     @Test
-    @InSequence(5)
+    @InSequence(6)
     public void openVeterinarianDetailsPage() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" openVeterinarianDetailsPage ");
@@ -132,7 +165,7 @@ public class VetUiTest extends UnitTestData {
     }
 
     @Test
-    @InSequence(5)
+    @InSequence(7)
     public void editVeterinarianPageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editVeterinarianPage ");
@@ -153,7 +186,7 @@ public class VetUiTest extends UnitTestData {
     }
 
     @Test
-    @InSequence(7)
+    @InSequence(8)
     public void editVeterinarianPageWithSave() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editSpecialtyPage ");
@@ -177,7 +210,7 @@ public class VetUiTest extends UnitTestData {
     }
 
     @Test
-    @InSequence(8)
+    @InSequence(9)
     public void deleteVeterinarianPageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" deleteVeterinarianPage ");
@@ -198,7 +231,7 @@ public class VetUiTest extends UnitTestData {
     }
 
     @Test
-    @InSequence(9)
+    @InSequence(10)
     public void deleteVeterinarianPageWithSave() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" deleteSpecialtyPageWithSave ");

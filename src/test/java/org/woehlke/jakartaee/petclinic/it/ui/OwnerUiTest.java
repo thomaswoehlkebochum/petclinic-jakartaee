@@ -18,6 +18,7 @@ import org.woehlke.jakartaee.petclinic.deployments.Deployments;
 import org.woehlke.jakartaee.petclinic.deployments.UnitTestData;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.HomePage;
 import org.woehlke.jakartaee.petclinic.it.ui.pages.OwnerPage;
+import org.woehlke.jakartaee.petclinic.it.ui.pages.PetTypePage;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
@@ -48,10 +49,19 @@ public class OwnerUiTest extends UnitTestData {
     @Page
     private OwnerPage ownerPage;
 
+    @Page
+    private PetTypePage petTypePage;
+
     private void goToOwnerPage(){
         goTo(OwnerPage.class);
         ownerPage.fullscreen();
         Assert.assertTrue(ownerPage.isFlowStateList());
+    }
+
+    private void goToPetTypePage(){
+        goTo(PetTypePage.class);
+        petTypePage.fullscreen();
+        Assert.assertTrue(petTypePage.isFlowStateList());
     }
 
     @Test
@@ -69,6 +79,27 @@ public class OwnerUiTest extends UnitTestData {
 
     @Test
     @InSequence(2)
+    public void addNewPetTypePageWithSave() {
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" addNewPetTypePageWithSave ");
+        log.info("------------------------------------------------------------------------------------");
+        goToPetTypePage();
+        Assert.assertTrue(petTypePage.isFlowStateList());
+        for(String name:petTypeNameArray){
+            petTypePage.clickAddNewEntityButton();
+            Assert.assertTrue(petTypePage.isFlowStateNew());
+            petTypePage.addNewEntity(name);
+            Assert.assertTrue(petTypePage.isFlowStateDetails());
+            petTypePage.clickCancelDetailsButton();
+            Assert.assertTrue(petTypePage.isFlowStateList());
+        }
+        log.info("------------------------------------------------------------------------------------");
+        log.info(" addNewPetTypePageWithSave DONE ");
+        log.info("------------------------------------------------------------------------------------");
+    }
+
+    @Test
+    @InSequence(3)
     public void openOwnerPage() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" openOwnerPage ");
@@ -81,7 +112,7 @@ public class OwnerUiTest extends UnitTestData {
     }
 
     @Test
-    @InSequence(3)
+    @InSequence(4)
     public void addNewOwnerPageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" addNewOwnerPage ");
@@ -98,7 +129,7 @@ public class OwnerUiTest extends UnitTestData {
     }
 
     @Test
-    @InSequence(4)
+    @InSequence(5)
     public void addNewOwnerPageWithSave() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" addNewOwnerPageWithSave ");
@@ -119,7 +150,7 @@ public class OwnerUiTest extends UnitTestData {
     }
 
     @Test
-    @InSequence(5)
+    @InSequence(6)
     public void openOwnerDetailsPage() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" openOwnerDetailsPage ");
@@ -136,7 +167,7 @@ public class OwnerUiTest extends UnitTestData {
     }
 
     @Test
-    @InSequence(6)
+    @InSequence(7)
     public void editOwnerPageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editOwnerPageWithCancel ");
@@ -159,7 +190,7 @@ public class OwnerUiTest extends UnitTestData {
     }
 
     @Test
-    @InSequence(7)
+    @InSequence(8)
     public void editOwnerPageWithSave() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editOwnerPageWithSave ");
@@ -183,7 +214,7 @@ public class OwnerUiTest extends UnitTestData {
     }
 
     @Test
-    @InSequence(8)
+    @InSequence(9)
     public void addNewPetToOwnerPageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" addNewPetToOwnerPage ");
@@ -206,7 +237,7 @@ public class OwnerUiTest extends UnitTestData {
     }
 
     @Test
-    @InSequence(9)
+    @InSequence(10)
     public void addNewPetToOwnerPageWithSave() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" addNewPetToOwnerPageWithSave ");
@@ -232,7 +263,7 @@ public class OwnerUiTest extends UnitTestData {
     }
 
     @Test
-    @InSequence(10)
+    @InSequence(11)
     public void editPetOfOwnerPageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editPetOfOwnerPageWithCancel ");
@@ -258,7 +289,7 @@ public class OwnerUiTest extends UnitTestData {
     }
 
     @Test
-    @InSequence(11)
+    @InSequence(12)
     public void editPetOfOwnerPageWithSave() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editPetOfOwnerPageWithSave ");
@@ -284,7 +315,7 @@ public class OwnerUiTest extends UnitTestData {
     }
 
     @Test
-    @InSequence(12)
+    @InSequence(13)
     public void addNewVisitToOwnersFirstPetPageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editNewVisitToOwnersFirstPetPageWithCancel ");
@@ -307,7 +338,7 @@ public class OwnerUiTest extends UnitTestData {
     }
 
     @Test
-    @InSequence(13)
+    @InSequence(14)
     public void addNewVisitToOwnersFirstPetPageWithSave() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" editNewVisitToOwnersFirstPetPageWithSave ");
@@ -332,7 +363,7 @@ public class OwnerUiTest extends UnitTestData {
     }
 
     @Test
-    @InSequence(14)
+    @InSequence(15)
     public void deleteOwnerPageWithCancel() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" deleteOwnerPageWithCancel ");
@@ -357,7 +388,7 @@ public class OwnerUiTest extends UnitTestData {
     }
 
     @Test
-    @InSequence(15)
+    @InSequence(16)
     public void deleteOwnerPageWithSave() {
         log.info("------------------------------------------------------------------------------------");
         log.info(" deleteOwnerPageWithSave ");

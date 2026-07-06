@@ -11,6 +11,7 @@ import java.time.Duration;
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.graphene.Graphene;
 import org.jboss.arquillian.graphene.page.Location;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -104,11 +105,13 @@ public class VeterinarianPage implements CrudFlowStatePage {
 
     public VeterinarianPage clickAddNewEntityButton() {
         Graphene.guardHttp(showNewFormButton).click();
+        fullscreen();
         return this;
     }
 
     public VeterinarianPage clickCancelNewEntityButton() {
         Graphene.guardHttp(cancelNewButton).click();
+        fullscreen();
         return this;
     }
 
@@ -116,16 +119,19 @@ public class VeterinarianPage implements CrudFlowStatePage {
         newSurnameInput.sendKeys(surname);
         newLastnameInput.sendKeys(lastname);
         Graphene.guardHttp(saveNewButton).click();
+        fullscreen();
         return this;
     }
 
     public VeterinarianPage clickShowEditForm() {
         Graphene.guardHttp(showEditFormButton).click();
+        fullscreen();
         return this;
     }
 
     public VeterinarianPage clickCancelEditButton() {
         Graphene.guardHttp(cancelEditButton).click();
+        fullscreen();
         return this;
     }
 
@@ -146,12 +152,18 @@ public class VeterinarianPage implements CrudFlowStatePage {
     }
 
     public VeterinarianPage clickCancelDeleteButton() {
-        Graphene.guardHttp(canceDeleteButton).click();
+        //Graphene.guardHttp(canceDeleteButton).click();
+        canceDeleteButton.sendKeys(Keys.DOWN);
+        canceDeleteButton.sendKeys(Keys.END);
+        canceDeleteButton.sendKeys(Keys.ENTER);
         return this;
     }
 
     public VeterinarianPage clickSaveDeleteButton() {
-        Graphene.guardHttp(saveDeleteButton).click();
+        //Graphene.guardHttp(saveDeleteButton).click();
+        saveDeleteButton.sendKeys(Keys.DOWN);
+        saveDeleteButton.sendKeys(Keys.END);
+        saveDeleteButton.sendKeys(Keys.ENTER);
         return this;
     }
 
@@ -191,7 +203,8 @@ public class VeterinarianPage implements CrudFlowStatePage {
     }
 
     public VeterinarianPage clickCancelDetailsButton() {
-        Graphene.guardHttp(cancelDetailsButton).click();
+        cancelDetailsButton.sendKeys(Keys.DOWN);
+        cancelDetailsButton.sendKeys(Keys.ENTER);
         return this;
     }
 
