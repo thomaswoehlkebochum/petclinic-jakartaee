@@ -3132,7 +3132,7 @@
                                 <configuration>
                                     <resources>
                                         <resource>
-                                            <directory>src/main/runtimes/wildfly/resources/META-INF</directory>
+                                            <directory>src/main/runtimes/wildfly-it/resources/META-INF</directory>
                                         </resource>
                                     </resources>
                                     <outputDirectory>target/petclinic/WEB-INF/classes/META-INF</outputDirectory>
@@ -3148,7 +3148,7 @@
                                 <configuration>
                                     <resources>
                                         <resource>
-                                            <directory>src/main/runtimes/wildfly/webapp/WEB-INF</directory>
+                                            <directory>src/main/runtimes/wildfly-it/webapp/WEB-INF</directory>
                                         </resource>
                                     </resources>
                                     <outputDirectory>target/petclinic/WEB-INF</outputDirectory>
@@ -3173,7 +3173,7 @@
                                             </includes>
                                         </resource>
                                         <resource>
-                                            <directory>src/main/runtimes/wildfly/resources</directory>
+                                            <directory>src/main/runtimes/wildfly-it/resources</directory>
                                         </resource>
                                     </resources>
                                     <overwrite>true</overwrite>
