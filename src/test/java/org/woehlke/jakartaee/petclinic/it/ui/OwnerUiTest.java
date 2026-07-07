@@ -54,13 +54,13 @@ public class OwnerUiTest extends UnitTestData {
 
     private void goToOwnerPage(){
         goTo(OwnerPage.class);
-        ownerPage.fullscreen();
+        //ownerPage.fullscreen();
         Assert.assertTrue(ownerPage.isFlowStateList());
     }
 
     private void goToPetTypePage(){
         goTo(PetTypePage.class);
-        petTypePage.fullscreen();
+        //petTypePage.fullscreen();
         Assert.assertTrue(petTypePage.isFlowStateList());
     }
 
