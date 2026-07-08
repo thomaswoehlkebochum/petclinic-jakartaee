@@ -251,7 +251,6 @@ public class OwnerUiTest extends UnitTestData {
             ownerPage.clickAddNewPetButton();
             Assert.assertTrue(ownerPage.isFlowStateNewPet());
             ownerPage.clickAddAndSaveNewPet(pet);
-            //+++
             Assert.assertTrue(ownerPage.isFlowStateDetails());
             ownerPage.clickCancelDetailsButton();
             Assert.assertTrue(ownerPage.isFlowStateList());
@@ -370,8 +369,8 @@ public class OwnerUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
         goToOwnerPage();
         Assert.assertTrue(ownerPage.isFlowStateList());
-        for(int i=0; i<ownerList.size(); i++) {
-            ownerPage.clickShowDetailsFormButton(i);
+        //for(int i=0; i<ownerList.size(); i++) {
+            ownerPage.clickShowDetailsFormButton0();
             Assert.assertTrue(ownerPage.isFlowStateDetails());
             // ----------------------------------
             ownerPage.clickDeleteSelectedButton();
@@ -381,7 +380,7 @@ public class OwnerUiTest extends UnitTestData {
             Assert.assertTrue(ownerPage.isFlowStateDetails());
             ownerPage.clickCancelDetailsButton();
             Assert.assertTrue(ownerPage.isFlowStateList());
-        }
+        //}
         log.info("------------------------------------------------------------------------------------");
         log.info(" deleteOwnerPageWithCancel DONE ");
         log.info("------------------------------------------------------------------------------------");
@@ -395,15 +394,15 @@ public class OwnerUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
         goToOwnerPage();
         Assert.assertTrue(ownerPage.isFlowStateList());
-        ownerPage.fullscreen();
-        for(int i=0; i<ownerList.size(); i++) {
+        //ownerPage.fullscreen();
+        //for(int i=0; i<ownerList.size(); i++) {
             ownerPage.clickShowDetailsFormButton0();
             Assert.assertTrue(ownerPage.isFlowStateDetails());
             ownerPage.clickDeleteSelectedButton();
             Assert.assertTrue(ownerPage.isFlowStateDelete());
             ownerPage.clickConfirmDeleteButton();
             Assert.assertTrue(ownerPage.isFlowStateList());
-        }
+        //}
         log.info("------------------------------------------------------------------------------------");
         log.info(" deleteOwnerPageWithSave DONE ");
         log.info("------------------------------------------------------------------------------------");

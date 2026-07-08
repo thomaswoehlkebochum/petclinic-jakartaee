@@ -109,7 +109,7 @@ public class PetTypePage implements CrudFlowStatePage {
         //showNewFormButton.sendKeys(Keys.DOWN);
         //showNewFormButton.sendKeys(Keys.ENTER);
         Graphene.guardHttp(showNewFormButton).click();
-        this.fullscreen();
+        //this.fullscreen();
         return this;
     }
 
@@ -128,7 +128,7 @@ public class PetTypePage implements CrudFlowStatePage {
         //saveNewButton.sendKeys(Keys.END);
         //saveNewButton.sendKeys(Keys.ENTER);
         Graphene.guardHttp(saveNewButton).click();
-        this.fullscreen();
+        //this.fullscreen();
         return this;
     }
 
@@ -251,7 +251,7 @@ public class PetTypePage implements CrudFlowStatePage {
         //cancelDetailsButton.sendKeys(Keys.END);
         //cancelDetailsButton.sendKeys(Keys.ENTER);
         Graphene.guardHttp(cancelDetailsButton).click();
-        this.fullscreen();
+        //this.fullscreen();
         return this;
     }
 

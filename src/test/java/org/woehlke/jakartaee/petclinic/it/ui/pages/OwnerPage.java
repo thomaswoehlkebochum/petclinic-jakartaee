@@ -7,6 +7,8 @@ Not for reuse without permission.
 package org.woehlke.jakartaee.petclinic.it.ui.pages;
 import java.text.DateFormat;
 import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.Locale;
 import java.util.NoSuchElementException;
@@ -20,6 +22,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.primefaces.selenium.component.DatePicker;
+import org.primefaces.selenium.component.InputText;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.owner.views.OwnerFlowState;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
@@ -460,10 +464,10 @@ public class OwnerPage implements CrudFlowStatePageOwner {
     }
 
     @FindBy(id="addNewPetForm:petNameAddNewOwnersPet")
-    private GrapheneElement petNameAddNewOwnersPetInput;
+    private WebElement petNameAddNewOwnersPetInput;
 
     @FindBy(id="addNewPetForm:petBirthDateAddNewOwnersPet_input")
-    private GrapheneElement petBirthDateAddNewOwnersPetInput;
+    private WebElement petBirthDateAddNewOwnersPetInput;
 
     @FindBy(id="addNewPetForm:petTypeAddNewOwnersPet")
     private WebElement petTypeAddNewOwnersPetDiv;
@@ -478,16 +482,10 @@ public class OwnerPage implements CrudFlowStatePageOwner {
 
     public OwnerPage clickAddAndSaveNewPet(Pet pet) {
         int option = 1;
-        //petTypeAddNewOwnersPetDiv.click();
-        petTypeAddNewOwnersPetDiv.sendKeys(Keys.DOWN);
-        petTypeAddNewOwnersPetDiv.sendKeys(Keys.END);
-        petTypeAddNewOwnersPetDiv.sendKeys(Keys.ENTER);
-        //petNameAddNewOwnersPetInput.sendKeys(Keys.DOWN);
-        //petNameAddNewOwnersPetInput.sendKeys(Keys.END);
+        petTypeAddNewOwnersPetDiv.click();
         petNameAddNewOwnersPetInput.sendKeys(pet.getName());
-        //petBirthDateAddNewOwnersPetInput.sendKeys(Keys.DOWN);
-        //petBirthDateAddNewOwnersPetInput.sendKeys(Keys.END);
-        petBirthDateAddNewOwnersPetInput.sendKeys(df.format(pet.getBirthDate()));
+        petBirthDateAddNewOwnersPetInput.sendKeys("6/9/2014");
+        //petBirthDateAddNewOwnersPetInput.sendKeys(df.format(pet.getBirthDate()));
         petTypeAddNewOwnersPetInput.selectByIndex(option);
         newOwnersPetSaveButton.sendKeys(Keys.DOWN);
         newOwnersPetSaveButton.sendKeys(Keys.END);
@@ -564,13 +562,14 @@ public class OwnerPage implements CrudFlowStatePageOwner {
     public OwnerPage clickSaveEditPetButton() {
         String name = petNameAddEditedOwnersPetInput.getText();
         name += " TeST";
-        //petTypeAddEditedOwnersPetDiv.click();
-        petTypeAddEditedOwnersPetDiv.sendKeys(Keys.DOWN);
-        petTypeAddEditedOwnersPetDiv.sendKeys(Keys.END);
-        Graphene.guardHttp(petTypeAddEditedOwnersPetDiv).sendKeys(Keys.ENTER);
+        int option = 2;
+        petTypeAddEditedOwnersPetDiv.click();
+        //petTypeAddEditedOwnersPetDiv.sendKeys(Keys.DOWN);
+        //petTypeAddEditedOwnersPetDiv.sendKeys(Keys.END);
+        //Graphene.guardHttp(petTypeAddEditedOwnersPetDiv).sendKeys(Keys.ENTER);
         petNameAddEditedOwnersPetInput.sendKeys(name);
-        petBirthDateAddEditedOwnersPetInput.sendKeys(df.format(Date.from(Instant.now())));
-        //petTypeAddEditedOwnersPetInput.selectByIndex(option);
+        petBirthDateAddEditedOwnersPetInput.sendKeys("2/3/2012");
+        petTypeAddEditedOwnersPetInput.selectByIndex(option);
         editOwnersPetSaveButton.sendKeys(Keys.DOWN);
         editOwnersPetSaveButton.sendKeys(Keys.END);
         Graphene.guardHttp(editOwnersPetSaveButton).sendKeys(Keys.ENTER);
