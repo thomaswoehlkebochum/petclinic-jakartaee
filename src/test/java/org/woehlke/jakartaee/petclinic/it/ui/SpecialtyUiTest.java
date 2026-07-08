@@ -53,7 +53,7 @@ public class SpecialtyUiTest extends UnitTestData {
 
     private void goToSpecialtyPage(){
         goTo(SpecialtyPage.class);
-        specialtyPage.fullscreen();
+        //specialtyPage.fullscreen();
         Assert.assertTrue(specialtyPage.isFlowStateList());
     }
 
