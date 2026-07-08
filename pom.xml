@@ -5106,7 +5106,7 @@
                                 <configuration>
                                     <resources>
                                         <resource>
-                                            <directory>src/main/runtimes/payara/resources/META-INF</directory>
+                                            <directory>src/main/runtimes/payara-it/resources/META-INF</directory>
                                         </resource>
                                     </resources>
                                     <outputDirectory>target/petclinic/WEB-INF/classes/META-INF</outputDirectory>
@@ -5122,7 +5122,7 @@
                                 <configuration>
                                     <resources>
                                         <resource>
-                                            <directory>src/main/runtimes/payara/webapp/WEB-INF</directory>
+                                            <directory>src/main/runtimes/payara-it/webapp/WEB-INF</directory>
                                         </resource>
                                     </resources>
                                     <outputDirectory>target/petclinic/WEB-INF</outputDirectory>
@@ -5147,7 +5147,7 @@
                                             </includes>
                                         </resource>
                                         <resource>
-                                            <directory>src/main/runtimes/payara/resources</directory>
+                                            <directory>src/main/runtimes/payara-it/resources</directory>
                                         </resource>
                                     </resources>
                                     <overwrite>true</overwrite>
@@ -5187,7 +5187,7 @@
                         <artifactId>maven-failsafe-plugin</artifactId>
                         <configuration>
                             <systemPropertyVariables>
-                                <payara.home>${project.build.directory}/payara6</payara.home>
+                                <payara.home>${project.build.directory}/payara7</payara.home>
                                 <arquillian.launch>payara-managed</arquillian.launch>
                             </systemPropertyVariables>
                         </configuration>
