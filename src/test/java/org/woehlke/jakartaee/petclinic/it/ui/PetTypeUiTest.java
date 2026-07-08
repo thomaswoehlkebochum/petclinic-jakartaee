@@ -47,7 +47,7 @@ public class PetTypeUiTest extends UnitTestData {
 
     private void goToPetTypePage(){
         goTo(PetTypePage.class);
-        petTypePage.fullscreen();
+        //petTypePage.fullscreen();
         Assert.assertTrue(petTypePage.isFlowStateList());
     }
 

@@ -105,13 +105,13 @@ public class VeterinarianPage implements CrudFlowStatePage {
 
     public VeterinarianPage clickAddNewEntityButton() {
         Graphene.guardHttp(showNewFormButton).click();
-        fullscreen();
+        //fullscreen();
         return this;
     }
 
     public VeterinarianPage clickCancelNewEntityButton() {
         Graphene.guardHttp(cancelNewButton).click();
-        fullscreen();
+        //fullscreen();
         return this;
     }
 
@@ -119,19 +119,19 @@ public class VeterinarianPage implements CrudFlowStatePage {
         newSurnameInput.sendKeys(surname);
         newLastnameInput.sendKeys(lastname);
         Graphene.guardHttp(saveNewButton).click();
-        fullscreen();
+        //fullscreen();
         return this;
     }
 
     public VeterinarianPage clickShowEditForm() {
         Graphene.guardHttp(showEditFormButton).click();
-        fullscreen();
+        //fullscreen();
         return this;
     }
 
     public VeterinarianPage clickCancelEditButton() {
         Graphene.guardHttp(cancelEditButton).click();
-        fullscreen();
+        //fullscreen();
         return this;
     }
 

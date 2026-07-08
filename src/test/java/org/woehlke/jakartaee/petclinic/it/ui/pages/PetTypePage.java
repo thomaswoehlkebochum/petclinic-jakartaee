@@ -118,7 +118,7 @@ public class PetTypePage implements CrudFlowStatePage {
         //cancelNewButton.sendKeys(Keys.END);
         //cancelNewButton.sendKeys(Keys.ENTER);
         Graphene.guardHttp(cancelNewButton).click();
-        this.fullscreen();
+        //this.fullscreen();
         return this;
     }
 
@@ -137,13 +137,13 @@ public class PetTypePage implements CrudFlowStatePage {
         //showEditFormButton.sendKeys(Keys.END);
         //showEditFormButton.sendKeys(Keys.ENTER);
         Graphene.guardHttp(showEditFormButton).click();
-        this.fullscreen();
+        //this.fullscreen();
         return this;
     }
 
     public PetTypePage clickCancelEditButton() {
         Graphene.guardHttp(cancelEditButton).click();
-        this.fullscreen();
+        //this.fullscreen();
         return this;
     }
 
@@ -155,7 +155,7 @@ public class PetTypePage implements CrudFlowStatePage {
         //saveEditButton.sendKeys(Keys.END);
         //saveEditButton.sendKeys(Keys.ENTER);
         Graphene.guardHttp(saveEditButton).click();
-        this.fullscreen();
+        //this.fullscreen();
         return this;
     }
 
@@ -164,7 +164,7 @@ public class PetTypePage implements CrudFlowStatePage {
         //showDeleteFormButton.sendKeys(Keys.END);
         //showDeleteFormButton.sendKeys(Keys.ENTER);
         Graphene.guardHttp(showDeleteFormButton).click();
-        this.fullscreen();
+        //this.fullscreen();
         return this;
     }
 
@@ -173,7 +173,7 @@ public class PetTypePage implements CrudFlowStatePage {
         //canceDeleteButton.sendKeys(Keys.END);
         //canceDeleteButton.sendKeys(Keys.ENTER);
         Graphene.guardHttp(canceDeleteButton).click();
-        this.fullscreen();
+        //this.fullscreen();
         return this;
     }
 
@@ -182,13 +182,13 @@ public class PetTypePage implements CrudFlowStatePage {
         //saveDeleteButton.sendKeys(Keys.END);
         //saveDeleteButton.sendKeys(Keys.ENTER);
         Graphene.guardHttp(saveDeleteButton).click();
-        this.fullscreen();
+        //this.fullscreen();
         return this;
     }
 
     public PetTypePage clickSearchButton() {
         Graphene.guardHttp(searchButton).click();
-        this.fullscreen();
+        //this.fullscreen();
         return this;
     }
 
@@ -197,7 +197,7 @@ public class PetTypePage implements CrudFlowStatePage {
         //clearSearchButton.sendKeys(Keys.END);
         //clearSearchButton.sendKeys(Keys.ENTER);
         Graphene.guardHttp(clearSearchButton).click();
-        this.fullscreen();
+        //this.fullscreen();
         return this;
     }
 
@@ -206,7 +206,7 @@ public class PetTypePage implements CrudFlowStatePage {
         //showDetailsFormButton0.sendKeys(Keys.END);
         //showDetailsFormButton0.sendKeys(Keys.ENTER);
         Graphene.guardHttp(showDetailsFormButton0).click();
-        this.fullscreen();
+        //this.fullscreen();
         return this;
     }
 
@@ -215,7 +215,7 @@ public class PetTypePage implements CrudFlowStatePage {
         //showDetailsFormButton1.sendKeys(Keys.END);
         //showDetailsFormButton1.sendKeys(Keys.ENTER);
         Graphene.guardHttp(showDetailsFormButton1).click();
-        this.fullscreen();
+        //this.fullscreen();
         return this;
     }
 
@@ -224,7 +224,7 @@ public class PetTypePage implements CrudFlowStatePage {
         //showDetailsFormButton2.sendKeys(Keys.END);
         //showDetailsFormButton2.sendKeys(Keys.ENTER);
         Graphene.guardHttp(showDetailsFormButton2).click();
-        this.fullscreen();
+        //this.fullscreen();
         return this;
     }
 
@@ -233,7 +233,7 @@ public class PetTypePage implements CrudFlowStatePage {
         //showDetailsFormButton3.sendKeys(Keys.END);
         //showDetailsFormButton3.sendKeys(Keys.ENTER);
         Graphene.guardHttp(showDetailsFormButton3).click();
-        this.fullscreen();
+        //this.fullscreen();
         return this;
     }
 
@@ -242,7 +242,7 @@ public class PetTypePage implements CrudFlowStatePage {
         //showDetailsFormButton4.sendKeys(Keys.END);
         //showDetailsFormButton4.sendKeys(Keys.ENTER);
         Graphene.guardHttp(showDetailsFormButton4).click();
-        this.fullscreen();
+        //this.fullscreen();
         return this;
     }
 

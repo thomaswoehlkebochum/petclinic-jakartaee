@@ -22,12 +22,12 @@ import org.woehlke.jakartaee.petclinic.unit.VisitUnitTest;
 public class EntityUnitTestSuite {
 
     @BeforeAll
-    public void runBeforeSuite(){
+    public static void runBeforeSuite(){
       log.info("START");
     }
 
     @AfterAll
-    public void runAfterSuite(){
+    public static void runAfterSuite(){
         log.info("DONE");
     }
 }

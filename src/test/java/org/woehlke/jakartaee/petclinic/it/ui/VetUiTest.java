@@ -52,13 +52,13 @@ public class VetUiTest extends UnitTestData {
     private void goToVeterinarianPage(){
         goTo(VeterinarianPage.class);
         waitForHttp(VeterinarianPage.class);
-        veterinarianPage.fullscreen();
+        //veterinarianPage.fullscreen();
         Assert.assertTrue(veterinarianPage.isFlowStateList());
     }
 
     private void goToSpecialtyPage(){
         goTo(SpecialtyPage.class);
-        specialtyPage.fullscreen();
+        //specialtyPage.fullscreen();
         Assert.assertTrue(specialtyPage.isFlowStateList());
     }
 
