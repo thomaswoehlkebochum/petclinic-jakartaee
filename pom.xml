@@ -152,16 +152,18 @@
         <version.maven-release-plugin>3.3.1</version.maven-release-plugin>
         <version.maven-failsafe-plugin>3.5.6</version.maven-failsafe-plugin>
         <version.maven-surefire-plugin>3.5.6</version.maven-surefire-plugin>
+        <version.maven-surefire-report-plugin>3.5.6</version.maven-surefire-report-plugin>
         <version.maven-invoker-plugin>3.3.0</version.maven-invoker-plugin>
         <version.maven-site-plugin>3.22.0</version.maven-site-plugin>
         <version.maven-project-info-reports-plugin>3.9.0</version.maven-project-info-reports-plugin>
-        <version.maven-checkstyle-plugin>3.1.2</version.maven-checkstyle-plugin>
-        <version.maven-checkstyle-plugin.checkstyle>10.4</version.maven-checkstyle-plugin.checkstyle>
-        <version.maven-pmd-plugin>3.17.0</version.maven-pmd-plugin>
-        <version.maven-pmd-plugin.pmd>6.49.0</version.maven-pmd-plugin.pmd>
-        <version.maven-surefire-report-plugin>3.5.6</version.maven-surefire-report-plugin>
-        <version.spotbugs-maven-plugin>4.7.0.0</version.spotbugs-maven-plugin>
-        <version.asciidoctor-maven-plugin>2.2.2</version.asciidoctor-maven-plugin>
+        <version.maven-checkstyle-plugin>3.6.0</version.maven-checkstyle-plugin>
+        <version.maven-checkstyle-plugin.checkstyle>13.6.0</version.maven-checkstyle-plugin.checkstyle>
+        <version.maven-jxr-plugin>3.6.0</version.maven-jxr-plugin>
+        <version.maven-pmd-plugin>3.28.0</version.maven-pmd-plugin>
+        <version.maven-pmd-plugin.pmd>7.25.0</version.maven-pmd-plugin.pmd>
+        <version.maven-pmd-plugin.jcommander>3.0</version.maven-pmd-plugin.jcommander>
+        <version.spotbugs-maven-plugin>4.10.2.0</version.spotbugs-maven-plugin>
+        <version.asciidoctor-maven-plugin>3.2.0</version.asciidoctor-maven-plugin>
 
         <!-- maven DevOps Plugin Versions -->
         <version.docker-compose-maven-plugin>4.0.0</version.docker-compose-maven-plugin>
@@ -1848,7 +1850,7 @@
                 <finalName>petclinic</finalName>
                 <defaultGoal>
                     clean dependency:purge-local-repository
-                    dependency:resolve dependency:resolve-plugins dependency:sources
+                    dependency:resolve dependency:resolve-plugins dependency:resolve-sources
                     dependency:analyze dependency:analyze-dep-mgt dependency:analyze-duplicate dependency:tree
                     package install
                     site site:deploy site:jar source:jar source:test-jar javadoc:jar javadoc:test-jar
