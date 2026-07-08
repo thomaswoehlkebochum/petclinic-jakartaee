@@ -142,12 +142,18 @@ public class VeterinarianPage implements CrudFlowStatePage {
         lastname += " TEST";
         editSurnameInput.sendKeys(surname);
         editLastnameInput.sendKeys(lastname);
-        Graphene.guardHttp(saveEditButton).click();
+        saveEditButton.sendKeys(Keys.DOWN);
+        saveEditButton.sendKeys(Keys.END);
+        Graphene.guardHttp(saveEditButton).sendKeys(Keys.ENTER);
+        //Graphene.guardHttp(saveEditButton).click();
         return this;
     }
 
     public VeterinarianPage clickShowDeleteForm() {
-        Graphene.guardHttp(showDeleteFormButton).click();
+        showDeleteFormButton.sendKeys(Keys.DOWN);
+        showDeleteFormButton.sendKeys(Keys.END);
+        Graphene.guardHttp(showDeleteFormButton).sendKeys(Keys.ENTER);
+        //Graphene.guardHttp(showDeleteFormButton).click();
         return this;
     }
 
@@ -155,7 +161,7 @@ public class VeterinarianPage implements CrudFlowStatePage {
         //Graphene.guardHttp(canceDeleteButton).click();
         canceDeleteButton.sendKeys(Keys.DOWN);
         canceDeleteButton.sendKeys(Keys.END);
-        canceDeleteButton.sendKeys(Keys.ENTER);
+        Graphene.guardHttp(canceDeleteButton).sendKeys(Keys.ENTER);
         return this;
     }
 
@@ -163,7 +169,7 @@ public class VeterinarianPage implements CrudFlowStatePage {
         //Graphene.guardHttp(saveDeleteButton).click();
         saveDeleteButton.sendKeys(Keys.DOWN);
         saveDeleteButton.sendKeys(Keys.END);
-        saveDeleteButton.sendKeys(Keys.ENTER);
+        Graphene.guardHttp(saveDeleteButton).sendKeys(Keys.ENTER);
         return this;
     }
 
@@ -178,33 +184,49 @@ public class VeterinarianPage implements CrudFlowStatePage {
     }
 
     public VeterinarianPage clickShowDetailsFormButton0() {
-        Graphene.guardHttp(showDetailsFormButton0).click();
+        showDetailsFormButton0.sendKeys(Keys.DOWN);
+        showDetailsFormButton0.sendKeys(Keys.END);
+        Graphene.guardHttp(showDetailsFormButton0).sendKeys(Keys.ENTER);
+        //Graphene.guardHttp(showDetailsFormButton0).click();
         return this;
     }
 
     public VeterinarianPage clickShowDetailsFormButton1() {
-        Graphene.guardHttp(showDetailsFormButton1).click();
+        showDetailsFormButton1.sendKeys(Keys.DOWN);
+        showDetailsFormButton1.sendKeys(Keys.END);
+        Graphene.guardHttp(showDetailsFormButton1).sendKeys(Keys.ENTER);
+        //Graphene.guardHttp(showDetailsFormButton1).click();
         return this;
     }
 
     public VeterinarianPage clickShowDetailsFormButton2() {
-        Graphene.guardHttp(showDetailsFormButton2).click();
+        showDetailsFormButton2.sendKeys(Keys.DOWN);
+        showDetailsFormButton2.sendKeys(Keys.END);
+        Graphene.guardHttp(showDetailsFormButton2).sendKeys(Keys.ENTER);
+        //Graphene.guardHttp(showDetailsFormButton2).click();
         return this;
     }
 
     public VeterinarianPage clickShowDetailsFormButton3() {
-        Graphene.guardHttp(showDetailsFormButton3).click();
+        showDetailsFormButton3.sendKeys(Keys.DOWN);
+        showDetailsFormButton3.sendKeys(Keys.END);
+        Graphene.guardHttp(showDetailsFormButton3).sendKeys(Keys.ENTER);
+        //Graphene.guardHttp(showDetailsFormButton3).click();
         return this;
     }
 
     public VeterinarianPage clickShowDetailsFormButton4() {
-        Graphene.guardHttp(showDetailsFormButton4).click();
+        showDetailsFormButton4.sendKeys(Keys.DOWN);
+        showDetailsFormButton4.sendKeys(Keys.END);
+        Graphene.guardHttp(showDetailsFormButton4).sendKeys(Keys.ENTER);
+        //Graphene.guardHttp(showDetailsFormButton4).click();
         return this;
     }
 
     public VeterinarianPage clickCancelDetailsButton() {
         cancelDetailsButton.sendKeys(Keys.DOWN);
-        cancelDetailsButton.sendKeys(Keys.ENTER);
+        cancelDetailsButton.sendKeys(Keys.END);
+        Graphene.guardHttp(cancelDetailsButton).sendKeys(Keys.ENTER);
         return this;
     }
 
