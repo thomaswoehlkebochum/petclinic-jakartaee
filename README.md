@@ -349,7 +349,7 @@ Object Oriented Design
 * [jakartaee9-starter-boilerplate by hantsy](https://github.com/hantsy/jakartaee9-starter-boilerplate)
 
 ## Imprint
-* [(c) 2023 Thomas Woehlke](https://github.com/thomaswoehlke)
+* [(c) 2026 Thomas Woehlke](https://github.com/thomaswoehlkebochum)
 * [This Document](https://jakarta-ee-petclinic.github.io/petclinic-jakartaee/)
 * [github repository](https://github.com/Jakarta-EE-Petclinic/petclinic-jakartaee)
 * [maven project reports](https://java.woehlke.org/jakartaee/petclinic-jakartaee)
