@@ -1676,7 +1676,9 @@
                             <!-- INTEGRATION TEST SUITES -->
                             <includes>
                                 <include>org.woehlke.jakartaee.petclinic.EntityUnitTestSuite</include>
+                                <!--
                                 <include>org.woehlke.jakartaee.petclinic.it.api.RestEndpointIT</include>
+                                -->
                                 <include>org.woehlke.jakartaee.petclinic.UiTestSuite</include>
                             </includes>
                         </configuration>
@@ -2042,8 +2044,8 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <skip.unit.tests>true</skip.unit.tests>
-                <skip.integration.tests>true</skip.integration.tests>
+                <skip.unit.tests>false</skip.unit.tests>
+                <skip.integration.tests>false</skip.integration.tests>
             </properties>
             <dependencyManagement>
                 <dependencies>
@@ -2592,12 +2594,16 @@
                         </includes>
                         <excludes>
                             <exclude>server.xml</exclude>
+                            <exclude>userRegistry.xml</exclude>
+                            <exclude>postgresql.jar</exclude>
                         </excludes>
                     </testResource>
                     <testResource>
                         <directory>src/test/runtimes/arq-liberty-managed</directory>
                         <includes>
                             <include>server.xml</include>
+                            <include>userRegistry.xml</include>
+                            <include>postgresql.jar</include>
                         </includes>
                         <targetPath>
                             ${project.build.directory}/wlp/usr/servers/defaultServer
@@ -2649,7 +2655,7 @@
                                 <configuration>
                                     <resources>
                                         <resource>
-                                            <directory>src/main/runtimes/liberty/resources/META-INF</directory>
+                                            <directory>src/main/runtimes/liberty-it/resources/META-INF</directory>
                                         </resource>
                                     </resources>
                                     <outputDirectory>target/petclinic/WEB-INF/classes/META-INF</outputDirectory>
@@ -2665,7 +2671,7 @@
                                 <configuration>
                                     <resources>
                                         <resource>
-                                            <directory>src/main/runtimes/liberty/webapp/WEB-INF</directory>
+                                            <directory>src/main/runtimes/liberty-it/webapp/WEB-INF</directory>
                                         </resource>
                                     </resources>
                                     <outputDirectory>target/petclinic/WEB-INF</outputDirectory>
@@ -2690,7 +2696,7 @@
                                             </includes>
                                         </resource>
                                         <resource>
-                                            <directory>src/main/runtimes/liberty/resources</directory>
+                                            <directory>src/main/runtimes/liberty-it/resources</directory>
                                         </resource>
                                     </resources>
                                     <overwrite>true</overwrite>
@@ -3738,8 +3744,7 @@
                 <skip.integration.tests>true</skip.integration.tests>
                 <cargo.hostname>localhost</cargo.hostname>
                 <cargo.servlet.port>8080</cargo.servlet.port>
-                <cargo.zipUrlInstaller.downloadDir>${project.build.directory}/../installs
-                </cargo.zipUrlInstaller.downloadDir>
+                <cargo.zipUrlInstaller.downloadDir>${project.build.directory}/../installs</cargo.zipUrlInstaller.downloadDir>
                 <cargo.glassfish.admin.port>4848</cargo.glassfish.admin.port>
             </properties>
             <dependencyManagement>
