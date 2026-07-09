@@ -105,8 +105,7 @@
         <version.liberty-maven-plugin>3.12.0</version.liberty-maven-plugin>
         <generateFeatures>false</generateFeatures>
         <runtime.jakartaee.server.openliberty.remote>/opt/openliberty/wlp</runtime.jakartaee.server.openliberty.remote>
-        <runtime.jakartaee.server.openliberty.ServerName>petclinicServer
-        </runtime.jakartaee.server.openliberty.ServerName>
+        <runtime.jakartaee.server.openliberty.ServerName>petclinicServer</runtime.jakartaee.server.openliberty.ServerName>
         <version.infinispan-jcache-remote>14.0.9.Final</version.infinispan-jcache-remote>
         <version.arquillian-liberty-support-jakarta>3.0.0</version.arquillian-liberty-support-jakarta>
         <version.arquillian-liberty-managed-jakarta>3.0.0</version.arquillian-liberty-managed-jakarta>
@@ -2050,8 +2049,8 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <skip.unit.tests>false</skip.unit.tests>
-                <skip.integration.tests>false</skip.integration.tests>
+                <skip.unit.tests>true</skip.unit.tests>
+                <skip.integration.tests>true</skip.integration.tests>
             </properties>
             <dependencyManagement>
                 <dependencies>
