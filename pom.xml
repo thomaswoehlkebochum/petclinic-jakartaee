@@ -128,8 +128,8 @@
         <version.payara-runtime>7.2026.5</version.payara-runtime>
         <version.payara>${version.payara-runtime}</version.payara>
         <version.payaramicro.maven.plugin>1.4.0</version.payaramicro.maven.plugin>
-        <version.arquillian-payara>3.0.alpha7</version.arquillian-payara>
-        <payara-arquillian-container.version>3.0.alpha7</payara-arquillian-container.version>
+        <version.arquillian-payara>3.1</version.arquillian-payara>
+        <payara-arquillian-container.version>3.1</payara-arquillian-container.version>
 
         <!-- Glassfish -->
         <glassfish.version>7.0.5</glassfish.version>
@@ -993,6 +993,12 @@
                 <version>4.0.0</version>
                 <type>pom</type>
                 <scope>import</scope>
+            </dependency>
+            <dependency>
+                <groupId>fish.payara.arquillian</groupId>
+                <artifactId>arquillian-payara-server-managed</artifactId>
+                <version>${version.arquillian-payara}</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -3749,7 +3755,7 @@
             </properties>
             <dependencyManagement>
                 <dependencies>
-                    <!--
+<!--
                     <dependency>
                         <groupId>fish.payara.api</groupId>
                         <artifactId>payara-bom</artifactId>
@@ -3757,7 +3763,7 @@
                         <type>pom</type>
                         <scope>import</scope>
                     </dependency>
-                    -->
+-->
                     <dependency>
                         <groupId>org.glassfish.grizzly</groupId>
                         <artifactId>grizzly-bom</artifactId>
@@ -4250,7 +4256,7 @@
         <profile>
             <id>arq-glassfish-managed</id>
             <properties>
-                <glassfish.version>7.0.0</glassfish.version>
+                <glassfish.version>7.0.5</glassfish.version>
                 <skip.unit.tests>true</skip.unit.tests>
                 <skip.integration.tests>false</skip.integration.tests>
                 <enableDerby>true</enableDerby>
@@ -4405,7 +4411,7 @@
                 <defaultGoal>clean install verify</defaultGoal>
                 <testResources>
                     <testResource>
-                        <directory>src/test/runtimes/it-glassfish</directory>
+                        <directory>src/test/runtimes/arq-glassfish-managed</directory>
                     </testResource>
                 </testResources>
                 <pluginManagement>
@@ -4507,7 +4513,7 @@
                     <plugin>
                         <groupId>org.omnifaces.arquillian</groupId>
                         <artifactId>arquillian-glassfish-server-managed</artifactId>
-                        <version>1.2</version>
+                        <version>1.8</version>
                         <configuration>
                             <glassfishHome>target/glassfish7</glassfishHome>
                             <environmentVariables>
@@ -4577,10 +4583,12 @@
                 <skip.tests>false</skip.tests>
                 <skip.unit.tests>false</skip.unit.tests>
                 <skip.integration.tests>false</skip.integration.tests>
+                <asm.version>9.10.1</asm.version>
             </properties>
+            <!--
             <dependencyManagement>
                 <dependencies>
-                    <!--
+< ! - -
                     <dependency>
                         <groupId>fish.payara.api</groupId>
                         <artifactId>payara-bom</artifactId>
@@ -4588,25 +4596,25 @@
                         <type>pom</type>
                         <scope>import</scope>
                     </dependency>
-                    -->
+- - >
                     <dependency>
                         <groupId>org.glassfish.grizzly</groupId>
                         <artifactId>grizzly-bom</artifactId>
-                        <version>4.0.0</version>
+                        <version>4.0.1</version>
                         <type>pom</type>
                         <scope>import</scope>
                     </dependency>
                     <dependency>
                         <groupId>org.glassfish.hk2</groupId>
                         <artifactId>hk2-bom</artifactId>
-                        <version>3.0.1</version>
+                        <version>4.0.1</version>
                         <type>pom</type>
                         <scope>import</scope>
                     </dependency>
                     <dependency>
                         <groupId>org.glassfish.jersey</groupId>
                         <artifactId>jersey-bom</artifactId>
-                        <version>3.1.0</version>
+                        <version>4.0.1</version>
                         <type>pom</type>
                         <scope>import</scope>
                     </dependency>
@@ -4635,13 +4643,79 @@
                         <scope>test</scope>
                     </dependency>
                     <dependency>
+                        <groupId>org.ow2.asm</groupId>
+                        <artifactId>asm-bom</artifactId>
+                        <version>9.10.1</version>
+                        <type>pom</type>
+                        <scope>import</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.ow2.asm</groupId>
+                        <artifactId>asm</artifactId>
+                        <version>9.10.1</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.ow2.asm</groupId>
+                        <artifactId>asm-tree</artifactId>
+                        <version>9.10.1</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.ow2.asm</groupId>
+                        <artifactId>asm-analysis</artifactId>
+                        <version>9.10.1</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.ow2.asm</groupId>
+                        <artifactId>asm-util</artifactId>
+                        <version>9.10.1</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.ow2.asm</groupId>
+                        <artifactId>asm-commons</artifactId>
+                        <version>9.10.1</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.glassfish.jersey.test-framework.providers</groupId>
+                        <artifactId>jersey-test-framework-provider-helidon</artifactId>
+                        <version>4.0.1</version>
+                        <scope>compile</scope>
+                    </dependency>
+                    <dependency>
                         <groupId>org.postgresql</groupId>
                         <artifactId>postgresql</artifactId>
                         <version>${version.postgresql.driver}</version>
                     </dependency>
+                    < ! - -
+                    <dependency>
+                        <groupId>javax.xml.bind</groupId>
+                        <artifactId>jaxb-api</artifactId>
+                        <version>2.3.1</version>
+                        <scope>test</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>com.sun.xml.bind</groupId>
+                        <artifactId>jaxb-impl</artifactId>
+                        <version>2.3.9</version>
+                        <scope>test</scope>
+                    </dependency>
+                    - - >
+                    <dependency>
+                        <groupId>jakarta.xml.bind</groupId>
+                        <artifactId>jakarta.xml.bind-api</artifactId>
+                        <version>4.0.5</version>
+                        <scope>test</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.glassfish.jaxb</groupId>
+                        <artifactId>jaxb-runtime</artifactId>
+                        <version>4.0.7</version>
+                        <scope>test</scope>
+                    </dependency>
                 </dependencies>
             </dependencyManagement>
+            -->
             <dependencies>
+                <!--
                 <dependency>
                     <groupId>fish.payara.arquillian</groupId>
                     <artifactId>environment-setup</artifactId>
@@ -4657,6 +4731,7 @@
                     <artifactId>payara-container-common</artifactId>
                     <scope>test</scope>
                 </dependency>
+                -->
                 <dependency>
                     <groupId>fish.payara.arquillian</groupId>
                     <artifactId>arquillian-payara-server-managed</artifactId>
@@ -4666,7 +4741,7 @@
                     <groupId>org.postgresql</groupId>
                     <artifactId>postgresql</artifactId>
                 </dependency>
-
+<!--
                 <dependency>
                     <groupId>org.glassfish.grizzly</groupId>
                     <artifactId>grizzly-framework</artifactId>
@@ -4739,7 +4814,7 @@
                     <groupId>org.glassfish.grizzly</groupId>
                     <artifactId>grizzly-http-server-monitoring</artifactId>
                 </dependency>
-                <!-- Bundles -->
+                < ! - - Bundles - - >
                 <dependency>
                     <groupId>org.glassfish.grizzly</groupId>
                     <artifactId>grizzly-core</artifactId>
@@ -4764,11 +4839,12 @@
                     <groupId>org.glassfish.grizzly</groupId>
                     <artifactId>grizzly-comet-server</artifactId>
                 </dependency>
+                < ! - -
                 <dependency>
                     <groupId>org.glassfish.grizzly.osgi</groupId>
                     <artifactId>grizzly-httpservice-bundle</artifactId>
                 </dependency>
-
+                - - >
                 <dependency>
                     <groupId>org.glassfish.jersey.core</groupId>
                     <artifactId>jersey-common</artifactId>
@@ -4781,6 +4857,7 @@
                     <groupId>org.glassfish.jersey.core</groupId>
                     <artifactId>jersey-server</artifactId>
                 </dependency>
+                < ! - -
                 <dependency>
                     <groupId>org.glassfish.jersey.bundles</groupId>
                     <artifactId>jaxrs-ri</artifactId>
@@ -4789,6 +4866,7 @@
                     <groupId>org.glassfish.jersey.connectors</groupId>
                     <artifactId>jersey-apache-connector</artifactId>
                 </dependency>
+                - - >
                 <dependency>
                     <groupId>org.glassfish.jersey.connectors</groupId>
                     <artifactId>jersey-apache5-connector</artifactId>
@@ -4845,6 +4923,7 @@
                     <groupId>org.glassfish.jersey.containers</groupId>
                     <artifactId>jersey-container-servlet</artifactId>
                 </dependency>
+                < ! - -
                 <dependency>
                     <groupId>org.glassfish.jersey.containers</groupId>
                     <artifactId>jersey-container-servlet-core</artifactId>
@@ -4853,6 +4932,7 @@
                     <groupId>org.glassfish.jersey.containers</groupId>
                     <artifactId>jersey-container-simple-http</artifactId>
                 </dependency>
+                - - >
                 <dependency>
                     <groupId>org.glassfish.jersey.containers.glassfish</groupId>
                     <artifactId>jersey-gf-ejb</artifactId>
@@ -4953,10 +5033,12 @@
                     <groupId>org.glassfish.jersey.ext.microprofile</groupId>
                     <artifactId>jersey-mp-rest-client</artifactId>
                 </dependency>
+                < ! - -
                 <dependency>
                     <groupId>org.glassfish.jersey.media</groupId>
                     <artifactId>jersey-media-jaxb</artifactId>
                 </dependency>
+                - - >
                 <dependency>
                     <groupId>org.glassfish.jersey.media</groupId>
                     <artifactId>jersey-media-json-jackson</artifactId>
@@ -5042,10 +5124,12 @@
                     <groupId>org.glassfish.jersey.test-framework.providers</groupId>
                     <artifactId>jersey-test-framework-provider-jdk-http</artifactId>
                 </dependency>
+                < ! - -
                 <dependency>
                     <groupId>org.glassfish.jersey.test-framework.providers</groupId>
                     <artifactId>jersey-test-framework-provider-simple</artifactId>
                 </dependency>
+                - - >
                 <dependency>
                     <groupId>org.glassfish.jersey.test-framework.providers</groupId>
                     <artifactId>jersey-test-framework-provider-jetty</artifactId>
@@ -5054,6 +5138,24 @@
                     <groupId>org.glassfish.jersey.test-framework</groupId>
                     <artifactId>jersey-test-framework-util</artifactId>
                 </dependency>
+                < ! - -
+                <dependency>
+                    <groupId>javax.xml.bind</groupId>
+                    <artifactId>jaxb-api</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>com.sun.xml.bind</groupId>
+                    <artifactId>jaxb-impl</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>jakarta.xml.bind</groupId>
+                    <artifactId>jakarta.xml.bind-api</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.glassfish.jaxb</groupId>
+                    <artifactId>jaxb-runtime</artifactId>
+                </dependency>
+                -->
             </dependencies>
             <build>
                 <testResources>

@@ -16,6 +16,6 @@
         <property name="databaseName" value="petclinic_jakartaee_payara"/>
         <property name="serverName" value="localhost"/>
         <property name="portNumber" value="5432"/>
-        <property name="driver" value="petclinic.war_org.postgresql.Driver_42_7"/>
+        <property name="driver" value="petclinic.war_org.postgresql.Driver_42_7_11"/>
     </jdbc-connection-pool>
 </resources>
