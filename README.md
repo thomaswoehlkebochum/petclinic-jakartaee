@@ -43,13 +43,13 @@ cd petclinic-jakartaee
 
 ## ... deploy and run
 
-| maven profile      | Runtime                                                               | Version      | Status           |
-|--------------------|-----------------------------------------------------------------------|--------------|------------------|
-| ./mvnw -Pliberty   | [OpenLiberty](https://openliberty.io/)                                | 26.0.0.6     | Jakarta EE 10    |
-| ./mvnw -Pwildfly   | [Wildfly](https://www.wildfly.org/)                                   | 39.0.0.Final | Jakarta EE 10    |
-| ./mvnw -Ppayara    | [Payara](https://www.payara.fish/products/payara-platform-community/) | 7.2026.5     | Jakarta EE 10    | 
-| ./mvnw -Pglassfish | [GlassFish](https://glassfish.org/)                                   | 7.0.5        | Jakarta EE 10    |
-| ./mvnw -Ptomee     | [Apache TomEE](https://tomee.apache.org/)                             | 10.1.5       | work in progress |
+| maven profile      | Runtime                                                               | Version      | Status         |
+|--------------------|-----------------------------------------------------------------------|--------------|----------------|
+| ./mvnw -Pliberty   | [OpenLiberty](https://openliberty.io/)                                | 26.0.0.6     | Jakarta EE 10  |
+| ./mvnw -Pwildfly   | [Wildfly](https://www.wildfly.org/)                                   | 39.0.0.Final | Jakarta EE 10  |
+| ./mvnw -Ppayara    | [Payara](https://www.payara.fish/products/payara-platform-community/) | 7.2026.5     | Jakarta EE 10  | 
+| ./mvnw -Pglassfish | [GlassFish](https://glassfish.org/)                                   | 7.0.5        | Jakarta EE 10  |
+| ./mvnw -Ptomee     | [Apache TomEE](https://tomee.apache.org/)                             | 10.1.5       | Jakarta EE 10  |
 
 
 ## Integration Tests

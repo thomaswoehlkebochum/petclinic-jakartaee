@@ -2,10 +2,10 @@
         "http://docs.payara.fish/schemas/payara-resources_1_7.dtd">
 <resources>
 
-    <jdbc-resource jndi-name="jdbc/petclinicDS"
+    <jdbc-resource jndi-name="PetclinicDS"
                    pool-name="petclinicPool"
-                   object-type="system-all"
-                   enabled="yes"/>
+                   object-type="user"
+                   enabled="true"/>
 
     <jdbc-connection-pool name="petclinicPool"
                           res-type="javax.sql.DataSource"
