@@ -4663,8 +4663,7 @@
                                             <directory>src/main/runtimes/payara-it/webapp/WEB-INF</directory>
                                         </resource>
                                     </resources>
-                                    <outputDirectory>target/petclinic/WEB-INF</outputDirectory>3
-
+                                    <outputDirectory>target/petclinic/WEB-INF</outputDirectory>
                                 </configuration>
                                 <phase>prepare-package</phase>
                                 <goals>
