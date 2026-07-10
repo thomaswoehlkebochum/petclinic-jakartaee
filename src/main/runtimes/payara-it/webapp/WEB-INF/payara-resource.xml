@@ -1,11 +1,6 @@
 <!DOCTYPE resources PUBLIC "-//Payara.fish//DTD Payara Server 4 Resource Definitions//EN"
-        "http://docs.payara.fish/schemas/payara-resources_1_7.dtd">
+        "https://raw.githubusercontent.com/payara/Payara-Documentation/main-7/docs/modules/ROOT/pages/Appendix/Schemas/payara-resources_1_8.dtd">
 <resources>
-
-    <jdbc-resource jndi-name="PetclinicDS"
-                   pool-name="petclinicPool"
-                   object-type="user"
-                   enabled="true"/>
 
     <jdbc-connection-pool name="petclinicPool"
                           res-type="javax.sql.DataSource"
@@ -22,4 +17,9 @@
         -->
         <property name="driver" value="petclinic.war_org.postgresql.Driver_42_7"/>
     </jdbc-connection-pool>
+
+    <jdbc-resource jndi-name="jdbc/PetclinicDS"
+                   pool-name="petclinicPool"
+                   object-type="system-all"
+                   enabled="true"/>
 </resources>

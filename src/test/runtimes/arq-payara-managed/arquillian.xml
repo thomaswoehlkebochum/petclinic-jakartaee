@@ -13,6 +13,7 @@
 
     <container qualifier="payara-managed">
         <configuration>
+            <property name="payaraHome">target/payara7</property>
             <property name="allowConnectingToRunningServer">true</property>
             <property name="adminHost">localhost</property>
             <property name="adminPort">4848</property>
@@ -27,7 +28,7 @@
     </extension>
 
     <extension qualifier="drone">
-        <property name="instantiationTimeoutInSeconds">120</property>
+        <property name="instantiationTimeoutInSeconds">180</property>
     </extension>
 
     <extension qualifier="screenshooter">

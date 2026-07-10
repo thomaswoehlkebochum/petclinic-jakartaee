@@ -7,7 +7,7 @@
 	<persistence-unit name="petclinicPersistenceUnit" transaction-type="JTA">
 
 		<!-- Payara -->
-		<jta-data-source>PetclinicDS</jta-data-source>
+		<jta-data-source>jdbc/PetclinicDS</jta-data-source>
 
 		<class>org.woehlke.jakartaee.petclinic.owner.Owner</class>
 		<class>org.woehlke.jakartaee.petclinic.pet.Pet</class>
