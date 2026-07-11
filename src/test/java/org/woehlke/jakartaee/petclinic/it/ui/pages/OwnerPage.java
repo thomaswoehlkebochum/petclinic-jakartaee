@@ -484,8 +484,8 @@ public class OwnerPage implements CrudFlowStatePageOwner {
         int option = 1;
         petTypeAddNewOwnersPetDiv.click();
         petNameAddNewOwnersPetInput.sendKeys(pet.getName());
-        petBirthDateAddNewOwnersPetInput.sendKeys("6/9/2014");
-        //petBirthDateAddNewOwnersPetInput.sendKeys(df.format(pet.getBirthDate()));
+        //petBirthDateAddNewOwnersPetInput.sendKeys("6/9/2014");
+        petBirthDateAddNewOwnersPetInput.sendKeys(df.format(pet.getBirthDate()));
         petTypeAddNewOwnersPetInput.selectByIndex(option);
         newOwnersPetSaveButton.sendKeys(Keys.DOWN);
         newOwnersPetSaveButton.sendKeys(Keys.END);
