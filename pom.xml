@@ -3101,7 +3101,8 @@
             </dependencies>
             <build>
                 <finalName>petclinic</finalName>
-                <defaultGoal>dependency:purge-local-repository clean package verify</defaultGoal>
+                <!-- dependency:purge-local-repository -->
+                <defaultGoal>clean package verify</defaultGoal>
                 <testResources>
                     <testResource>
                         <directory>src/test/runtimes/arq-wildfly-managed</directory>

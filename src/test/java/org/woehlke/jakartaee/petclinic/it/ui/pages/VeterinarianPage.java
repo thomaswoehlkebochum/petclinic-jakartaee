@@ -5,6 +5,7 @@ Not for reuse without permission.
 */
 
 package org.woehlke.jakartaee.petclinic.it.ui.pages;
+import java.util.List;
 import java.util.Map;
 import java.time.Duration;
 
@@ -15,6 +16,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.primefaces.selenium.component.PickList;
 import org.woehlke.jakartaee.petclinic.application.framework.views.CrudFlowState;
 
 
@@ -40,6 +42,9 @@ public class VeterinarianPage implements CrudFlowStatePage {
     @FindBy(id = "addNewEntityForm:lastNameAddNew")
     private WebElement newLastnameInput;
 
+    @FindBy(id = "addNewEntityForm:selectedSpecialtiesPickListAddNew")
+    private PickList newSpecialtiesInput;
+
     @FindBy(id = "addNewEntityForm:saveNewButton")
     private WebElement saveNewButton;
 
@@ -54,6 +59,11 @@ public class VeterinarianPage implements CrudFlowStatePage {
 
     @FindBy(id = "editEntityForm:lastNameEdit")
     private WebElement editLastnameInput;
+
+    //+++ TODO
+
+    @FindBy(id = "editEntityForm:selectedSpecialtiesPickListEdit")
+    private PickList editSpecialtiesInput;
 
     @FindBy(id = "editEntityForm:saveEditButton")
     private WebElement saveEditButton;
@@ -104,33 +114,61 @@ public class VeterinarianPage implements CrudFlowStatePage {
     }
 
     public VeterinarianPage clickAddNewEntityButton() {
-        Graphene.guardHttp(showNewFormButton).click();
+        //Graphene.guardHttp(showNewFormButton).click();
+        showNewFormButton.sendKeys(Keys.DOWN);
+        showNewFormButton.sendKeys(Keys.END);
+        Graphene.guardHttp(showNewFormButton).sendKeys(Keys.ENTER);
         //fullscreen();
         return this;
     }
 
     public VeterinarianPage clickCancelNewEntityButton() {
-        Graphene.guardHttp(cancelNewButton).click();
+        //Graphene.guardHttp(cancelNewButton).click();
+        cancelNewButton.sendKeys(Keys.DOWN);
+        cancelNewButton.sendKeys(Keys.END);
+        Graphene.guardHttp(cancelNewButton).sendKeys(Keys.ENTER);
         //fullscreen();
         return this;
     }
 
+    // TODO
     public VeterinarianPage addNewEntity(String surname, String lastname) {
+        //newSpecialtiesInput.pickAll();
+        List<String> pickItems = newSpecialtiesInput.getSourceListLabels();
+        for(String pickItem : pickItems){
+            //System.out.println(pickItem);
+            newSpecialtiesInput.pick(pickItem);
+        }
+        newSpecialtiesInput.removeAll();
+        newSpecialtiesInput.pickAll();
         newSurnameInput.sendKeys(surname);
         newLastnameInput.sendKeys(lastname);
-        Graphene.guardHttp(saveNewButton).click();
         //fullscreen();
+        return this;
+    }
+
+    public VeterinarianPage saveMewEntityButton() {
+        saveNewButton.sendKeys(Keys.DOWN);
+        saveNewButton.sendKeys(Keys.END);
+        Graphene.guardHttp(saveNewButton).sendKeys(Keys.ENTER);
+        ///Graphene.guardHttp(saveNewButton).click();
         return this;
     }
 
     public VeterinarianPage clickShowEditForm() {
-        Graphene.guardHttp(showEditFormButton).click();
+        //Graphene.guardHttp(showEditFormButton).click();
+        showEditFormButton.sendKeys(Keys.DOWN);
+        showEditFormButton.sendKeys(Keys.END);
+        Graphene.guardHttp(showEditFormButton).sendKeys(Keys.ENTER);
         //fullscreen();
         return this;
     }
 
     public VeterinarianPage clickCancelEditButton() {
-        Graphene.guardHttp(cancelEditButton).click();
+        //Graphene.guardHttp(cancelEditButton).click();
+        cancelEditButton.sendKeys(Keys.DOWN);
+        cancelEditButton.sendKeys(Keys.END);
+        Graphene.guardHttp(cancelEditButton).sendKeys(Keys.ENTER);
         //fullscreen();
         return this;
     }
@@ -142,6 +180,9 @@ public class VeterinarianPage implements CrudFlowStatePage {
         lastname += " TEST";
         editSurnameInput.sendKeys(surname);
         editLastnameInput.sendKeys(lastname);
+        for(String pickItem :editSpecialtiesInput.getSourceListLabels()){
+            editSpecialtiesInput.pick(pickItem);
+        }
         saveEditButton.sendKeys(Keys.DOWN);
         saveEditButton.sendKeys(Keys.END);
         Graphene.guardHttp(saveEditButton).sendKeys(Keys.ENTER);

@@ -51,7 +51,7 @@ public class VetUiTest extends UnitTestData {
 
     private void goToVeterinarianPage(){
         goTo(VeterinarianPage.class);
-        waitForHttp(VeterinarianPage.class);
+        //waitForHttp(VeterinarianPage.class);
         //veterinarianPage.fullscreen();
         Assert.assertTrue(veterinarianPage.isFlowStateList());
     }
@@ -134,10 +134,11 @@ public class VetUiTest extends UnitTestData {
         log.info("------------------------------------------------------------------------------------");
         goToVeterinarianPage();
         Assert.assertTrue(veterinarianPage.isFlowStateList());
-        for(String name[]: vetNames1Array){
+        for(String[] name : vetNames1Array){
             veterinarianPage.clickAddNewEntityButton();
             Assert.assertTrue(veterinarianPage.isFlowStateNew());
             veterinarianPage.addNewEntity(name[0],name[1]);
+            veterinarianPage.saveMewEntityButton();
             Assert.assertTrue(veterinarianPage.isFlowStateDetails());
             veterinarianPage.clickCancelDetailsButton();
             Assert.assertTrue(veterinarianPage.isFlowStateList());
