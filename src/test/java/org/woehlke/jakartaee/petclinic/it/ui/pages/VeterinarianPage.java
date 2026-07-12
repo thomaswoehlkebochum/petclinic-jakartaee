@@ -5,9 +5,11 @@ Not for reuse without permission.
 */
 
 package org.woehlke.jakartaee.petclinic.it.ui.pages;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.time.Duration;
+import java.util.Set;
 
 import org.jboss.arquillian.drone.api.annotation.Drone;
 import org.jboss.arquillian.graphene.Graphene;
@@ -133,25 +135,30 @@ public class VeterinarianPage implements CrudFlowStatePage {
 
     // TODO
     public VeterinarianPage addNewEntity(String surname, String lastname) {
-        //newSpecialtiesInput.pickAll();
-        List<String> pickItems = newSpecialtiesInput.getSourceListLabels();
-        for(String pickItem : pickItems){
-            //System.out.println(pickItem);
-            newSpecialtiesInput.pick(pickItem);
-        }
-        newSpecialtiesInput.removeAll();
-        newSpecialtiesInput.pickAll();
         newSurnameInput.sendKeys(surname);
         newLastnameInput.sendKeys(lastname);
         //fullscreen();
         return this;
     }
 
+    public VeterinarianPage addNewEntityPickList() {
+        newSpecialtiesInput.click();
+        //newSpecialtiesInput.pickAll();
+        List<String> pickItemList = newSpecialtiesInput.getSourceListLabels();
+        Set<String> pickItems = new HashSet<>();
+        for(String pickItem: pickItemList){
+            pickItems.add(pickItem);
+        }
+        String pickItem = pickItems.iterator().next();
+        Graphene.guardNoRequest(newSpecialtiesInput).pick(pickItem);
+        return this;
+    }
+
     public VeterinarianPage saveMewEntityButton() {
         saveNewButton.sendKeys(Keys.DOWN);
-        saveNewButton.sendKeys(Keys.END);
+        //saveNewButton.sendKeys(Keys.END);
         Graphene.guardHttp(saveNewButton).sendKeys(Keys.ENTER);
-        ///Graphene.guardHttp(saveNewButton).click();
+        //Graphene.guardHttp(saveNewButton).click();
         return this;
     }
 
@@ -180,9 +187,21 @@ public class VeterinarianPage implements CrudFlowStatePage {
         lastname += " TEST";
         editSurnameInput.sendKeys(surname);
         editLastnameInput.sendKeys(lastname);
-        for(String pickItem :editSpecialtiesInput.getSourceListLabels()){
-            editSpecialtiesInput.pick(pickItem);
+        return this;
+    }
+
+    public VeterinarianPage editPick() {
+        List<String> pickItemList=editSpecialtiesInput.getSourceListLabels();
+        Set<String> pickItems = new HashSet<>();
+        for(String pickItem: pickItemList){
+            pickItems.add(pickItem);
         }
+        String pickItem = pickItems.iterator().next();
+        Graphene.guardNoRequest(editSpecialtiesInput).pick(pickItem);
+        return this;
+    }
+
+    public VeterinarianPage editSave() {
         saveEditButton.sendKeys(Keys.DOWN);
         saveEditButton.sendKeys(Keys.END);
         Graphene.guardHttp(saveEditButton).sendKeys(Keys.ENTER);

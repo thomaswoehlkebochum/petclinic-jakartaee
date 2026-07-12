@@ -138,6 +138,7 @@ public class VetUiTest extends UnitTestData {
             veterinarianPage.clickAddNewEntityButton();
             Assert.assertTrue(veterinarianPage.isFlowStateNew());
             veterinarianPage.addNewEntity(name[0],name[1]);
+            veterinarianPage.addNewEntityPickList();
             veterinarianPage.saveMewEntityButton();
             Assert.assertTrue(veterinarianPage.isFlowStateDetails());
             veterinarianPage.clickCancelDetailsButton();
@@ -201,6 +202,8 @@ public class VetUiTest extends UnitTestData {
             veterinarianPage.clickShowEditForm();
             Assert.assertTrue(veterinarianPage.isFlowStateEdit());
             veterinarianPage.editNameAddString();
+            veterinarianPage.editPick();
+            veterinarianPage.editSave();
             Assert.assertTrue(veterinarianPage.isFlowStateDetails());
             veterinarianPage.clickCancelDetailsButton();
             Assert.assertTrue(veterinarianPage.isFlowStateList());
