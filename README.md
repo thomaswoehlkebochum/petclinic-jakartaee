@@ -9,7 +9,7 @@ Petclinic Jakarta EE - a Jakarta EE 10 Version of Spring Petclinic demo applicat
 * This is an Update of [Java EE 7 Petclinic](https://jakarta-ee-petclinic.github.io/petclinic-javaee7/)
 
 ## Where is it?
-* Github: [https://github.com/Jakarta-EE-Petclinic/petclinic-jakartaee](https://github.com/Jakarta-EE-Petclinic/petclinic-jakartaee)
+* Github: [https://github.com/thomaswoehlkebochum/petclinic-jakartaee](https://github.com/thomaswoehlkebochum/petclinic-jakartaee)
 * Demo on OpenShift: [http://jakartaee8petclinic.rhcloud.com/](http://jakartaee8petclinic.rhcloud.com)
 * Blog: [https://thomas-woehlke.blogspot.com/2014/02/java-ee-7-petclinic.html](https://thomas-woehlke.blogspot.com/2014/02/java-ee-7-petclinic.html)
 
