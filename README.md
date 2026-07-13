@@ -1,7 +1,5 @@
 # petclinic-jakartaee
 
-![Jakarta EE Compatible](src/main/webapp/img/logos/Jakarta_10__22_09_2022.jpg)
-
 Petclinic Jakarta EE - a Jakarta EE 10 Version of Spring Petclinic demo application using PrimeFaces JSF.
 
 ![Jakarta EE Compatible](src/main/webapp/img/logos/home_logo_jakartaee.png)
@@ -36,7 +34,7 @@ Petclinic Jakarta EE - a Jakarta EE 10 Version of Spring Petclinic demo applicat
 ## dev, build ...
 
 ```
-git clone git@github.com:Jakarta-EE-Petclinic/petclinic-jakartaee.git
+git clone https://github.com/thomaswoehlkebochum/petclinic-jakartaee.git
 cd petclinic-jakartaee
 ./mvnw
 ```
