@@ -112,7 +112,7 @@
         <liberty.runtime.version>${version.openliberty-runtime}</liberty.runtime.version>
 
         <!-- Wildfly -->
-        <version.wildfly-runtime>39.0.0.Final</version.wildfly-runtime>
+        <version.wildfly-runtime>40.0.1.Final</version.wildfly-runtime>
         <version.wildfly-maven-plugin>6.0.0.Final</version.wildfly-maven-plugin>
         <version.wildfly-jar-maven-plugin>13.0.0.Final</version.wildfly-jar-maven-plugin>
         <version.wildfly-galleon-maven-plugin>5.2.8.Final</version.wildfly-galleon-maven-plugin>
