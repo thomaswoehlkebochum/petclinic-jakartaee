@@ -131,7 +131,7 @@
         <payara-arquillian-container.version>3.1</payara-arquillian-container.version>
 
         <!-- Glassfish -->
-        <glassfish.version>7.0.5</glassfish.version>
+        <glassfish.version>8.0.3</glassfish.version>
         <version.arquillian-glassfish-server-managed>1.4</version.arquillian-glassfish-server-managed>
 
         <!-- maven Plugin Versions -->
