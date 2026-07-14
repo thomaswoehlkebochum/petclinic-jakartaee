@@ -1,5 +1,4 @@
-<!DOCTYPE resources PUBLIC "-//Payara.fish//DTD Payara Server 4 Resource Definitions//EN"
-        "http://docs.payara.fish/schemas/payara-resources_1_7.dtd">
+<!DOCTYPE resources PUBLIC "-//Payara.fish//DTD Payara Server 4 Resource Definitions//EN" "https://raw.githubusercontent.com/payara/Payara-Documentation/main-7/docs/modules/ROOT/pages/Appendix/Schemas/payara-resources_1_8.dtd">
 <resources>
 
     <jdbc-resource jndi-name="jdbc/petclinicDS"
