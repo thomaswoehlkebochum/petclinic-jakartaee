@@ -11,7 +11,7 @@
         <property name="deploymentExportPath">target/</property>
     </engine>
 
-    <container qualifier="payara-managed">
+    <container qualifier="payara-managed" default="true">
         <configuration>
             <property name="payaraHome">target/payara7</property>
             <property name="allowConnectingToRunningServer">true</property>
@@ -20,6 +20,10 @@
             <property name="enableH2">true</property>
             <property name="outputToConsole">true</property>
             <property name="adminPassword">adminadmin</property>
+            <property name="postBootCommands">
+                create-jdbc-connection-pool --datasourceclassname=org.postgresql.ds.PGConnectionPoolDataSource --driver-classname=org.postgresql.Driver --log-jdbc-calls=true --pooling=true --restype javax.sql.DataSource --property url=jdbc:postgresql://localhost:5432/petclinic_jakartaee_payara --property user=petclinic_jakartaee --property password=petclinic_jakartaeepwd --property driver=petclinic.war_org.postgresql.Driver_42_7 petclinicPool
+                create-jdbc-resource --connectionpoolid=petclinicPool jdbc/petclinicDS
+            </property>
         </configuration>
     </container>
 

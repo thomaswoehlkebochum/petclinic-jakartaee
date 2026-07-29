@@ -17,6 +17,10 @@
             <property name="adminPort">4848</property>
             <property name="enableDerby">${enableDerby:true}</property>
             <property name="outputToConsole">true</property>
+            <property name="postBootCommands">
+                create-jdbc-connection-pool --datasourceclassname=org.postgresql.ds.PGConnectionPoolDataSource --driver-classname=org.postgresql.Driver --log-jdbc-calls=true --pooling=true --restype javax.sql.DataSource --property url=jdbc:postgresql://localhost:5432/petclinic_jakartaee_payara --property user=petclinic_jakartaee --property password=petclinic_jakartaeepwd --property driver=petclinic.war_org.postgresql.Driver_42_7 petclinicPool
+                create-jdbc-resource --connectionpoolid=petclinicPool jdbc/petclinicDS
+            </property>
         </configuration>
     </container>
 
