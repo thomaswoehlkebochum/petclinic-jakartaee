@@ -9,6 +9,7 @@
 
     <container qualifier="glassfish-managed">
         <configuration>
+            <property name="glassFishHome">${glassfishHome:target/glassfish-8.0.3}</property>
             <property name="glassfishHome">${glassfishHome:target/glassfish-8.0.3}</property>
             <property name="allowConnectingToRunningServer">false</property>
             <property name="adminUser">admin</property>
