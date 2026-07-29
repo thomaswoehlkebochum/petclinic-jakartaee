@@ -41,13 +41,13 @@ cd petclinic-jakartaee
 
 ## ... deploy and run
 
-| maven profile      | Runtime                                                               | Version      | Status         |
-|--------------------|-----------------------------------------------------------------------|--------------|----------------|
-| ./mvnw -Pliberty   | [OpenLiberty](https://openliberty.io/)                                | 26.0.0.6     | Jakarta EE 10  |
-| ./mvnw -Pwildfly   | [Wildfly](https://www.wildfly.org/)                                   | 39.0.0.Final | Jakarta EE 10  |
-| ./mvnw -Ppayara    | [Payara](https://www.payara.fish/products/payara-platform-community/) | 7.2026.5     | Jakarta EE 10  | 
-| ./mvnw -Pglassfish | [GlassFish](https://glassfish.org/)                                   | 7.0.5        | Jakarta EE 10  |
-| ./mvnw -Ptomee     | [Apache TomEE](https://tomee.apache.org/)                             | 10.1.5       | Jakarta EE 10  |
+| maven profile      | Runtime                                                               | Version      | Status        |
+|--------------------|-----------------------------------------------------------------------|--------------|---------------|
+| ./mvnw -Pliberty   | [OpenLiberty](https://openliberty.io/)                                | 26.0.0.7     | Jakarta EE 11 |
+| ./mvnw -Pwildfly   | [Wildfly](https://www.wildfly.org/)                                   | 40.0.1.Final | Jakarta EE 11 |
+| ./mvnw -Ppayara    | [Payara](https://www.payara.fish/products/payara-platform-community/) | 7.2026.5     | Jakarta EE 11 | 
+| ./mvnw -Pglassfish | [GlassFish](https://glassfish.org/)                                   | 8.0.3        | Jakarta EE 11 |
+| ./mvnw -Ptomee     | [Apache TomEE](https://tomee.apache.org/)                             | 10.1.5       | Jakarta EE 10 |
 
 
 ## Integration Tests
@@ -57,10 +57,10 @@ Arquillian End2End Tests for REST Endpoints and for JSF Frontend Browser Tests w
 
 | maven profile                  | Runtime                                                                  | Version      | Status                  |
 |--------------------------------|--------------------------------------------------------------------------|--------------|-------------------------|
-| ./mvnw -Parq-liberty-managed   | [OpenLiberty](https://openliberty.io/docs/latest/overview.html)          | 26.0.0.6     | waiting for OpenLiberty |
-| ./mvnw -Parq-wildfly-managed   | [Wildfly](https://docs.wildfly.org/27/)                                  | 39.0.0.Final | OK                      |
-| ./mvnw -Parq-payara-managed    | [Payara](https://docs.payara.fish/community/docs/6.2022.1/Overview.html) | 7.2026.5     | work in progress        | 
-| ./mvnw -Parq-glassfish-managed | [GlassFish](https://glassfish.org/documentation)                         | 7.0.5        | work in progress        |
+| ./mvnw -Parq-liberty-managed   | [OpenLiberty](https://openliberty.io/docs/latest/overview.html)          | 26.0.0.7     | waiting for OpenLiberty |
+| ./mvnw -Parq-wildfly-managed   | [Wildfly](https://docs.wildfly.org/40/)                                  | 40.0.1.Final | OK                      |
+| ./mvnw -Parq-payara-managed    | [Payara](https://docs.payara.fish/community/docs/7.2026.5/Overview.html) | 7.2026.5     | work in progress        | 
+| ./mvnw -Parq-glassfish-managed | [GlassFish](https://glassfish.org/documentation)                         | 8.0.3        | work in progress        |
 
 ## Petclinic - Functional Requirements
 

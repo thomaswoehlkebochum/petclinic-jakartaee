@@ -9,8 +9,10 @@
 
     <container qualifier="glassfish-managed">
         <configuration>
-            <property name="glassfishHome">${glassfishHome:target/glassfish7}</property>
+            <property name="glassfishHome">${glassfishHome:target/glassfish-8.0.3}</property>
             <property name="allowConnectingToRunningServer">false</property>
+            <property name="adminUser">admin</property>
+            <property name="adminPassword">admin123</property>
             <property name="adminHost">localhost</property>
             <property name="adminPort">4848</property>
             <property name="enableDerby">${enableDerby:true}</property>

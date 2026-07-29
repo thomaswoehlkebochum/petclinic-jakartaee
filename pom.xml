@@ -124,7 +124,7 @@
         <version.wildfly-arquillian>5.1.0.Final</version.wildfly-arquillian>
 
         <!-- Payara -->
-        <version.payara-runtime>7.2026.5</version.payara-runtime>
+        <version.payara-runtime>7.2026.6</version.payara-runtime>
         <version.payara>${version.payara-runtime}</version.payara>
         <version.payaramicro.maven.plugin>1.4.0</version.payaramicro.maven.plugin>
         <version.arquillian-payara>3.1</version.arquillian-payara>
@@ -132,7 +132,7 @@
 
         <!-- Glassfish -->
         <glassfish.version>8.0.3</glassfish.version>
-        <version.arquillian-glassfish-server-managed>1.4</version.arquillian-glassfish-server-managed>
+        <version.arquillian-glassfish-server-managed>2.2.1</version.arquillian-glassfish-server-managed>
 
         <!-- maven Plugin Versions -->
         <version.org.projectlombok.lombok>1.18.46</version.org.projectlombok.lombok>
@@ -3412,7 +3412,7 @@
                 <cargo.glassfish.admin.port>4848</cargo.glassfish.admin.port>
                 <glassfish.home>${project.build.directory}/glassfish-${glassfish.version}</glassfish.home>
                 <glassfish.domainDir>
-                    ${project.build.directory}/glassfish-${glassfish.version}/glassfish7/glassfish/domains/domain1
+                    ${project.build.directory}/glassfish-${glassfish.version}/glassfish8/glassfish/domains/domain1
                 </glassfish.domainDir>
             </properties>
             <dependencyManagement>
@@ -4183,13 +4183,13 @@
         <profile>
             <id>arq-glassfish-managed</id>
             <properties>
-                <glassfish.version>7.0.5</glassfish.version>
+                <glassfish.version>8.0.3</glassfish.version>
                 <skip.unit.tests>true</skip.unit.tests>
                 <skip.integration.tests>false</skip.integration.tests>
                 <enableDerby>true</enableDerby>
                 <cargo.glassfish.admin.port>4848</cargo.glassfish.admin.port>
-                <glassfish.home>target/glassfish7</glassfish.home>
-                <glassfish.domainDir>target/glassfish7/glassfish/domains/domain1</glassfish.domainDir>
+                <glassfish.home>target/glassfish-8.0.3</glassfish.home>
+                <glassfish.domainDir>target/glassfish-8.0.3/glassfish/domains/domain1</glassfish.domainDir>
                 <skipAfterFailureCount>1</skipAfterFailureCount>
                 <rerunFailingTestsCount>1</rerunFailingTestsCount>
             </properties>
@@ -4238,7 +4238,7 @@
                         <scope>test</scope>
                     </dependency>
                     <dependency>
-                        <groupId>org.omnifaces.arquillian</groupId>
+                        <groupId>ee.omnifish.arquillian</groupId>
                         <artifactId>arquillian-glassfish-server-managed</artifactId>
                         <version>${version.arquillian-glassfish-server-managed}</version>
                         <scope>test</scope>
@@ -4294,7 +4294,7 @@
                     <scope>test</scope>
                 </dependency>
                 <dependency>
-                    <groupId>org.omnifaces.arquillian</groupId>
+                    <groupId>ee.omnifish.arquillian</groupId>
                     <artifactId>arquillian-glassfish-server-managed</artifactId>
                     <scope>test</scope>
                     <exclusions>
@@ -4363,6 +4363,11 @@
                             <artifactId>cargo-maven3-plugin</artifactId>
                             <version>${version.cargo-maven3-plugin}</version>
                         </plugin>
+                        <plugin>
+                            <groupId>ee.omnifish.arquillian</groupId>
+                            <artifactId>arquillian-glassfish-server-managed</artifactId>
+                            <version>${version.arquillian-glassfish-server-managed}</version>
+                        </plugin>
                     </plugins>
                 </pluginManagement>
                 <plugins>
@@ -4383,7 +4388,7 @@
                                             <artifactId>glassfish</artifactId>
                                             <version>${glassfish.version}</version>
                                             <type>zip</type>
-                                            <overWrite>false</overWrite>
+                                            <overWrite>true</overWrite>
                                             <outputDirectory>${project.build.directory}</outputDirectory>
                                         </artifactItem>
                                     </artifactItems>
@@ -4438,13 +4443,12 @@
                         </executions>
                     </plugin>
                     <plugin>
-                        <groupId>org.omnifaces.arquillian</groupId>
+                        <groupId>ee.omnifish.arquillian</groupId>
                         <artifactId>arquillian-glassfish-server-managed</artifactId>
-                        <version>1.8</version>
                         <configuration>
-                            <glassfishHome>target/glassfish7</glassfishHome>
+                            <glassfishHome>target/glassfish-8.0.3/glassfish8</glassfishHome>
                             <environmentVariables>
-                                <glassfish.home>target/glassfish7</glassfish.home>
+                                <glassfish.home>target/glassfish-8.0.3/glassfish8</glassfish.home>
                             </environmentVariables>
                         </configuration>
                     </plugin>
@@ -4454,8 +4458,8 @@
                         <configuration>
                             <skipTests>${skip.integration.tests}</skipTests>
                             <environmentVariables>
-                                <GLASSFISH_HOME>target/glassfish7</GLASSFISH_HOME>
-                                <glassfish.home>target/glassfish7</glassfish.home>
+                                <GLASSFISH_HOME>target/glassfish-8.0.3/glassfish8</GLASSFISH_HOME>
+                                <glassfish.home>target/glassfish-8.0.3/glassfish8</glassfish.home>
                             </environmentVariables>
                             <systemProperties>
                                 <property>
@@ -4470,16 +4474,16 @@
 								-->
                                 <property>
                                     <name>glassfish.home</name>
-                                    <value>target/glassfish7</value>
+                                    <value>target/glassfish-8.0.3/glassfish8</value>
                                 </property>
                                 <property>
                                     <name>glassfishHome</name>
-                                    <value>target/glassfish7</value>
+                                    <value>target/glassfish-8.0.3/glassfish8</value>
                                 </property>
                             </systemProperties>
                             <systemPropertyVariables>
                                 <arquillian.launch>glassfish-managed</arquillian.launch>
-                                <glassfish.home>target/glassfish7</glassfish.home>
+                                <glassfish.home>target/glassfish-8.0.3/glassfish8</glassfish.home>
                                 <serverConfig>standalone-full.xml</serverConfig>
                                 <my.admin.password>adminadmin</my.admin.password>
                                 <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
@@ -4491,8 +4495,8 @@
                         <artifactId>maven-failsafe-plugin</artifactId>
                         <configuration>
                             <environmentVariables>
-                                <GLASSFISH_HOME>target/glassfish7</GLASSFISH_HOME>
-                                <glassfish.home>target/glassfish7</glassfish.home>
+                                <GLASSFISH_HOME>target/glassfish-8.0.3/glassfish8</GLASSFISH_HOME>
+                                <glassfish.home>target/glassfish-8.0.3/glassfish8</glassfish.home>
                             </environmentVariables>
                         </configuration>
                     </plugin>
