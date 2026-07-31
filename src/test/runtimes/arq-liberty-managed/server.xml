@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <server description="defaultServer">
 	<featureManager>
-    	<feature>jakartaee-10.0</feature>
-    	<feature>microprofile-6.0</feature>
+    	<feature>jakartaee-11.0</feature>
+    	<feature>microprofile-7.1</feature>
+		<feature>pages-4.0</feature>
+		<feature>restfulWS-4.0</feature>
+		<feature>localConnector-1.0</feature>
 		<!--
-            <feature>restfulWS-3.1</feature>
-            <feature>jsonbContainer-3.0</feature>
-            <feature>jsonpContainer-2.1</feature>
-            <feature>jsonb-3.0</feature>
-            <feature>jsonp-2.1</feature>
-            <feature>cdi-4.0</feature>
-            <feature>expressionLanguage-5.0</feature>
-            <feature>concurrent-3.0</feature>
-            <feature>jdbc-4.2</feature>
-            <feature>web-6.0</feature>
-            <feature>faces-4.0</feature>
+		<feature>usr:arquillian-support-jakarta-3.0</feature>
 		-->
 	</featureManager>
 

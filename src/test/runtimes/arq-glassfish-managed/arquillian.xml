@@ -7,19 +7,19 @@
         <property name="deploymentExportPath">target/</property>
     </engine>
 
-    <container qualifier="glassfish-managed">
+    <container qualifier="glassfish-managed" default="true">
         <configuration>
-            <property name="glassFishHome">${glassfishHome:target/glassfish-8.0.3}</property>
-            <property name="glassfishHome">${glassfishHome:target/glassfish-8.0.3}</property>
-            <property name="allowConnectingToRunningServer">false</property>
+            <property name="glassFishHome">${env.GLASSFISH_HOME}</property>
+            <property name="allowConnectingToRunningServer">true</property>
             <property name="adminUser">admin</property>
             <property name="adminPassword">admin123</property>
             <property name="adminHost">localhost</property>
             <property name="adminPort">4848</property>
             <property name="enableDerby">${enableDerby:true}</property>
             <property name="outputToConsole">true</property>
+            <property name="maxHeapSize">2048m</property>
             <property name="postBootCommands">
-                create-jdbc-connection-pool --datasourceclassname=org.postgresql.ds.PGConnectionPoolDataSource --driver-classname=org.postgresql.Driver --log-jdbc-calls=true --pooling=true --restype javax.sql.DataSource --property url=jdbc:postgresql://localhost:5432/petclinic_jakartaee_payara --property user=petclinic_jakartaee --property password=petclinic_jakartaeepwd --property driver=petclinic.war_org.postgresql.Driver_42_7 petclinicPool
+                create-jdbc-connection-pool --datasourceclassname=org.postgresql.ds.PGConnectionPoolDataSource --driver-classname=org.postgresql.Driver --log-jdbc-calls=true --pooling=true --restype=javax.sql.DataSource --property url=jdbc:postgresql://localhost:5432/petclinic_jakartaee_payara --property user=petclinic_jakartaee --property password=petclinic_jakartaeepwd --property driver=petclinic.war_org.postgresql.Driver_42_7 petclinicPool
                 create-jdbc-resource --connectionpoolid=petclinicPool jdbc/petclinicDS
             </property>
         </configuration>
@@ -30,7 +30,7 @@
     </extension>
 
     <extension qualifier="drone">
-        <property name="instantiationTimeoutInSeconds">120</property>
+        <property name="instantiationTimeoutInSeconds">240</property>
     </extension>
 
     <extension qualifier="screenshooter">
