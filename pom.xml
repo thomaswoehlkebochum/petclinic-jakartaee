@@ -1,4 +1,6 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.woehlke.jakartaee</groupId>
@@ -102,7 +104,7 @@
 
         <!-- OpenLiberty -->
         <version.openliberty-runtime>26.0.0.7</version.openliberty-runtime>
-        <version.liberty-maven-plugin>3.12.0</version.liberty-maven-plugin>
+        <version.liberty-maven-plugin>3.12.1</version.liberty-maven-plugin>
         <generateFeatures>false</generateFeatures>
         <runtime.jakartaee.server.openliberty.remote>/opt/openliberty/wlp</runtime.jakartaee.server.openliberty.remote>
         <runtime.jakartaee.server.openliberty.ServerName>petclinicServer</runtime.jakartaee.server.openliberty.ServerName>
@@ -1004,6 +1006,19 @@
                 <artifactId>arquillian-glassfish-server-managed</artifactId>
                 <version>${version.arquillian-glassfish-server-managed}</version>
                 <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.openliberty.arquillian</groupId>
+                <artifactId>arquillian-liberty-managed-jakarta-junit</artifactId>
+                <version>3.0.0</version>
+                <type>pom</type>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.openliberty.arquillian</groupId>
+                <artifactId>arquillian-liberty-managed-jakarta</artifactId>
+                <version>3.0.0</version>
+                <scope>test</scope>
             </dependency>
         </dependencies>
     </dependencyManagement>
@@ -2420,110 +2435,285 @@
         </profile>
 
         <profile>
-            <!-- Run with: mvn clean verify -Parq-liberty-managed -->
             <id>arq-liberty-managed</id>
             <properties>
-                <skip.unit.tests>true</skip.unit.tests>
+                <skip.unit.tests>false</skip.unit.tests>
                 <skip.integration.tests>false</skip.integration.tests>
                 <serverStartTimeout>240</serverStartTimeout>
+                <wlpHome>${project.build.directory}/liberty/wlp</wlpHome>
+                <arquillian.war.name>petclinic</arquillian.war.name>
             </properties>
+
+            <dependencyManagement>
+                <dependencies>
+                    <!--
+                    <dependency>
+                        <groupId>io.openliberty.features</groupId>
+                        <artifactId>features-bom</artifactId>
+                        <version>${version.openliberty-runtime}</version>
+                        <type>pom</type>
+                        <scope>import</scope>
+                    </dependency>
+                    -->
+                    <dependency>
+                        <groupId>io.openliberty</groupId>
+                        <artifactId>openliberty-runtime</artifactId>
+                        <version>${version.openliberty-runtime}</version>
+                        <type>zip</type>
+                        <scope>test</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.openliberty.arquillian</groupId>
+                        <artifactId>arquillian-liberty-support-jakarta</artifactId>
+                        <version>${version.arquillian-liberty-support-jakarta}</version>
+                        <classifier>feature</classifier>
+                        <type>zip</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.postgresql</groupId>
+                        <artifactId>postgresql</artifactId>
+                        <version>${version.postgresql.driver}</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.junit.jupiter</groupId>
+                        <artifactId>junit-jupiter-engine</artifactId>
+                        <version>${junit.version}</version>
+                        <scope>test</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.junit.jupiter</groupId>
+                        <artifactId>junit-jupiter-params</artifactId>
+                        <version>${junit.version}</version>
+                        <scope>test</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jboss.resteasy</groupId>
+                        <artifactId>resteasy-client</artifactId>
+                        <version>${version.org.jboss.resteasy}</version>
+                        <scope>test</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jboss.resteasy</groupId>
+                        <artifactId>resteasy-json-binding-provider</artifactId>
+                        <version>${version.org.jboss.resteasy}</version>
+                        <scope>test</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.jboss.resteasy</groupId>
+                        <artifactId>resteasy-jaxb-provider</artifactId>
+                        <version>${version.org.jboss.resteasy}</version>
+                        <scope>test</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.glassfish</groupId>
+                        <artifactId>jakarta.json</artifactId>
+                        <version>${version.jakarta.json}</version>
+                        <scope>test</scope>
+                    </dependency>
+                    <!--
+					<dependency>
+						<groupId>org.apache.commons</groupId>
+						<artifactId>commons-lang3</artifactId>
+						<version>${version.apache.commons.commons-lang3}</version>
+					</dependency>
+					-->
+                    <dependency>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-resources-plugin</artifactId>
+                        <version>${version.maven-resources-plugin}</version>
+                        <type>maven-plugin</type>
+                        <scope>provided</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-deploy-plugin</artifactId>
+                        <version>${version.maven-deploy-plugin}</version>
+                        <type>maven-plugin</type>
+                        <scope>provided</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>io.openliberty.tools</groupId>
+                        <artifactId>liberty-maven-plugin</artifactId>
+                        <version>${version.liberty-maven-plugin}</version>
+                        <type>maven-plugin</type>
+                        <scope>provided</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>${version.maven-surefire-plugin}</version>
+                        <type>maven-plugin</type>
+                        <scope>test</scope>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>${version.maven-failsafe-plugin}</version>
+                        <type>maven-plugin</type>
+                        <scope>test</scope>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
             <dependencies>
                 <dependency>
                     <groupId>io.openliberty.arquillian</groupId>
                     <artifactId>arquillian-liberty-managed-jakarta</artifactId>
-                    <version>${version.arquillian-liberty-managed-jakarta}</version>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>io.openliberty.arquillian</groupId>
+                    <artifactId>arquillian-liberty-support-jakarta</artifactId>
+                    <classifier>feature</classifier>
+                    <type>zip</type>
+                </dependency>
+                <dependency>
+                    <groupId>org.postgresql</groupId>
+                    <artifactId>postgresql</artifactId>
+                </dependency>
+                <dependency>
+                    <groupId>org.junit.jupiter</groupId>
+                    <artifactId>junit-jupiter-engine</artifactId>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.junit.jupiter</groupId>
+                    <artifactId>junit-jupiter-params</artifactId>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.jboss.resteasy</groupId>
+                    <artifactId>resteasy-client</artifactId>
+                    <scope>test</scope>
                     <exclusions>
                         <exclusion>
-                            <groupId>org.apache.httpcomponents</groupId>
-                            <artifactId>httpclient</artifactId>
+                            <groupId>commons-codec</groupId>
+                            <artifactId>commons-codec</artifactId>
                         </exclusion>
                     </exclusions>
                 </dependency>
-                <!--It seems OpenLiberty 21.0.0.1 beta switched to use Resteasy as Jakarta Restful WS provider.
-                But there is no official public version for Jakarta EE 9 in the Maven central repository.
-                Use Jersey Client in the test codes here.-->
                 <dependency>
-                    <groupId>org.glassfish.jersey.media</groupId>
-                    <artifactId>jersey-media-json-binding</artifactId>
-                    <version>${jersey.version}</version>
+                    <groupId>org.jboss.resteasy</groupId>
+                    <artifactId>resteasy-json-binding-provider</artifactId>
                     <scope>test</scope>
                 </dependency>
                 <dependency>
-                    <groupId>org.glassfish.jersey.inject</groupId>
-                    <artifactId>jersey-hk2</artifactId>
-                    <version>${jersey.version}</version>
+                    <groupId>org.jboss.resteasy</groupId>
+                    <artifactId>resteasy-jaxb-provider</artifactId>
+                    <scope>test</scope>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>com.sun.activation</groupId>
+                            <artifactId>jakarta.activation</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
+                <dependency>
+                    <groupId>org.glassfish</groupId>
+                    <artifactId>jakarta.json</artifactId>
                     <scope>test</scope>
                 </dependency>
                 <dependency>
-                    <groupId>org.glassfish.jersey.core</groupId>
-                    <artifactId>jersey-client</artifactId>
-                    <version>${jersey.version}</version>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-resources-plugin</artifactId>
+                    <type>maven-plugin</type>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-deploy-plugin</artifactId>
+                    <type>maven-plugin</type>
+                    <scope>provided</scope>
+                </dependency>
+                <dependency>
+                    <groupId>io.openliberty.tools</groupId>
+                    <artifactId>liberty-maven-plugin</artifactId>
+                    <type>maven-plugin</type>
+                    <scope>provided</scope>
+                    <exclusions>
+                        <exclusion>
+                            <groupId>org.apache.commons</groupId>
+                            <artifactId>commons-lang3</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>com.google.guava</groupId>
+                            <artifactId>guava</artifactId>
+                        </exclusion>
+                        <exclusion>
+                            <groupId>org.json</groupId>
+                            <artifactId>json</artifactId>
+                        </exclusion>
+                    </exclusions>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <type>maven-plugin</type>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <type>maven-plugin</type>
+                    <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>io.openliberty.arquillian</groupId>
+                    <artifactId>arquillian-liberty-managed-jakarta-junit</artifactId>
+                    <type>pom</type>
                     <scope>test</scope>
                 </dependency>
             </dependencies>
             <build>
                 <finalName>petclinic</finalName>
-                <defaultGoal>dependency:purge-local-repository clean verify</defaultGoal>
+                <defaultGoal>clean package verify</defaultGoal>
+                <pluginManagement>
+                    <plugins>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-resources-plugin</artifactId>
+                            <version>${version.maven-resources-plugin}</version>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-deploy-plugin</artifactId>
+                            <version>${version.maven-deploy-plugin}</version>
+                        </plugin>
+                        <plugin>
+                            <groupId>io.openliberty.tools</groupId>
+                            <artifactId>liberty-maven-plugin</artifactId>
+                            <version>${version.liberty-maven-plugin}</version>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-failsafe-plugin</artifactId>
+                            <version>${version.maven-failsafe-plugin}</version>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-surefire-plugin</artifactId>
+                            <version>${version.maven-surefire-plugin}</version>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-clean-plugin</artifactId>
+                            <version>${version.maven-clean-plugin}</version>
+                        </plugin>
+                        <plugin>
+                            <groupId>org.apache.maven.plugins</groupId>
+                            <artifactId>maven-install-plugin</artifactId>
+                            <version>${version.maven-install-plugin}</version>
+                        </plugin>
+                    </plugins>
+                </pluginManagement>
                 <testResources>
                     <testResource>
                         <directory>src/test/runtimes/arq-liberty-managed</directory>
                         <includes>
                             <include>*</include>
                         </includes>
-                        <excludes>
-                            <exclude>server.xml</exclude>
-                            <exclude>userRegistry.xml</exclude>
-                            <exclude>postgresql.jar</exclude>
-                        </excludes>
-                    </testResource>
-                    <testResource>
-                        <directory>src/test/runtimes/arq-liberty-managed</directory>
-                        <includes>
-                            <include>server.xml</include>
-                            <include>userRegistry.xml</include>
-                            <include>postgresql.jar</include>
-                        </includes>
-                        <targetPath>
-                            ${project.build.directory}/wlp/usr/servers/defaultServer
-                        </targetPath>
                     </testResource>
                 </testResources>
                 <plugins>
-                    <plugin>
-                        <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-dependency-plugin</artifactId>
-                        <version>${version.maven-dependency-plugin}</version>
-                        <executions>
-                            <execution>
-                                <id>unpack</id>
-                                <phase>pre-integration-test</phase>
-                                <goals>
-                                    <goal>unpack</goal>
-                                </goals>
-                                <configuration>
-                                    <artifactItems>
-                                        <artifactItem>
-                                            <groupId>io.openliberty</groupId>
-                                            <artifactId>openliberty-runtime</artifactId>
-                                            <version>${liberty.runtime.version}</version>
-                                            <type>zip</type>
-                                            <overWrite>false</overWrite>
-                                            <outputDirectory>${project.build.directory}</outputDirectory>
-                                        </artifactItem>
-                                        <artifactItem>
-                                            <groupId>io.openliberty.arquillian</groupId>
-                                            <artifactId>arquillian-liberty-support-jakarta</artifactId>
-                                            <version>${version.arquillian-liberty-support-jakarta}</version>
-                                            <type>zip</type>
-                                            <classifier>feature</classifier>
-                                            <overWrite>false</overWrite>
-                                            <outputDirectory>${project.build.directory}/wlp/usr</outputDirectory>
-                                        </artifactItem>
-                                    </artifactItems>
-                                </configuration>
-                            </execution>
-                        </executions>
-                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-resources-plugin</artifactId>
@@ -2539,7 +2729,7 @@
                                     <outputDirectory>target/petclinic/WEB-INF/classes/META-INF</outputDirectory>
                                     <overwrite>true</overwrite>
                                 </configuration>
-                                <phase>prepare-package</phase>
+                                <phase>process-resources</phase>
                                 <goals>
                                     <goal>copy-resources</goal>
                                 </goals>
@@ -2550,12 +2740,15 @@
                                     <resources>
                                         <resource>
                                             <directory>src/main/runtimes/liberty-it/webapp/WEB-INF</directory>
+                                            <includes>
+                                                <include>**/web.xml</include>
+                                            </includes>
                                         </resource>
                                     </resources>
                                     <outputDirectory>target/petclinic/WEB-INF</outputDirectory>
                                     <overwrite>true</overwrite>
                                 </configuration>
-                                <phase>prepare-package</phase>
+                                <phase>process-resources</phase>
                                 <goals>
                                     <goal>copy-resources</goal>
                                 </goals>
@@ -2587,6 +2780,55 @@
                         </executions>
                     </plugin>
                     <plugin>
+                        <groupId>io.openliberty.tools</groupId>
+                        <artifactId>liberty-maven-plugin</artifactId>
+                        <configuration>
+                            <runtimeArtifact>
+                                <groupId>io.openliberty</groupId>
+                                <artifactId>openliberty-runtime</artifactId>
+                                <version>${version.openliberty-runtime}</version>
+                            </runtimeArtifact>
+                            <!--<installDirectory>D:/appsvr/wlp</installDirectory>-->
+                            <!--<installDirectory>${project.build.directory}/liberty/wlp</installDirectory>-->
+                            <!--<arquillianProperties>
+                                <javaVmArguments>
+                                    -Dsystem.context.root=/${arquillian.war.name}
+                                </javaVmArguments>
+                                <allowConnectingToRunningServer>true</allowConnectingToRunningServer>
+                                <wlpHome>${project.build.directory}/liberty/wlp</wlpHome>
+                                <serverName>defaultServer</serverName>
+                                <httpPort>8080</httpPort>
+                            </arquillianProperties>-->
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <id>my-create</id>
+                                <phase>pre-integration-test</phase>
+                                <goals>
+                                    <goal>create</goal>
+                                    <goal>install-feature</goal>
+                                    <!--
+                                    <goal>configure-arquillian</goal>
+                                    -->
+                                </goals><!--
+                                <configuration>
+                                    <arquillianProperties>
+                                        <javaVmArguments>
+                                            -Dsystem.context.root=/${arquillian.war.name}
+                                        </javaVmArguments>
+                                        <allowConnectingToRunningServer>true</allowConnectingToRunningServer>
+                                        <! - -
+                                        <wlpHome>${project.build.directory}/liberty/wlp</wlpHome>
+                                        <serverName>defaultServer</serverName>
+                                        <httpPort>8080</httpPort>
+                                        <skipIfArquillianXmlExists>false</skipIfArquillianXmlExists>
+                                        - - >
+                                    </arquillianProperties>
+                                </configuration>-->
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <configuration>
@@ -2596,18 +2838,24 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>${version.maven-failsafe-plugin}</version>
                         <configuration>
-                            <environmentVariables>
-                                <!-- WLP_HOME is not picked by arquillian liberty -->
-                                <!--<WLP_HOME>${project.build.directory}/wlp</WLP_HOME>-->
-                            </environmentVariables>
                             <systemPropertyVariables>
-                                <arquillian.launch>liberty-managed</arquillian.launch>
-                                <java.util.logging.config.file>${project.build.testOutputDirectory}/logging.properties
-                                </java.util.logging.config.file>
+                                <arquillian.launch>liberty_managed</arquillian.launch>
+                                <arquillian.war.name>${arquillian.war.name}.war</arquillian.war.name>
                             </systemPropertyVariables>
                         </configuration>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.junit.platform</groupId>
+                                <artifactId>junit-platform-suite-engine</artifactId>
+                                <version>${version.junit-platform-suite-engine}</version>
+                            </dependency>
+                            <dependency>
+                                <groupId>org.junit.jupiter</groupId>
+                                <artifactId>junit-jupiter-engine</artifactId>
+                                <version>${junit.version}</version>
+                            </dependency>
+                        </dependencies>
                     </plugin>
                 </plugins>
             </build>
