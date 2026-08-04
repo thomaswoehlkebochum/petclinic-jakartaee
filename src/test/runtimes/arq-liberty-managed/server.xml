@@ -6,6 +6,8 @@
 		<feature>pages-4.0</feature>
 		<feature>restfulWS-4.0</feature>
 		<feature>localConnector-1.0</feature>
+		<feature>xmlBinding-4.0</feature>
+		<feature>xmlWS-4.0</feature>
 		<!--
 		<feature>usr:arquillian-support-jakarta-3.0</feature>
 		-->
