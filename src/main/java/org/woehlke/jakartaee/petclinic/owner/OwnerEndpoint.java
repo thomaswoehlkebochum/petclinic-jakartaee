@@ -13,11 +13,8 @@ import org.woehlke.jakartaee.petclinic.owner.api.OwnerDto;
 import org.woehlke.jakartaee.petclinic.owner.api.OwnerListDto;
 import org.woehlke.jakartaee.petclinic.owner.db.OwnerService;
 import org.woehlke.jakartaee.petclinic.owner.api.OwnerEndpointUtil;
-import org.woehlke.jakartaee.petclinic.pet.Pet;
-import org.woehlke.jakartaee.petclinic.pet.api.PetEndpointUtil;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  *

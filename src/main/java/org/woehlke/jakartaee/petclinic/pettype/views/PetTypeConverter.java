@@ -34,7 +34,7 @@ public class PetTypeConverter implements Converter<PetType>, Serializable {
     @Override
     public String getAsString(FacesContext context, UIComponent component, PetType petType) {
         String name = petType.getName();
-        log.info("PetTypeConverter.getAsObject: from = " + petType.toString() + " to " + name);
+        log.info("PetTypeConverter.getAsString: from = " + petType.toString() + " to " + name);
         return name;
     }
 
