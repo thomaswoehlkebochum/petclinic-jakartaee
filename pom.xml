@@ -98,7 +98,7 @@
         <version.webjars.bootstrap>5.2.3</version.webjars.bootstrap>
         <version.webjars.font-awesome>6.4.0</version.webjars.font-awesome>
         <version.webjars.primeflex>3.3.0</version.webjars.primeflex>
-        <version.org.primefaces>13.0.10</version.org.primefaces>
+        <version.org.primefaces>15.0.17</version.org.primefaces>
 
         <!-- OpenLiberty -->
         <version.openliberty-runtime>26.0.0.7</version.openliberty-runtime>
@@ -766,11 +766,13 @@
                 <artifactId>font-awesome</artifactId>
                 <version>${version.webjars.font-awesome}</version>
             </dependency>
+            <!--
             <dependency>
                 <groupId>org.webjars.npm</groupId>
                 <artifactId>primeflex</artifactId>
                 <version>${version.webjars.primeflex}</version>
             </dependency>
+            -->
             <dependency>
                 <groupId>org.primefaces</groupId>
                 <artifactId>primefaces</artifactId>
@@ -1057,15 +1059,18 @@
             <groupId>org.webjars</groupId>
             <artifactId>font-awesome</artifactId>
         </dependency>
+        <!--
         <dependency>
             <groupId>org.webjars.npm</groupId>
             <artifactId>primeflex</artifactId>
         </dependency>
+        -->
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
             <classifier>jakarta</classifier>
         </dependency>
+
 
         <dependency>
             <groupId>org.primefaces</groupId>
