@@ -4238,7 +4238,7 @@
                             <container>
                                 <containerId>tomee10x</containerId>
                                 <zipUrlInstaller>
-                                    <url>https://dlcdn.apache.org/tomee/tomee-10.1.5/apache-tomee-10.1.5-plume.zip</url>
+                                    <url>https://dlcdn.apache.org/tomee/tomee-10.2.0/apache-tomee-10.2.0-plume.zip</url>
                                     <downloadDir>${cargo.zipUrlInstaller.downloadDir}</downloadDir>
                                     <extractDir>${project.build.directory}</extractDir>
                                 </zipUrlInstaller>
