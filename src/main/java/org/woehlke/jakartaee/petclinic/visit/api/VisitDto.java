@@ -41,7 +41,6 @@ public class VisitDto implements Serializable {
 
     @NotNull
     @JsonbProperty
-    @JsonbDateFormat(value = "yyyy-MM-dd")
     protected LocalDate date;
 
     @NotBlank

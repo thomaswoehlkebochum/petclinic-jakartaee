@@ -49,7 +49,6 @@ public class PetDto implements Serializable {
 
     @NotNull
     @JsonbProperty
-    @JsonbDateFormat(value = "yyyy-MM-dd")
     private LocalDate birthDate;
 
     @NotNull
