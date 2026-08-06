@@ -9,6 +9,7 @@ import lombok.*;
 import jakarta.xml.bind.annotation.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
@@ -41,7 +42,7 @@ public class VisitDto implements Serializable {
     @NotNull
     @JsonbProperty
     @JsonbDateFormat(value = "yyyy-MM-dd")
-    protected Date date;
+    protected LocalDate date;
 
     @NotBlank
     @JsonbProperty

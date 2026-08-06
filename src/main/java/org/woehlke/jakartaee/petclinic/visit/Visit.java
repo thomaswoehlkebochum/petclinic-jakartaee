@@ -10,7 +10,7 @@ import org.woehlke.jakartaee.petclinic.pet.Pet;
 import jakarta.persistence.*;
 import org.woehlke.jakartaee.petclinic.visit.db.VisitListener;
 
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -81,8 +81,8 @@ public class Visit extends EntityBaseObject implements EntityBase,Comparable<Vis
 
     @NotNull
     @Column(name = COL_VISIT_DATE, nullable = false)
-    @Temporal(TemporalType.DATE)
-    protected Date date;
+    protected LocalDate date;
+
 
     @NotEmpty
     @Column(name = COL_DESCRIPTION, nullable = false)
@@ -119,7 +119,7 @@ public class Visit extends EntityBaseObject implements EntityBase,Comparable<Vis
     @Transient
     @Override
     public void updateSearchindex() {
-        String element1[] = this.getDate().toInstant().toString().split("\\W");
+        String element1[] = this.getDate().toString().split("\\W");
         String element2[] = this.getDescription().split("\\W");
         StringBuilder b = new StringBuilder();
         for(String e: element1){

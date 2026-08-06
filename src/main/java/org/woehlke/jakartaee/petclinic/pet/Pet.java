@@ -13,6 +13,7 @@ import org.woehlke.jakartaee.petclinic.visit.Visit;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.*;
 
 
@@ -83,8 +84,7 @@ public class Pet extends EntityBaseObject implements EntityBase, Comparable<Pet>
 
     @NotNull
     @Column(name = COL_BIRTH_DATE, columnDefinition = "DATE", nullable = false)
-    @Temporal(TemporalType.DATE)
-    protected Date birthDate;
+    protected LocalDate birthDate;
 
     @NotNull
     @NotEmpty
@@ -118,7 +118,7 @@ public class Pet extends EntityBaseObject implements EntityBase, Comparable<Pet>
 
     @Transient
     public String getPrimaryKey() {
-        return "" + this.getBirthDate().toInstant().toString() +  " ( " +  this.getName() + ")";
+        return "" + this.getBirthDate().toString() +  " ( " +  this.getName() + ")";
     }
 
     @Transient

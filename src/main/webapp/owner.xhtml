@@ -250,7 +250,7 @@
                                             <dd>
                                                 <h:outputText id="petsBirthDate" value="#{ownersPet.birthDate}">
                                                     <!-- TODO -->
-                                                    <f:convertDateTime type="date" dateStyle="medium" locale="#{languageView.locale}"/>
+                                                    <f:convertDateTime type="localDate" dateStyle="short" locale="#{languageView.locale}"/>
                                                 </h:outputText>
                                             </dd>
                                             <dt><h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.petType']}"/></dt>
@@ -285,8 +285,7 @@
                                                     <h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.visit.date']}"/>
                                                 </f:facet>
                                                 <h:outputText id="date" value="#{visit.date}">
-                                                    <!-- TODO -->
-                                                    <f:convertDateTime type="date" dateStyle="medium" locale="#{languageView.locale}"/>
+                                                    <f:convertDateTime type="localDate" dateStyle="short" locale="#{languageView.locale}"/>
                                                 </h:outputText>
                                             </p:column>
                                             <p:column>
@@ -782,7 +781,7 @@
                                             <dd>
                                                 <h:outputText id="petsBirthDateDelete" value="#{ownersPet.birthDate}">
                                                     <!-- TODO -->
-                                                    <f:convertDateTime type="date" dateStyle="medium"  locale="#{languageView.locale}"/>
+                                                    <f:convertDateTime type="localDate" dateStyle="short" locale="#{languageView.locale}"/>
                                                 </h:outputText>
                                             </dd>
                                             <dt><h:outputText value="#{msg['org.woehlke.jakartaee.petclinic.entities.owner.pet.petType']}"/></dt>
@@ -809,7 +808,7 @@
                                                 </f:facet>
                                                 <h:outputText id="dateDelete" value="#{visit.date}">
                                                     <!-- TODO -->
-                                                    <f:convertDateTime type="date" dateStyle="medium" locale="#{languageView.locale}"/>
+                                                    <f:convertDateTime type="localDate" dateStyle="short" locale="#{languageView.locale}"/>
                                                 </h:outputText>
                                             </p:column>
                                             <p:column>
@@ -1077,7 +1076,7 @@
                                 <div class="ui-g-10">
                                     <h:outputText id="petBirthDate" value="#{ownerView.pet.birthDate}">
                                         <!-- TODO -->
-                                        <f:convertDateTime type="date" dateStyle="medium" locale="#{languageView.locale}"/>
+                                        <f:convertDateTime type="localDate" dateStyle="short" locale="#{languageView.locale}"/>
                                     </h:outputText>
                                 </div>
                             </div>
@@ -1167,7 +1166,7 @@
                                     </f:facet>
                                     <h:outputText id="datePreviousVisits" value="#{petsVisit.date}">
                                         <!-- TODO -->
-                                        <f:convertDateTime type="date" dateStyle="medium" locale="#{languageView.locale}"/>
+                                        <f:convertDateTime type="localDate" dateStyle="short" locale="#{languageView.locale}"/>
                                     </h:outputText>
                                 </p:column>
                                 <p:column>

@@ -12,6 +12,7 @@ import jakarta.xml.bind.annotation.*;
 import org.woehlke.jakartaee.petclinic.visit.api.VisitListDto;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.UUID;
 
@@ -49,7 +50,7 @@ public class PetDto implements Serializable {
     @NotNull
     @JsonbProperty
     @JsonbDateFormat(value = "yyyy-MM-dd")
-    private Date birthDate;
+    private LocalDate birthDate;
 
     @NotNull
     @JsonbProperty

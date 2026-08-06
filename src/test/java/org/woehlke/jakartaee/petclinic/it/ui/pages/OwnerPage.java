@@ -5,12 +5,7 @@ Not for reuse without permission.
 */
 
 package org.woehlke.jakartaee.petclinic.it.ui.pages;
-import java.text.DateFormat;
-import java.time.Instant;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
-import java.util.Locale;
 import java.util.NoSuchElementException;
 
 import org.jboss.arquillian.drone.api.annotation.Drone;
@@ -27,8 +22,6 @@ import org.primefaces.selenium.component.InputText;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.owner.views.OwnerFlowState;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
-
-import static java.text.DateFormat.SHORT;
 
 
 @Location("owner.jsf")
@@ -478,14 +471,12 @@ public class OwnerPage implements CrudFlowStatePageOwner {
     @FindBy(id="addNewPetForm:saveButtonAddNewOwnersPet")
     private GrapheneElement newOwnersPetSaveButton;
 
-    private final DateFormat df = DateFormat.getDateInstance(SHORT, Locale.US);
-
     public OwnerPage clickAddAndSaveNewPet(Pet pet) {
         int option = 1;
         petTypeAddNewOwnersPetDiv.click();
         petNameAddNewOwnersPetInput.sendKeys(pet.getName());
         //petBirthDateAddNewOwnersPetInput.sendKeys("6/9/2014");
-        petBirthDateAddNewOwnersPetInput.sendKeys(df.format(pet.getBirthDate()));
+        petBirthDateAddNewOwnersPetInput.sendKeys(pet.getBirthDate().toString());
         petTypeAddNewOwnersPetInput.selectByIndex(option);
         newOwnersPetSaveButton.sendKeys(Keys.DOWN);
         newOwnersPetSaveButton.sendKeys(Keys.END);
@@ -504,10 +495,10 @@ public class OwnerPage implements CrudFlowStatePageOwner {
     @FindBy(id="addVisitForm:saveAddNewOwnersPetVisit")
     private GrapheneElement newVisitSaveButton;
 
-    public OwnerPage clickAddAndSaveNewVisitButton(Date datum, String description) {
+    public OwnerPage clickAddAndSaveNewVisitButton(LocalDate datum, String description) {
         newVisitDateInput.sendKeys(Keys.DOWN);
         newVisitDateInput.sendKeys(Keys.END);
-        newVisitDateInput.sendKeys(df.format(datum));
+        newVisitDateInput.sendKeys(datum.toString());
         newVisitDescriptionInput.sendKeys(description);
         //Graphene.guardHttp(newVisitSaveButton).click();
         newVisitSaveButton.sendKeys(Keys.DOWN);

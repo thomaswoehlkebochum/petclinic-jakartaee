@@ -7,6 +7,7 @@ import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 import org.woehlke.jakartaee.petclinic.vet.Vet;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 
+import java.time.LocalDate;
 import java.util.*;
 import java.util.Date;
 
@@ -20,8 +21,8 @@ public abstract class UnitTestData {
     protected Long id01 = 1L;
     protected Long id02 = 2L;
     protected Long id = 3L;
-    protected Date dob01 = new Date(2021, 6, 14);;
-    protected Date dob02 = new Date(2021, 5, 12);
+    protected LocalDate dob01 = LocalDate.of(2021, 6, 14);;
+    protected LocalDate dob02 = LocalDate.of(2021, 5, 12);
 
     protected static Owner owner1 = new Owner();
 
@@ -32,7 +33,7 @@ public abstract class UnitTestData {
     protected static Set<Specialty> specialtySet = new HashSet<>();
     protected static Map<String,String> vetNames = new HashMap<>();
     protected static List<Vet> vetList = new ArrayList<>();
-    protected static List<Date> dateOfBirthList = new ArrayList<>();
+    protected static List<LocalDate> dateOfBirthList = new ArrayList<>();
     protected static List<PetType> petTypeList = new ArrayList<>();
     protected static List<Pet> petList = new ArrayList<>();
     protected static Set<Pet> petSet = new HashSet<>();
@@ -140,7 +141,7 @@ public abstract class UnitTestData {
         int month = 1;
         int day = 5;
         for (String petTypeName : petTypeNames) {
-            Date dob = new Date(year,month,day);
+            LocalDate dob = LocalDate.of(year,month,day);
             dateOfBirthList.add(dob);
             year++;
             month++;
@@ -167,7 +168,7 @@ public abstract class UnitTestData {
         int i=0;
         int k=0;
         for (String petName : petNames){
-            Date dob = dateOfBirthList.get(k);
+            LocalDate dob = dateOfBirthList.get(k);
             Pet pet = new Pet();
             pet.setName(petName);
             pet.setBirthDate(dob);
@@ -251,7 +252,7 @@ public abstract class UnitTestData {
 
         long index = 0;
         Pet p = petList.get(2);
-        for(Date date : dateOfBirthList){
+        for(LocalDate date : dateOfBirthList){
             index++;
             Visit v = new Visit();
             v.setPet(p);
