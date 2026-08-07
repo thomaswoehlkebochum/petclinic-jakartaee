@@ -2,7 +2,8 @@ package org.woehlke.jakartaee.petclinic.pet.api;
 
 
 import jakarta.ejb.EJB;
-import jakarta.ejb.Stateless;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbException;
@@ -25,18 +26,18 @@ import java.util.List;
 
 
 @Log
-@Stateless
+@ApplicationScoped
 public class PetEndpointUtil implements Serializable {
 
     private static final long serialVersionUID = 7444366391126982311L;
 
-    @EJB
+    @Inject
     private PetTypeEndpointUtil petTypeEndpointUtil;
 
-    @EJB
+    @Inject
     private VisitEndpointUtil visitEndpointUtil;
 
-    @EJB
+    @Inject
     private PetService petService;
 
     public PetDto dtoFactory(Pet pet) {

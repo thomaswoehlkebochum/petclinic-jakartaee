@@ -1,7 +1,8 @@
 package org.woehlke.jakartaee.petclinic.owner;
 
 import jakarta.ejb.EJB;
-import jakarta.ejb.Stateless;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
@@ -21,15 +22,15 @@ import java.io.Serializable;
  */
 @Log
 @Path("/owner")
-@Stateless
+@ApplicationScoped
 public class OwnerEndpoint implements Serializable {
 
     private static final long serialVersionUID = 532726561254887897L;
 
-    @EJB
+    @Inject
     private OwnerService ownerService;
 
-    @EJB
+    @Inject
     private OwnerEndpointUtil ownerEndpointUtil;
 
     @GET

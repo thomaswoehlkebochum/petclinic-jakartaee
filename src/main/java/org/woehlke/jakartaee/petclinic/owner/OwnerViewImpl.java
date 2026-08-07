@@ -1,6 +1,5 @@
 package org.woehlke.jakartaee.petclinic.owner;
 
-import jakarta.ejb.EJB;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.EJBTransactionRolledbackException;
 import lombok.Getter;
@@ -67,7 +66,7 @@ public class OwnerViewImpl implements OwnerView, Serializable {
     private VisitService visitService;
     */
 
-    @EJB
+    @Inject
     private OwnerViewService ownerViewService;
 
     private String searchterm;

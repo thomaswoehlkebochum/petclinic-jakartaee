@@ -50,8 +50,8 @@ public class PetTypeViewImpl implements PetTypeView, Serializable {
     @Inject
     private PetTypeFlowViewImpl petTypeViewFlow;
 
-    @EJB
-    private PetTypeService entityService;
+    @Inject
+    private PetTypeService petTypeService;
 
     private PetType entity;
     private List<PetType> list;
@@ -64,7 +64,7 @@ public class PetTypeViewImpl implements PetTypeView, Serializable {
         log.info("showDetailsForm");;
         log.info("---------------------------------------------------------------------------");
         if (o != null) {
-            this.entity = entityService.findById(o.getId());
+            this.entity = petTypeService.findById(o.getId());
             this.petTypeViewFlow.setFlowStateDetails();
         } else {
             this.petTypeViewFlow.setFlowStateList();
@@ -209,7 +209,7 @@ public class PetTypeViewImpl implements PetTypeView, Serializable {
         try {
             log.info((this.entity != null) ? this.entity.toString() : "null");
             this.entity.updateSearchindex();
-            this.entity = this.entityService.addNew(this.entity);
+            this.entity = this.petTypeService.addNew(this.entity);
             log.info((this.entity != null) ? this.entity.toString() : "null");
             this.petTypeViewFlow.setFlowStateDetails();
             String summaryKey = "org.woehlke.jakartaee.petclinic.petType.addNew.done";
@@ -230,7 +230,7 @@ public class PetTypeViewImpl implements PetTypeView, Serializable {
         try {
             log.info((this.entity != null) ? this.entity.toString() : "null");
             this.entity.updateSearchindex();
-            this.entity = this.entityService.update(this.entity);
+            this.entity = this.petTypeService.update(this.entity);
             log.info((this.entity != null) ? this.entity.toString() : "null");
             this.petTypeViewFlow.setFlowStateDetails();
             String summaryKey = "org.woehlke.jakartaee.petclinic.petType.edit.done";
@@ -250,7 +250,7 @@ public class PetTypeViewImpl implements PetTypeView, Serializable {
         try {
             if (this.entity != null) {
                 String msgInfo = this.entity.getPrimaryKey();
-                entityService.delete(this.entity.getId());
+                petTypeService.delete(this.entity.getId());
                 this.entity = null;
                 String summaryKey = "org.woehlke.jakartaee.petclinic.petType.delete.done";
                 String summary = this.petclinicApplication.getMsg().getString(summaryKey);
@@ -283,7 +283,7 @@ public class PetTypeViewImpl implements PetTypeView, Serializable {
             flashMessagesView.addInfoMessage(summary, detail);
         } else {
             this.petTypeViewFlow.setFlowStateSearchResult();
-            this.list = entityService.search(searchterm);
+            this.list = petTypeService.search(searchterm);
             String foundKey = "org.woehlke.jakartaee.petclinic.list.searchterm.found";
             String resultsKey = "org.woehlke.jakartaee.petclinic.list.searchterm.results";
             String found = this.petclinicApplication.getMsg().getString(foundKey);
@@ -305,7 +305,7 @@ public class PetTypeViewImpl implements PetTypeView, Serializable {
 
     @Override
     public void loadList() {
-        this.list = this.entityService.getAll();
+        this.list = this.petTypeService.getAll();
     }
 
     

@@ -3,14 +3,14 @@ package org.woehlke.jakartaee.petclinic.owner.db;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import jakarta.ejb.EJB;
-import jakarta.ejb.Stateless;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Named;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.pet.db.PetDao;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;
 import org.woehlke.jakartaee.petclinic.pettype.db.PetTypeDao;
-import org.woehlke.jakartaee.petclinic.pettype.db.PetTypeService;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 import org.woehlke.jakartaee.petclinic.visit.db.VisitDao;
 
@@ -18,7 +18,8 @@ import java.io.Serializable;
 import java.util.List;
 
 @Log
-@Stateless
+@Named("ownerViewService")
+@ApplicationScoped
 public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
 
     private static final long serialVersionUID = -553095668269912269L;

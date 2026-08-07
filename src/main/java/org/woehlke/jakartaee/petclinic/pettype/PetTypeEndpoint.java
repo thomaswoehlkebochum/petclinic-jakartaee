@@ -1,8 +1,8 @@
 package org.woehlke.jakartaee.petclinic.pettype;
 
-import jakarta.ejb.EJB;
 
-import jakarta.ejb.Stateless;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
@@ -18,15 +18,15 @@ import java.io.Serializable;
 
 @Log
 @Path("/petType")
-@Stateless
+@ApplicationScoped
 public class PetTypeEndpoint implements Serializable {
 
     private static final long serialVersionUID = -105453087511255998L;
 
-    @EJB
+    @Inject
     private PetTypeService petTypeService;
 
-    @EJB
+    @Inject
     private PetTypeEndpointUtil petTypeEndpointUtil;
 
     @GET

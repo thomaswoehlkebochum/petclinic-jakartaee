@@ -1,7 +1,8 @@
 package org.woehlke.jakartaee.petclinic.visit;
 
-import jakarta.ejb.EJB;
-import jakarta.ejb.Stateless;
+
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
@@ -20,15 +21,15 @@ import java.io.Serializable;
  */
 @Log
 @Path("/visit")
-@Stateless
+@ApplicationScoped
 public class VisitEndpoint implements Serializable {
 
     private static final long serialVersionUID = 7444366391126982311L;
 
-    @EJB
+    @Inject
     private VisitService visitService;
 
-    @EJB
+    @Inject
     private VisitEndpointUtil visitEndpointUtil;
 
     @GET

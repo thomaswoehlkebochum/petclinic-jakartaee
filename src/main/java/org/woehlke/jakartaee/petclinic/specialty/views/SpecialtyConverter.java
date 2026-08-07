@@ -3,7 +3,7 @@ package org.woehlke.jakartaee.petclinic.specialty.views;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
-import jakarta.ejb.Stateless;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.faces.component.UIComponent;
 import jakarta.faces.context.FacesContext;
 import jakarta.faces.convert.Converter;
@@ -25,7 +25,7 @@ import java.io.Serializable;
 @FacesConverter(
         value = "specialtyConverter"
 )
-@Stateless
+@ApplicationScoped
 public class SpecialtyConverter implements Converter<Specialty>, Serializable {
 
     private static final long serialVersionUID = 3816519727799645701L;

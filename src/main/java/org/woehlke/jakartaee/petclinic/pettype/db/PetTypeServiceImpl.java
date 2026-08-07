@@ -1,7 +1,8 @@
 package org.woehlke.jakartaee.petclinic.pettype.db;
 
 import jakarta.ejb.EJB;
-import jakarta.ejb.Stateless;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Named;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;
 
@@ -15,7 +16,8 @@ import java.util.List;
  *
  */
 @Log
-@Stateless
+@Named("petTypeService")
+@ApplicationScoped
 public class PetTypeServiceImpl implements PetTypeService, Serializable  {
 
     private static final long serialVersionUID = -6242995649030237034L;

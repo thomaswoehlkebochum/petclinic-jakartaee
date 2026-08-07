@@ -1,5 +1,6 @@
 package org.woehlke.jakartaee.petclinic.visit.db;
 
+import jakarta.enterprise.context.ApplicationScoped;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
@@ -8,7 +9,6 @@ import org.woehlke.jakartaee.petclinic.visit.Visit;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import jakarta.ejb.EJB;
-import jakarta.ejb.Stateless;
 
 import java.io.Serializable;
 import java.util.List;
@@ -18,7 +18,7 @@ import java.util.List;
  *
  */
 @Log
-@Stateless
+@ApplicationScoped
 public class VisitServiceImpl implements VisitService, Serializable {
 
     private static final long serialVersionUID = 4560958540651968289L;

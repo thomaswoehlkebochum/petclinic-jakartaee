@@ -1,7 +1,8 @@
 package org.woehlke.jakartaee.petclinic.owner.db;
 
 import jakarta.ejb.EJB;
-import jakarta.ejb.Stateless;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Named;
 import jakarta.validation.constraints.NotNull;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.pet.db.PetDao;
@@ -20,7 +21,8 @@ import java.util.List;
  * Created by tw on 10.03.14.
  */
 @Log
-@Stateless
+@Named("ownerService")
+@ApplicationScoped
 public class OwnerServiceImpl implements OwnerService, Serializable {
 
     private static final long serialVersionUID = -553095693269912269L;

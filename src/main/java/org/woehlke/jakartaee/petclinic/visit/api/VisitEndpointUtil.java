@@ -1,7 +1,7 @@
 package org.woehlke.jakartaee.petclinic.visit.api;
 
 
-import jakarta.ejb.Stateless;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbException;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Log
-@Stateless
+@ApplicationScoped
 public class VisitEndpointUtil implements Serializable {
 
     private static final long serialVersionUID = 7444366391126982311L;
