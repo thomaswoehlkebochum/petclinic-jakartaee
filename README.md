@@ -1,11 +1,11 @@
 # petclinic-jakartaee
 
-Petclinic Jakarta EE - a Jakarta EE 10 Version of Spring Petclinic demo application using PrimeFaces JSF.
+Petclinic Jakarta EE - a Jakarta EE 11 Version of Spring Petclinic demo application using PrimeFaces JSF.
 
 ![Jakarta EE Compatible](src/main/webapp/img/logos/home_logo_jakartaee.png)
 
 ## What is this?
-* JSF and Jakarta EE 10 Version of [Spring Petclinic](https://github.com/spring-projects/spring-petclinic)
+* JSF and Jakarta EE 11 Version of [Spring Petclinic](https://github.com/spring-projects/spring-petclinic)
 * This is an Update of [Java EE 7 Petclinic](https://jakarta-ee-petclinic.github.io/petclinic-javaee7/)
 
 ## Where is it?
@@ -14,7 +14,7 @@ Petclinic Jakarta EE - a Jakarta EE 10 Version of Spring Petclinic demo applicat
 * Blog: [https://thomas-woehlke.blogspot.com/2014/02/java-ee-7-petclinic.html](https://thomas-woehlke.blogspot.com/2014/02/java-ee-7-petclinic.html)
 
 ## Motivation
-* Some experimental Work with JSF, Jakarta EE 10 and Java EE 
+* Some experimental Work with JSF, Jakarta EE 11 and Java EE 
 * This Demo Application is planned to be the first in a series of “Rosetta Stone” to compare OOP Web Application Frameworks
 
 ## Why Petclinic?
