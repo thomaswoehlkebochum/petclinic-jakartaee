@@ -1,7 +1,7 @@
 package org.woehlke.jakartaee.petclinic.vet.api;
 
-import jakarta.ejb.EJB;
-import jakarta.ejb.Stateless;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbException;
@@ -21,12 +21,12 @@ import java.util.List;
 import java.util.Set;
 
 @Log
-@Stateless
+@ApplicationScoped
 public class VetEndpointUtil implements Serializable {
 
     private static final long serialVersionUID = 607664665910620584L;
 
-    @EJB
+    @Inject
     private SpecialtyEndpointUtil specialtyEndpointUtil;
 
     public VetDto dtoFactory(Vet vet) {

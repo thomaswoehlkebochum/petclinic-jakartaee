@@ -1,7 +1,8 @@
 package org.woehlke.jakartaee.petclinic.specialty.db;
 
 import jakarta.ejb.EJB;
-import jakarta.ejb.Stateless;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Named;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 
@@ -11,7 +12,8 @@ import jakarta.annotation.PreDestroy;
 import java.util.List;
 
 @Log
-@Stateless
+@Named("specialtyService")
+@ApplicationScoped
 public class SpecialtyServiceImpl implements SpecialtyService {
 
     private static final long serialVersionUID = 6145428275502469961L;

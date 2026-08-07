@@ -13,7 +13,6 @@ import org.woehlke.jakartaee.petclinic.vet.db.VetService;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
-import jakarta.ejb.EJB;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.EJBTransactionRolledbackException;
 import jakarta.enterprise.context.SessionScoped;
@@ -52,10 +51,10 @@ public class VetViewImpl implements VetView, Serializable {
     @Inject
     private VetFlowViewImpl vetViewFlow;
 
-    @EJB
+    @Inject
     private SpecialtyService specialtyService;
 
-    @EJB
+    @Inject
     private VetService entityService;
 
 

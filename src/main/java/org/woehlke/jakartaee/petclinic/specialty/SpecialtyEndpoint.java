@@ -2,7 +2,8 @@ package org.woehlke.jakartaee.petclinic.specialty;
 
 
 import jakarta.ejb.EJB;
-import jakarta.ejb.Stateless;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
@@ -21,15 +22,15 @@ import java.io.Serializable;
  */
 @Log
 @Path("/specialty")
-@Stateless
+@ApplicationScoped
 public class SpecialtyEndpoint implements Serializable {
 
     private static final long serialVersionUID = 607664665910620584L;
 
-    @EJB
+    @Inject
     private SpecialtyService specialtyService;
 
-    @EJB
+    @Inject
     private SpecialtyEndpointUtil specialtyEndpointUtil;
 
     @GET

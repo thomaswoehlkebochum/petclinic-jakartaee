@@ -54,7 +54,7 @@ public class SpecialtyViewImpl implements SpecialtyView, Serializable {
     @Inject
     private SpecialtyFlowView specialtyViewFlow;
 
-    @EJB
+    @Inject
     private SpecialtyService entityService;
 
     @Override

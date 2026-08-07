@@ -1,5 +1,7 @@
 package org.woehlke.jakartaee.petclinic.vet.db;
 
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Named;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 import org.woehlke.jakartaee.petclinic.specialty.db.SpecialtyDao;
@@ -8,7 +10,6 @@ import org.woehlke.jakartaee.petclinic.vet.Vet;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import jakarta.ejb.EJB;
-import jakarta.ejb.Stateless;
 
 import java.io.Serializable;
 import java.util.List;
@@ -19,7 +20,8 @@ import java.util.UUID;
  *
  */
 @Log
-@Stateless
+@Named("vetService")
+@ApplicationScoped
 public class VetServiceImpl implements VetService, Serializable {
 
     private static final long serialVersionUID = 2698313227542867286L;
