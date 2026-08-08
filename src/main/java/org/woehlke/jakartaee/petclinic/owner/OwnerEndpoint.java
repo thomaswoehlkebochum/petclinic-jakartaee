@@ -45,7 +45,7 @@ public class OwnerEndpoint implements Serializable {
     @Produces(MediaType.APPLICATION_JSON)
     public OwnerDto getEntity(@PathParam("id") Long id) {
         log.info("getEntity");
-        Owner owner = ownerService.findById(id);
+        Owner owner = ownerService.findById(id).get();
         OwnerDto dto = ownerEndpointUtil.dtoFactory(owner);
         return dto;
     }
@@ -63,7 +63,7 @@ public class OwnerEndpoint implements Serializable {
     @Produces(MediaType.APPLICATION_JSON)
     public OwnerDto getEntityAsJson(@PathParam("id") Long id) {
         log.info("getEntity");
-        return ownerEndpointUtil.dtoFactory(ownerService.findById(id));
+        return ownerEndpointUtil.dtoFactory(ownerService.findById(id).get());
     }
 
     @GET
@@ -79,7 +79,7 @@ public class OwnerEndpoint implements Serializable {
     @Produces(MediaType.APPLICATION_XML)
     public OwnerDto getEntityAsXml(@PathParam("id") Long id) throws JAXBException {
         log.info("getEntityAsXml");
-        return ownerEndpointUtil.dtoFactory(ownerService.findById(id));
+        return ownerEndpointUtil.dtoFactory(ownerService.findById(id).get());
     }
 
 }

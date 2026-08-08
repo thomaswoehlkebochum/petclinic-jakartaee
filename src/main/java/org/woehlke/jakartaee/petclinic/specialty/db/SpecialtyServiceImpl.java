@@ -11,6 +11,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 
 import java.util.List;
+import java.util.Optional;
 
 @Log
 @Named("specialtyService")
@@ -31,9 +32,9 @@ public class SpecialtyServiceImpl implements SpecialtyService {
     }
 
     @Override
-    public Specialty findById(long id) {
+    public Optional<Specialty> findById(long id) {
         log.info("findById Specialty: " + id);
-        return this.specialtyDao.findById(id);
+        return this.specialtyRepository.findById(id);
     }
 
     @Override

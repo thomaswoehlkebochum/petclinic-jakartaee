@@ -49,7 +49,7 @@ public class VetEndpoint implements Serializable {
     @Produces(MediaType.APPLICATION_JSON)
     public VetDto getEntity(@PathParam("id") Long id) {
         log.info("getEntity");
-        return this.vetEndpointUtil.dtoFactory(vetService.findById(id));
+        return this.vetEndpointUtil.dtoFactory(vetService.findById(id).get());
     }
 
     @GET
@@ -65,7 +65,7 @@ public class VetEndpoint implements Serializable {
     @Produces(MediaType.APPLICATION_JSON)
     public VetDto getEntityAsJson(@PathParam("id") Long id) {
         log.info("getEntity");
-        return this.vetEndpointUtil.dtoFactory(vetService.findById(id));
+        return this.vetEndpointUtil.dtoFactory(vetService.findById(id).get());
     }
 
     @GET
@@ -81,7 +81,7 @@ public class VetEndpoint implements Serializable {
     @Produces(MediaType.APPLICATION_XML)
     public VetDto getEntityAsXml(@PathParam("id") Long id) {
         log.info("getEntityAsXml");
-        return this.vetEndpointUtil.dtoFactory(vetService.findById(id));
+        return this.vetEndpointUtil.dtoFactory(vetService.findById(id).get());
     }
 
 }

@@ -14,6 +14,7 @@ import org.woehlke.jakartaee.petclinic.visit.Visit;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
 
 /**
@@ -44,8 +45,8 @@ public class PetServiceImpl implements PetService, Serializable  {
     }
 
     @Override
-    public Pet findById(long petId) {
-        return this.petDao.findById(petId);
+    public Optional<Pet> findById(long petId) {
+        return this.petRepository.findById(petId);
     }
 
     @Override

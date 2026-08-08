@@ -46,7 +46,7 @@ public class SpecialtyEndpoint implements Serializable {
     @Produces(MediaType.APPLICATION_JSON)
     public SpecialtyDto getEntity(@PathParam("id") Long id) {
         log.info("getEntity");
-        return this.specialtyEndpointUtil.dtoFactory(specialtyService.findById(id));
+        return this.specialtyEndpointUtil.dtoFactory(specialtyService.findById(id).get());
     }
 
     @GET
@@ -62,7 +62,7 @@ public class SpecialtyEndpoint implements Serializable {
     @Produces(MediaType.APPLICATION_JSON)
     public SpecialtyDto getEntityAsJson(@PathParam("id") Long id) {
         log.info("getEntity");
-        return this.specialtyEndpointUtil.dtoFactory(specialtyService.findById(id));
+        return this.specialtyEndpointUtil.dtoFactory(specialtyService.findById(id).get());
     }
 
     @GET
@@ -78,6 +78,6 @@ public class SpecialtyEndpoint implements Serializable {
     @Produces(MediaType.APPLICATION_XML)
     public SpecialtyDto getEntityAsXml(@PathParam("id") Long id) {
         log.info("getEntityAsXml");
-        return this.specialtyEndpointUtil.dtoFactory(specialtyService.findById(id));
+        return this.specialtyEndpointUtil.dtoFactory(specialtyService.findById(id).get());
     }
 }

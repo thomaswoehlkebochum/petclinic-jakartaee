@@ -42,7 +42,7 @@ public class PetTypeEndpoint implements Serializable {
     @Produces(MediaType.APPLICATION_JSON)
     public PetTypeDto getEntity(@PathParam("id") Long id) {
         log.info("getEntity");
-        return this.petTypeEndpointUtil.dtoFactory(petTypeService.findById(id));
+        return this.petTypeEndpointUtil.dtoFactory(petTypeService.findById(id).get());
     }
 
     @GET
@@ -58,7 +58,7 @@ public class PetTypeEndpoint implements Serializable {
     @Produces(MediaType.APPLICATION_JSON)
     public PetTypeDto getEntityAsJson(@PathParam("id") Long id) {
         log.info("getEntity");
-        return this.petTypeEndpointUtil.dtoFactory(petTypeService.findById(id));
+        return this.petTypeEndpointUtil.dtoFactory(petTypeService.findById(id).get());
     }
 
     @GET
@@ -74,7 +74,7 @@ public class PetTypeEndpoint implements Serializable {
     @Produces(MediaType.APPLICATION_XML)
     public PetTypeDto getEntityAsXml(@PathParam("id") Long id) {
         log.info("getEntityAsXml");
-        return this.petTypeEndpointUtil.dtoFactory(petTypeService.findById(id));
+        return this.petTypeEndpointUtil.dtoFactory(petTypeService.findById(id).get());
     }
 
 }

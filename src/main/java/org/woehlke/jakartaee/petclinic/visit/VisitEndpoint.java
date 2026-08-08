@@ -45,7 +45,7 @@ public class VisitEndpoint implements Serializable {
     @Produces(MediaType.APPLICATION_JSON)
     public VisitDto getEntity(@PathParam("id") Long id) {
         log.info("getEntity");
-        return this.visitEndpointUtil.dtoFactory(visitService.findById(id));
+        return this.visitEndpointUtil.dtoFactory(visitService.findById(id).get());
     }
 
     @GET
@@ -61,7 +61,7 @@ public class VisitEndpoint implements Serializable {
     @Produces(MediaType.APPLICATION_JSON)
     public VisitDto getEntityAsJson(@PathParam("id") Long id) {
         log.info("getEntity");
-        return this.visitEndpointUtil.dtoFactory(visitService.findById(id));
+        return this.visitEndpointUtil.dtoFactory(visitService.findById(id).get());
     }
 
 
@@ -78,7 +78,7 @@ public class VisitEndpoint implements Serializable {
     @Produces(MediaType.APPLICATION_XML)
     public VisitDto getEntityAsXml(@PathParam("id") Long id) {
         log.info("getEntityAsXml");
-        return this.visitEndpointUtil.dtoFactory(visitService.findById(id));
+        return this.visitEndpointUtil.dtoFactory(visitService.findById(id).get());
     }
 
 }

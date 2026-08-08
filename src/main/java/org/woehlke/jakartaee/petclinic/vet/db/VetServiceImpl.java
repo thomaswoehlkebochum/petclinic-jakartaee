@@ -15,6 +15,7 @@ import jakarta.ejb.EJB;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 
@@ -46,8 +47,8 @@ public class VetServiceImpl implements VetService, Serializable {
     }
 
     @Override
-    public Vet findById(long id) {
-        return this.vetDao.findById(id);
+    public Optional<Vet> findById(long id) {
+        return this.vetRepository.findById(id);
     }
 
     @Override

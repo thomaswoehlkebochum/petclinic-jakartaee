@@ -68,7 +68,7 @@ public class VetViewImpl implements VetView, Serializable {
     public String showDetailsForm(Vet o) {
         log.info("showDetailsForm");;
         if (o != null) {
-            this.entity = entityService.findById(o.getId());
+            this.entity = entityService.findById(o.getId()).get();
             this.resetSpecialtiesPickList();
             this.vetViewFlow.setFlowStateDetails();
         } else {
@@ -196,7 +196,7 @@ public class VetViewImpl implements VetView, Serializable {
             this.entity.removeSpecialties();
             this.entity.setUuid(UUID.randomUUID());
             this.entity = entityService.addNew(this.entity);
-            this.entity = entityService.findById(this.entity.getId());
+            this.entity = entityService.findById(this.entity.getId()).get();
             log.info("nr source: " + this.specialtiesPickList.getSource().size());
             log.info("nr target: " + this.specialtiesPickList.getTarget().size());
             for (Specialty specialtyTransient : this.specialtiesPickList.getTarget()) {
@@ -286,7 +286,7 @@ public class VetViewImpl implements VetView, Serializable {
         if(this.entity != null) {
             Long id = this.entity.getId();
             if (id != null) {
-                this.entity = this.entityService.findById(id);
+                this.entity = this.entityService.findById(id).get();
                 targetList.addAll(this.entity.getSpecialtiesAsList());
                 for (Specialty specialty : this.specialtyService.getAll()) {
                     if (!targetList.contains(specialty)) {

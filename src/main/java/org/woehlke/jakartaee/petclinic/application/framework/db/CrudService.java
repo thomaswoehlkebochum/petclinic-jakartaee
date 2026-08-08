@@ -4,6 +4,7 @@ import org.woehlke.jakartaee.petclinic.application.framework.EntityBase;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * @param <T>
@@ -14,7 +15,7 @@ public interface CrudService<T extends EntityBase> extends Serializable {
 
     List<T> getAll();
 
-    T findById(long id);
+    Optional<T> findById(long id);
 
     T addNew(T entity);
 

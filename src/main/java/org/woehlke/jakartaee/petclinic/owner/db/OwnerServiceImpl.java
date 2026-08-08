@@ -19,6 +19,7 @@ import org.woehlke.jakartaee.petclinic.visit.db.VisitRepository;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
 /**
  * Created by tw on 10.03.14.
@@ -114,8 +115,8 @@ public class OwnerServiceImpl implements OwnerService, Serializable {
     }
 
     @Override
-    public Owner findById(long id) {
-        return this.ownerDao.findById(id);
+    public Optional<Owner> findById(long id) {
+        return this.ownerRepository.findById(id);
     }
 
     @Override

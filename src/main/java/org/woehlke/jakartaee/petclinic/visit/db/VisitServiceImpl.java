@@ -13,6 +13,7 @@ import jakarta.ejb.EJB;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
 
 /**
@@ -36,8 +37,8 @@ public class VisitServiceImpl implements VisitService, Serializable {
     }
 
     @Override
-    public Visit findById(long id) {
-        return this.visitDao.findById(id);
+    public Optional<Visit> findById(long id) {
+        return this.visitRepository.findById(id);
     }
 
     @Override

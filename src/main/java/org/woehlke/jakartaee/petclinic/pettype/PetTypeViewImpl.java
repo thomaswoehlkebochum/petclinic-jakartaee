@@ -64,7 +64,7 @@ public class PetTypeViewImpl implements PetTypeView, Serializable {
         log.info("showDetailsForm");;
         log.info("---------------------------------------------------------------------------");
         if (o != null) {
-            this.entity = petTypeService.findById(o.getId());
+            this.entity = petTypeService.findById(o.getId()).get();
             this.petTypeViewFlow.setFlowStateDetails();
         } else {
             this.petTypeViewFlow.setFlowStateList();

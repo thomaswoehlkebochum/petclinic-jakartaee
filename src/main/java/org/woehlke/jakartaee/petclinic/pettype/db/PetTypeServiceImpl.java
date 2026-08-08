@@ -12,6 +12,7 @@ import jakarta.annotation.PreDestroy;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Optional;
 
 /**
  *
@@ -47,8 +48,8 @@ public class PetTypeServiceImpl implements PetTypeService, Serializable  {
     }
 
     @Override
-    public PetType findById(long id) {
-        return this.petTypeDao.findById(id);
+    public Optional<PetType> findById(long id) {
+        return this.petTypeRepository.findById(id);
     }
 
     @Override

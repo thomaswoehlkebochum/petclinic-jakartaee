@@ -3,7 +3,6 @@ package org.woehlke.jakartaee.petclinic.pet;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import jakarta.inject.Named;
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;
 import jakarta.json.bind.JsonbException;
@@ -78,7 +77,7 @@ public class PetEndpoint implements Serializable {
         log.info("------------------------------------------------------------");
         log.info("getEntity");
         log.info("------------------------------------------------------------");
-        return this.petEndpointUtil.dtoFactory(petService.findById(id));
+        return this.petEndpointUtil.dtoFactory(petService.findById(id).get());
     }
 
     @GET
@@ -88,7 +87,7 @@ public class PetEndpoint implements Serializable {
         log.info("------------------------------------------------------------");
         log.info("getEntity");
         log.info("------------------------------------------------------------");
-        PetDto oPetDto = this.petEndpointUtil.dtoFactory(petService.findById(id));
+        PetDto oPetDto = this.petEndpointUtil.dtoFactory(petService.findById(id).get());
         log.info("------------------------------------------------------------");
         log.info(oPetDto.toString());
         log.info("------------------------------------------------------------");
@@ -118,7 +117,7 @@ public class PetEndpoint implements Serializable {
         log.info("------------------------------------------------------------");
         log.info("getEntityAsXml");
         log.info("------------------------------------------------------------");
-        PetDto oPetDto = this.petEndpointUtil.dtoFactory(petService.findById(id));
+        PetDto oPetDto = this.petEndpointUtil.dtoFactory(petService.findById(id).get());
         log.info("------------------------------------------------------------");
         log.info(oPetDto.toString());
         log.info("------------------------------------------------------------");

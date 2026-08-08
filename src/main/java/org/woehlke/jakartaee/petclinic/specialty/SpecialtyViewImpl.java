@@ -61,7 +61,7 @@ public class SpecialtyViewImpl implements SpecialtyView, Serializable {
     public String showDetailsForm(Specialty o) {
         log.info("showDetailsForm");
         if (o != null) {
-            this.entity = entityService.findById(o.getId());
+            this.entity = entityService.findById(o.getId()).get();
             this.specialtyViewFlow.setFlowStateDetails();
             return JSF_PAGE_DETAILS;
         } else {
