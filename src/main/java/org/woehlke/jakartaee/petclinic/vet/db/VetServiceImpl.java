@@ -40,7 +40,7 @@ public class VetServiceImpl implements VetService, Serializable {
 
     @Override
     public List<Vet> getAll() {
-        return vetDao.getAll();
+        return vetRepository.findAll().toList();
     }
 
     @Override
@@ -84,6 +84,7 @@ public class VetServiceImpl implements VetService, Serializable {
             this.vetRepository.update(v);
         }
     }
+
     @PostConstruct
     public void postConstruct() {
         log.info("postConstruct: "+VetServiceImpl.class.getCanonicalName() );
