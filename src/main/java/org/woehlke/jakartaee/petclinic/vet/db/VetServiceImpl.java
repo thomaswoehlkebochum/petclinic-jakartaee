@@ -1,10 +1,12 @@
 package org.woehlke.jakartaee.petclinic.vet.db;
 
+
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
-import org.woehlke.jakartaee.petclinic.specialty.db.SpecialtyDao;
+import org.woehlke.jakartaee.petclinic.specialty.db.SpecialtyRepository;
 import org.woehlke.jakartaee.petclinic.vet.Vet;
 
 import jakarta.annotation.PostConstruct;
@@ -29,8 +31,14 @@ public class VetServiceImpl implements VetService, Serializable {
     @EJB
     private VetDao vetDao;
 
-    @EJB
-    private SpecialtyDao specialtyDao;
+    //@EJB
+    //private SpecialtyDao specialtyDao;
+
+    @Inject
+    private VetRepository vetRepository;
+
+    @Inject
+    private SpecialtyRepository specialtyRepository;
 
     @Override
     public List<Vet> getAll() {
@@ -45,20 +53,20 @@ public class VetServiceImpl implements VetService, Serializable {
     @Override
     public void delete(long id) {
         log.info("update Vet: " + id);
-        this.vetDao.delete(id);
+        this.vetRepository.deleteById(id);
     }
 
     @Override
     public Vet addNew(Vet vet) {
         vet.setUuid(UUID.randomUUID());
         log.info("try to addNew: " + vet.toString());
-        return this.vetDao.addNew(vet);
+        return this.vetRepository.insert(vet);
     }
 
     @Override
     public Vet update(Vet vet) {
         log.info("update Vet: " + vet.toString());
-        return this.vetDao.update(vet);
+        return this.vetRepository.update(vet);
     }
 
     @Override
@@ -71,9 +79,9 @@ public class VetServiceImpl implements VetService, Serializable {
     public void resetSearchIndex() {
         for(Vet v: getAll()){
             for(Specialty s:v.getSpecialties()){
-                this.specialtyDao.update(s);
+                this.specialtyRepository.update(s);
             }
-            this.vetDao.update(v);
+            this.vetRepository.update(v);
         }
     }
     @PostConstruct

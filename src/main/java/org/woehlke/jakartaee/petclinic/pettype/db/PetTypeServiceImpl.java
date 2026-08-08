@@ -2,6 +2,7 @@ package org.woehlke.jakartaee.petclinic.pettype.db;
 
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;
@@ -25,6 +26,9 @@ public class PetTypeServiceImpl implements PetTypeService, Serializable  {
     @EJB
     private PetTypeDao petTypeDao;
 
+    @Inject
+    private PetTypeRepository petTypeRepository;
+
     @Override
     public List<PetType> getAll() {
         return petTypeDao.getAll();
@@ -33,13 +37,13 @@ public class PetTypeServiceImpl implements PetTypeService, Serializable  {
     @Override
     public void delete(long id) {
         log.info("delete PetType: " + id);
-        this.petTypeDao.delete(id);
+        this.petTypeRepository.deleteById(id);
     }
 
     @Override
     public PetType addNew(PetType petType) {
         log.info("addNew PetType: " + petType.toString());
-        return this.petTypeDao.addNew(petType);
+        return this.petTypeRepository.insert(petType);
     }
 
     @Override
@@ -50,7 +54,7 @@ public class PetTypeServiceImpl implements PetTypeService, Serializable  {
     @Override
     public PetType update(PetType petType) {
         log.info("about to update: " + petType.toString());
-        return this.petTypeDao.update(petType);
+        return this.petTypeRepository.update(petType);
     }
 
     @Override
@@ -61,7 +65,7 @@ public class PetTypeServiceImpl implements PetTypeService, Serializable  {
     @Override
     public void resetSearchIndex() {
         for(PetType s:getAll()){
-            this.petTypeDao.update(s);
+            this.petTypeRepository.update(s);
         }
     }
 

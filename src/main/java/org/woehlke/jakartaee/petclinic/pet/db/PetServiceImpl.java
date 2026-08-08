@@ -2,6 +2,7 @@ package org.woehlke.jakartaee.petclinic.pet.db;
 
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
@@ -28,10 +29,13 @@ public class PetServiceImpl implements PetService, Serializable  {
     @EJB
     private PetDao petDao;
 
+    @Inject
+    private PetRepository petRepository;
+
     @Override
     public Pet addNew(Pet pet) {
         log.info("addNew Pet: " + pet.toString());
-        return this.petDao.addNew(pet);
+        return this.petRepository.insert(pet);
     }
 
     @Override
@@ -47,13 +51,13 @@ public class PetServiceImpl implements PetService, Serializable  {
     @Override
     public Pet update(Pet pet) {
         log.info("update Pet: " + pet.toString());
-        return this.petDao.update(pet);
+        return this.petRepository.update(pet);
     }
 
     @Override
     public void delete(long id) {
         log.info("delete Pet: " + id);
-        this.petDao.delete(id);
+        this.petRepository.deleteById(id);
     }
 
 

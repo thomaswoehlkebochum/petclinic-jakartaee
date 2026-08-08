@@ -1,6 +1,5 @@
 package org.woehlke.jakartaee.petclinic.owner;
 
-import jakarta.ejb.EJB;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;

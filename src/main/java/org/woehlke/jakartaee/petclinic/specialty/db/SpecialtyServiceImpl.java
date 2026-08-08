@@ -2,6 +2,7 @@ package org.woehlke.jakartaee.petclinic.specialty.db;
 
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
@@ -21,6 +22,9 @@ public class SpecialtyServiceImpl implements SpecialtyService {
     @EJB
     private SpecialtyDao specialtyDao;
 
+    @Inject
+    private SpecialtyRepository specialtyRepository;
+
     @Override
     public List<Specialty> getAll() {
         return this.specialtyDao.getAll();
@@ -35,19 +39,19 @@ public class SpecialtyServiceImpl implements SpecialtyService {
     @Override
     public Specialty addNew(Specialty specialty) {
         log.info("addNew Specialty: " + specialty.toString());
-        return this.specialtyDao.addNew(specialty);
+        return this.specialtyRepository.insert(specialty);
     }
 
     @Override
     public Specialty update(Specialty specialty) {
         log.info("update Specialty: " + specialty.toString());
-        return this.specialtyDao.update(specialty);
+        return this.specialtyRepository.update(specialty);
     }
 
     @Override
     public void delete(long id) {
         log.info("delete Specialty: " + id);
-        this.specialtyDao.delete(id);
+        this.specialtyRepository.deleteById(id);
     }
 
     @Override

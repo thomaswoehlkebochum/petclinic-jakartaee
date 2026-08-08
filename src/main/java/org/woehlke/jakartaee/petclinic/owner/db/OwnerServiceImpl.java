@@ -2,10 +2,12 @@ package org.woehlke.jakartaee.petclinic.owner.db;
 
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.validation.constraints.NotNull;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.pet.db.PetDao;
+import org.woehlke.jakartaee.petclinic.pet.db.PetRepository;
 import org.woehlke.jakartaee.petclinic.visit.db.VisitDao;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
@@ -13,6 +15,7 @@ import org.woehlke.jakartaee.petclinic.visit.Visit;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import org.woehlke.jakartaee.petclinic.visit.db.VisitRepository;
 
 import java.io.Serializable;
 import java.util.List;
@@ -36,18 +39,27 @@ public class OwnerServiceImpl implements OwnerService, Serializable {
     @EJB
     private VisitDao visitDao;
 
+    @Inject
+    private OwnerRepository ownerRepository;
+
+    @Inject
+    private PetRepository petRepository;
+
+    @Inject
+    private VisitRepository visitRepository;
+
     @Override
     public Visit addNewVisit(Visit visit) {
         log.info("addNew Visit: " + visit.toString());
         Pet pet = visit.getPet();
         Owner owner = pet.getOwner();
         visit.setPet(null);
-        visit = visitDao.addNew(visit);
-        owner = ownerDao.update(owner);
+        visit = visitRepository.insert(visit);
+        owner = ownerRepository.update(owner);
         pet.setOwner(owner);
-        pet = petDao.update(pet);
+        pet = petRepository.update(pet);
         visit.setPet(pet);
-        visit = visitDao.update(visit);
+        visit = visitRepository.update(visit);
         log.info("added new Visit - updated owner: " + owner.toString());
         log.info("added new Visit - updated pet:   " + pet.toString());
         log.info("added new Visit:                 " + visit.toString());
@@ -76,11 +88,11 @@ public class OwnerServiceImpl implements OwnerService, Serializable {
         for(Owner owner: this.getAll()){
             for (Pet pet : this.getPetsAsList(owner)) {
                 for(Visit visit:visitDao.getVisits(pet)){
-                    this.visitDao.update(visit);
+                    this.visitRepository.update(visit);
                 }
-                this.petDao.update(pet);
+                this.petRepository.update(pet);
             }
-            this.ownerDao.update(owner);
+            this.ownerRepository.update(owner);
         }
     }
 
@@ -91,14 +103,14 @@ public class OwnerServiceImpl implements OwnerService, Serializable {
 
     @Override
     public void delete(long id) {
-        this.ownerDao.delete(id);
+        this.ownerRepository.deleteById(id);
     }
 
     @Override
     public Owner addNew(Owner owner) {
         //owner = this.updateSearchindex(owner); TODO
         log.info("addNew Owner: " + owner.toString());
-        return this.ownerDao.addNew(owner);
+        return this.ownerRepository.insert(owner);
     }
 
     @Override
@@ -110,16 +122,16 @@ public class OwnerServiceImpl implements OwnerService, Serializable {
     public Owner update(Owner owner) {
         //owner = this.updateSearchindex(owner); TODO
         log.info("update Owner: " + owner.toString());
-        return this.ownerDao.update(owner);
+        return this.ownerRepository.update(owner);
     }
 
     private Owner updateSearchindex(Owner owner) {
         //TODO
         for(Pet pet:this.petDao.getPetsAsList(owner)){
             for(Visit visit:visitDao.getVisits(pet)){
-                this.visitDao.update(visit);
+                this.visitRepository.update(visit);
             }
-            this.petDao.update(pet);
+            this.petRepository.update(pet);
         }
         return owner;
     }

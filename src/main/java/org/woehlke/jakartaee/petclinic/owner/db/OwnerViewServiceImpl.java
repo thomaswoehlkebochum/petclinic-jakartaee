@@ -4,18 +4,23 @@ import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import jakarta.ejb.EJB;
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.pet.db.PetDao;
+import org.woehlke.jakartaee.petclinic.pet.db.PetRepository;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;
 import org.woehlke.jakartaee.petclinic.pettype.db.PetTypeDao;
+import org.woehlke.jakartaee.petclinic.pettype.db.PetTypeRepository;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 import org.woehlke.jakartaee.petclinic.visit.db.VisitDao;
+import org.woehlke.jakartaee.petclinic.visit.db.VisitRepository;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.UUID;
 
 @Log
 @Named("ownerViewService")
@@ -36,16 +41,28 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
     @EJB
     private PetDao petDao;
 
+    @Inject
+    private PetTypeRepository petTypeRepository;
+
+    @Inject
+    private OwnerRepository ownerRepository;
+
+    @Inject
+    private PetRepository petRepository;
+
+    @Inject
+    private VisitRepository visitRepository;
+
     @Override
     public void deleteOwner(long ownerId) {
         Owner owner = ownerDao.findById(ownerId);
         for(Pet pet:petDao.getPetsAsList(owner)){
             for(Visit visit:visitDao.getVisits(pet)){
-                visitDao.delete(visit.getId());
+                visitRepository.delete(visit);
             }
-            petDao.delete(pet.getId());
+            petRepository.delete(pet);
         }
-        ownerDao.delete(ownerId);
+        ownerRepository.delete(owner);
     }
 
     @Override
@@ -60,12 +77,14 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
 
     @Override
     public Owner updateOwner(Owner entity) {
-        return ownerDao.update(entity);
+        return ownerRepository.update(entity);
     }
 
     @Override
     public Owner addNewOwner(Owner entity) {
-        return ownerDao.addNew(entity);
+        entity.setUuid(UUID.randomUUID());
+        //owner.updateSearchindex(); TODO
+        return ownerRepository.insert(entity);
     }
 
     @Override
@@ -102,7 +121,7 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
 
     @Override
     public Pet addNewPet(Pet pet) {
-        return petDao.addNew(pet);
+        return petRepository.insert(pet);
     }
 
     @Override
@@ -112,7 +131,7 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
 
     @Override
     public Pet updatePet(Pet pet) {
-        return petDao.update(pet);
+        return petRepository.update(pet);
     }
 
     @Override
@@ -122,9 +141,9 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
 
     @Override
     public Visit addNewVisit(Visit visit) {
-        return visitDao.addNew(visit);
+        visit.setUuid(UUID.randomUUID());
+        return visitRepository.insert(visit);
     }
-
 
     @PostConstruct
     public void postConstruct() {

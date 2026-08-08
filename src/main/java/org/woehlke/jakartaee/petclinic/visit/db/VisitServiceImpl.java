@@ -1,6 +1,7 @@
 package org.woehlke.jakartaee.petclinic.visit.db;
 
 import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.inject.Inject;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
@@ -26,6 +27,9 @@ public class VisitServiceImpl implements VisitService, Serializable {
     @EJB
     private VisitDao visitDao;
 
+    @Inject
+    private VisitRepository visitRepository;
+
     @Override
     public List<Visit> getAll() {
         return this.visitDao.getAll();
@@ -39,24 +43,24 @@ public class VisitServiceImpl implements VisitService, Serializable {
     @Override
     public Visit addNew(Visit visit) {
         log.info("addNew Visit: " + visit.toString());
-        return this.visitDao.addNew(visit);
+        return this.visitRepository.insert(visit);
     }
 
     @Override
     public Visit update(Visit visit) {
         log.info("update Visit: " + visit.toString());
-        return this.visitDao.update(visit);
+        return this.visitRepository.update(visit);
     }
 
     @Override
     public void delete(long id) {
         log.info("delete: " + id);
-        this.visitDao.delete(id);
+        this.visitRepository.deleteById(id);
     }
 
     @Override
     public List<Visit> getAllVisitsOfAnPet(Pet pet) {
-        return  this.visitDao.getVisits(pet);
+        return this.visitDao.getVisits(pet);
     }
 
     @PostConstruct
