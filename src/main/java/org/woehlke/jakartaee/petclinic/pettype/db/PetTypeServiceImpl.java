@@ -44,6 +44,7 @@ public class PetTypeServiceImpl implements PetTypeService, Serializable  {
     @Override
     public PetType addNew(PetType petType) {
         log.info("addNew PetType: " + petType.toString());
+        petType.updateSearchindex();
         return this.petTypeRepository.insert(petType);
     }
 
@@ -54,6 +55,7 @@ public class PetTypeServiceImpl implements PetTypeService, Serializable  {
 
     @Override
     public PetType update(PetType petType) {
+        petType.updateSearchindex();
         log.info("about to update: " + petType.toString());
         return this.petTypeRepository.update(petType);
     }

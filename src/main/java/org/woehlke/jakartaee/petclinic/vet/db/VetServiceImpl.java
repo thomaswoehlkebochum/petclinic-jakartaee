@@ -32,9 +32,6 @@ public class VetServiceImpl implements VetService, Serializable {
     @EJB
     private VetDao vetDao;
 
-    //@EJB
-    //private SpecialtyDao specialtyDao;
-
     @Inject
     private VetRepository vetRepository;
 
@@ -60,12 +57,14 @@ public class VetServiceImpl implements VetService, Serializable {
     @Override
     public Vet addNew(Vet vet) {
         vet.setUuid(UUID.randomUUID());
+        vet.updateSearchindex();
         log.info("try to addNew: " + vet.toString());
         return this.vetRepository.insert(vet);
     }
 
     @Override
     public Vet update(Vet vet) {
+        vet.updateSearchindex();
         log.info("update Vet: " + vet.toString());
         return this.vetRepository.update(vet);
     }

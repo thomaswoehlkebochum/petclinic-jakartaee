@@ -77,13 +77,14 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
 
     @Override
     public Owner updateOwner(Owner entity) {
+        entity.updateSearchindex();
         return ownerRepository.update(entity);
     }
 
     @Override
     public Owner addNewOwner(Owner entity) {
         entity.setUuid(UUID.randomUUID());
-        //owner.updateSearchindex(); TODO
+        entity.updateSearchindex();
         return ownerRepository.insert(entity);
     }
 
@@ -121,6 +122,7 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
 
     @Override
     public Pet addNewPet(Pet pet) {
+        pet.updateSearchindex();
         return petRepository.insert(pet);
     }
 
@@ -131,6 +133,7 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
 
     @Override
     public Pet updatePet(Pet pet) {
+        pet.updateSearchindex();
         return petRepository.update(pet);
     }
 
@@ -141,6 +144,7 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
 
     @Override
     public Visit addNewVisit(Visit visit) {
+        visit.updateSearchindex();
         visit.setUuid(UUID.randomUUID());
         return visitRepository.insert(visit);
     }

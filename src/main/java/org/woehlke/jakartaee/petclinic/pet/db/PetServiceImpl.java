@@ -35,6 +35,7 @@ public class PetServiceImpl implements PetService, Serializable  {
 
     @Override
     public Pet addNew(Pet pet) {
+        pet.updateSearchindex();
         log.info("addNew Pet: " + pet.toString());
         return this.petRepository.insert(pet);
     }
@@ -51,6 +52,7 @@ public class PetServiceImpl implements PetService, Serializable  {
 
     @Override
     public Pet update(Pet pet) {
+        pet.updateSearchindex();
         log.info("update Pet: " + pet.toString());
         return this.petRepository.update(pet);
     }

@@ -39,12 +39,14 @@ public class SpecialtyServiceImpl implements SpecialtyService {
 
     @Override
     public Specialty addNew(Specialty specialty) {
+        specialty = updateSearchindex(specialty);
         log.info("addNew Specialty: " + specialty.toString());
         return this.specialtyRepository.insert(specialty);
     }
 
     @Override
     public Specialty update(Specialty specialty) {
+        specialty = updateSearchindex(specialty);
         log.info("update Specialty: " + specialty.toString());
         return this.specialtyRepository.update(specialty);
     }
@@ -73,6 +75,17 @@ public class SpecialtyServiceImpl implements SpecialtyService {
         return this.specialtyDao.findSpecialtyByName(name);
     }
 
+    //TODO: move method to Specialty classs
+    private Specialty updateSearchindex(Specialty specialty) {
+        String element[] = specialty.getName().split("\\W");
+        StringBuilder b = new StringBuilder();
+        for(String e: element){
+            b.append(e);
+            b.append(" ");
+        }
+        specialty.setSearchindex(b.toString());
+        return specialty;
+    }
 
     @PostConstruct
     public void postConstruct() {

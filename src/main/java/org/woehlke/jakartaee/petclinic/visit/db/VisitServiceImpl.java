@@ -43,12 +43,14 @@ public class VisitServiceImpl implements VisitService, Serializable {
 
     @Override
     public Visit addNew(Visit visit) {
+        visit.updateSearchindex();
         log.info("addNew Visit: " + visit.toString());
         return this.visitRepository.insert(visit);
     }
 
     @Override
     public Visit update(Visit visit) {
+        visit.updateSearchindex();
         log.info("update Visit: " + visit.toString());
         return this.visitRepository.update(visit);
     }
