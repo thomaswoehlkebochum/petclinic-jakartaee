@@ -19,6 +19,8 @@ import org.woehlke.jakartaee.petclinic.visit.db.VisitDao;
 import org.woehlke.jakartaee.petclinic.visit.db.VisitRepository;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.UUID;
 
@@ -67,7 +69,9 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
 
     @Override
     public List<Owner> getAllOwner() {
-        return ownerDao.getAll();
+        List<Owner> owners = new ArrayList<>(ownerRepository.findAll().toList());
+        Collections.sort(owners);
+        return owners;
     }
 
     @Override

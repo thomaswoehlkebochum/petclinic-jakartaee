@@ -10,6 +10,8 @@ import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,7 +30,9 @@ public class SpecialtyServiceImpl implements SpecialtyService {
 
     @Override
     public List<Specialty> getAll() {
-        return this.specialtyRepository.findAll().toList();
+        List<Specialty> all = new ArrayList<>(specialtyRepository.findAll().toList());
+        Collections.sort(all);
+        return all;
     }
 
     @Override

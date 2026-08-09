@@ -11,8 +11,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 /**
  *
@@ -32,7 +31,9 @@ public class PetTypeServiceImpl implements PetTypeService, Serializable  {
 
     @Override
     public List<PetType> getAll() {
-        return petTypeDao.getAll();
+        List<PetType> all = new ArrayList<>(petTypeRepository.findAll().toList());
+        Collections.sort(all);
+        return all;
     }
 
     @Override

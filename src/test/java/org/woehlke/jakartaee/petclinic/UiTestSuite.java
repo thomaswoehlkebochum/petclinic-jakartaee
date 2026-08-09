@@ -11,8 +11,8 @@ import org.woehlke.jakartaee.petclinic.it.ui.*;
 @Log
 @Suite
 @SelectClasses({
-    //RestEndpointIT.class,
-    //InformationUiTest.class,
+    RestEndpointIT.class,
+    InformationUiTest.class,
     SpecialtyUiTest.class,
     VetUiTest.class,
     PetTypeUiTest.class,

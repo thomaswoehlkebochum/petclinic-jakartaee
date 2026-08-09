@@ -14,9 +14,7 @@ import jakarta.annotation.PreDestroy;
 import jakarta.ejb.EJB;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
+import java.util.*;
 
 
 /**
@@ -40,7 +38,9 @@ public class VetServiceImpl implements VetService, Serializable {
 
     @Override
     public List<Vet> getAll() {
-        return vetRepository.findAll().toList();
+        List<Vet> all = new ArrayList<>(vetRepository.findAll().toList());
+        Collections.sort(all);
+        return all;
     }
 
     @Override
