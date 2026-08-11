@@ -1,5 +1,6 @@
 package org.woehlke.jakartaee.petclinic.owner;
 
+import jakarta.data.exceptions.DataException;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.EJBTransactionRolledbackException;
 import lombok.Getter;
@@ -205,7 +206,7 @@ public class OwnerViewImpl implements OwnerView, Serializable {
             String summary = this.petclinicApplication.getMsg().getString(summaryKey);
             flashMessagesView.addInfoMessage(summary, selectedPrimaryKey);
             this.ownerFlowView.setFlowStateList();
-        } catch (EJBException e) {
+        } catch (DataException e) {
             flashMessagesView.addWarnMessage(e, this.entity);
         }
         return JSF_PAGE;

@@ -2,6 +2,7 @@ package org.woehlke.jakartaee.petclinic.visit.db;
 
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
@@ -21,6 +22,7 @@ import java.util.Optional;
  */
 @Log
 @ApplicationScoped
+@Transactional
 public class VisitServiceImpl implements VisitService, Serializable {
 
     private static final long serialVersionUID = 4560958540651968289L;

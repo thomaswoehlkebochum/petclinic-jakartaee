@@ -4,6 +4,7 @@ package org.woehlke.jakartaee.petclinic.vet.db;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import jakarta.transaction.Transactional;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 import org.woehlke.jakartaee.petclinic.specialty.db.SpecialtyRepository;
@@ -23,6 +24,7 @@ import java.util.*;
 @Log
 @Named("vetService")
 @ApplicationScoped
+@Transactional
 public class VetServiceImpl implements VetService, Serializable {
 
     private static final long serialVersionUID = 2698313227542867286L;

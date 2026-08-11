@@ -1,11 +1,13 @@
 package org.woehlke.jakartaee.petclinic.pettype.db;
 
 import jakarta.data.repository.*;
+import jakarta.transaction.Transactional;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;
 
 import java.util.stream.Stream;
 
 @Repository
+@Transactional
 public interface PetTypeRepository extends CrudRepository<PetType,Long> {
 
     @Override

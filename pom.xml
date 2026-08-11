@@ -122,6 +122,7 @@
         <jersey.version>3.0.4</jersey.version>
         <version.wildfly-arquillian-container-managed>5.1.0.Final</version.wildfly-arquillian-container-managed>
         <version.wildfly-arquillian>5.1.0.Final</version.wildfly-arquillian>
+        <version.hibernate-jpamodelgen>7.4.5.Final</version.hibernate-jpamodelgen>
 
         <!-- Payara -->
         <version.payara-runtime>7.2026.6</version.payara-runtime>
@@ -2913,6 +2914,13 @@
                         <version>${version.jakarta.json}</version>
                         <scope>test</scope>
                     </dependency>
+                    <dependency>
+                        <groupId>org.wildfly.bom</groupId>
+                        <artifactId>wildfly-ee-with-tools</artifactId>
+                        <version>${wildfly.version}</version>
+                        <type>pom</type>
+                        <scope>import</scope>
+                    </dependency>
                 </dependencies>
             </dependencyManagement>
             <dependencies>
@@ -2944,6 +2952,11 @@
                     <groupId>org.glassfish</groupId>
                     <artifactId>jakarta.json</artifactId>
                     <scope>test</scope>
+                </dependency>
+                <dependency>
+                    <groupId>org.hibernate.orm</groupId>
+                    <artifactId>hibernate-core</artifactId>
+                    <scope>provided</scope>
                 </dependency>
             </dependencies>
             <build>
@@ -2980,6 +2993,31 @@
                     </plugins>
                 </pluginManagement>
                 <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <source>${java.version}</source>
+                            <target>${java.version}</target>
+                            <showWarnings>true</showWarnings>
+                            <useIncrementalCompilation>false</useIncrementalCompilation>
+                            <compilerArgs>
+                                <arg>-Xlint:all</arg>
+                            </compilerArgs>
+                            <annotationProcessorPaths>
+                                <path>
+                                    <groupId>org.projectlombok</groupId>
+                                    <artifactId>lombok</artifactId>
+                                    <version>${version.org.projectlombok.lombok}</version>
+                                </path>
+                                <path>
+                                    <groupId>org.hibernate.orm</groupId>
+                                    <artifactId>hibernate-jpamodelgen</artifactId>
+                                    <version>${version.hibernate-jpamodelgen}</version>
+                                </path>
+                            </annotationProcessorPaths>
+                        </configuration>
+                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-resources-plugin</artifactId>
@@ -3066,7 +3104,7 @@
                                     <cargo.servlet.port>${cargo.servlet.port}</cargo.servlet.port>
                                     <cargo.remote.username>wildfly</cargo.remote.username>
                                     <cargo.remote.password>wildflypwd</cargo.remote.password>
-                                    <cargo.jboss.configuration>standalone</cargo.jboss.configuration>
+                                    <cargo.jboss.configuration>standalone-full</cargo.jboss.configuration>
                                 </properties>
                             </configuration>
                         </configuration>
@@ -3112,6 +3150,17 @@
                 <skipAfterFailureCount>1</skipAfterFailureCount>
                 <rerunFailingTestsCount>1</rerunFailingTestsCount>
             </properties>
+            <dependencyManagement>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.wildfly.bom</groupId>
+                        <artifactId>wildfly-ee-with-tools</artifactId>
+                        <version>${wildfly.version}</version>
+                        <type>pom</type>
+                        <scope>import</scope>
+                    </dependency>
+                </dependencies>
+            </dependencyManagement>
             <dependencies>
                 <dependency>
                     <groupId>org.jboss.logmanager</groupId>
@@ -3155,6 +3204,11 @@
                     <artifactId>postgresql</artifactId>
                     <version>${version.postgresql.driver}</version>
                 </dependency>
+                <dependency>
+                    <groupId>org.hibernate.orm</groupId>
+                    <artifactId>hibernate-core</artifactId>
+                    <scope>provided</scope>
+                </dependency>
             </dependencies>
             <build>
                 <finalName>petclinic</finalName>
@@ -3169,6 +3223,31 @@
                     </testResource>
                 </testResources>
                 <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-compiler-plugin</artifactId>
+                        <configuration>
+                            <source>${java.version}</source>
+                            <target>${java.version}</target>
+                            <showWarnings>true</showWarnings>
+                            <useIncrementalCompilation>false</useIncrementalCompilation>
+                            <compilerArgs>
+                                <arg>-Xlint:all</arg>
+                            </compilerArgs>
+                            <annotationProcessorPaths>
+                                <path>
+                                    <groupId>org.projectlombok</groupId>
+                                    <artifactId>lombok</artifactId>
+                                    <version>${version.org.projectlombok.lombok}</version>
+                                </path>
+                                <path>
+                                    <groupId>org.hibernate.orm</groupId>
+                                    <artifactId>hibernate-jpamodelgen</artifactId>
+                                    <version>${version.hibernate-jpamodelgen}</version>
+                                </path>
+                            </annotationProcessorPaths>
+                        </configuration>
+                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-dependency-plugin</artifactId>

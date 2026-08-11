@@ -1,9 +1,11 @@
 package org.woehlke.jakartaee.petclinic.pettype;
 
 
+import jakarta.data.exceptions.DataException;
 import jakarta.ejb.EJB;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.EJBTransactionRolledbackException;
+import jakarta.persistence.PersistenceException;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
@@ -258,12 +260,12 @@ public class PetTypeViewImpl implements PetTypeView, Serializable {
                 this.petTypeViewFlow.setFlowStateList();
             }
             this.petTypeViewFlow.setFlowStateList();
-        } catch (EJBTransactionRolledbackException e) {
+        } catch (DataException e) {
             this.petTypeViewFlow.setFlowStateDelete();
             String summaryKey = "org.woehlke.jakartaee.petclinic.petType.delete.denied";
             String summary = this.petclinicApplication.getMsg().getString(summaryKey);
             flashMessagesView.addWarnMessage(summary, this.entity);
-        } catch (EJBException e) {
+        } catch (PersistenceException e) {
             this.petTypeViewFlow.setFlowStateDelete();
             flashMessagesView.addErrorMessage(e.getLocalizedMessage(), this.entity);
         }

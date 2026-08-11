@@ -1,5 +1,6 @@
 package org.woehlke.jakartaee.petclinic.application.framework.db;
 
+import jakarta.transaction.Transactional;
 import org.woehlke.jakartaee.petclinic.application.framework.EntityBase;
 
 import java.io.Serializable;
@@ -9,6 +10,7 @@ import java.util.Optional;
 /**
  * @param <T>
  */
+@Transactional
 public interface CrudService<T extends EntityBase> extends Serializable {
 
     long serialVersionUID = 8240918516324226703L;
@@ -21,6 +23,7 @@ public interface CrudService<T extends EntityBase> extends Serializable {
 
     T update(T entity);
 
+    @Transactional(value= Transactional.TxType.REQUIRES_NEW)
     void delete(long id);
 
 }

@@ -1,8 +1,11 @@
 package org.woehlke.jakartaee.petclinic.specialty;
 
+import jakarta.data.exceptions.DataException;
 import jakarta.ejb.EJB;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.EJBTransactionRolledbackException;
+import jakarta.persistence.PersistenceException;
+import jakarta.persistence.TransactionRequiredException;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
@@ -222,12 +225,12 @@ public class SpecialtyViewImpl implements SpecialtyView, Serializable {
                 String summary =this.petclinicApplication.getMsg().getString(summaryKey);
                 flashMessagesView.addInfoMessage(summary, details);
             }
-        } catch (EJBTransactionRolledbackException e) {
+        } catch (DataException e) {
             this.specialtyViewFlow.setFlowStateDelete();
             String summaryKey = "org.woehlke.jakartaee.petclinic.specialty.delete.denied";
             String summary =this.petclinicApplication.getMsg().getString(summaryKey);
             flashMessagesView.addWarnMessage(summary, this.entity);
-        } catch (EJBException e) {
+        } catch (PersistenceException e) {
             this.specialtyViewFlow.setFlowStateDelete();
             flashMessagesView.addErrorMessage(e.getLocalizedMessage(), this.entity);
         }

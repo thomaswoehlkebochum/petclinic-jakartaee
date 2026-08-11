@@ -1,5 +1,7 @@
 package org.woehlke.jakartaee.petclinic.vet;
 
+import jakarta.data.exceptions.DataException;
+import jakarta.persistence.PersistenceException;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
@@ -14,7 +16,6 @@ import org.woehlke.jakartaee.petclinic.vet.db.VetService;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import jakarta.ejb.EJBException;
-import jakarta.ejb.EJBTransactionRolledbackException;
 import jakarta.enterprise.context.SessionScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -248,11 +249,11 @@ public class VetViewImpl implements VetView, Serializable {
                 flashMessagesView.addInfoMessage(summary, msgInfo);
             }
             loadList();
-        } catch (EJBTransactionRolledbackException e) {
+        } catch (DataException e) {
             String summaryKey = "org.woehlke.jakartaee.petclinic.veterinarian.delete.denied";
             String summary = this.petclinicApplication.getMsg().getString(summaryKey);
             flashMessagesView.addWarnMessage(summary, this.entity);
-        } catch (EJBException e) {
+        } catch (PersistenceException e) {
             flashMessagesView.addErrorMessage(e.getLocalizedMessage(), this.entity);
         }
     }

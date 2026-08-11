@@ -6,6 +6,7 @@ import jakarta.ejb.EJB;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import jakarta.transaction.Transactional;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
@@ -27,6 +28,7 @@ import java.util.UUID;
 @Log
 @Named("ownerViewService")
 @ApplicationScoped
+@Transactional
 public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
 
     private static final long serialVersionUID = -553095668269912269L;

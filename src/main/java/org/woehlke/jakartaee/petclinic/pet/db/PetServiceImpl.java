@@ -4,6 +4,7 @@ import jakarta.ejb.EJB;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import jakarta.transaction.Transactional;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
@@ -23,6 +24,7 @@ import java.util.Optional;
 @Log
 @Named("petService")
 @ApplicationScoped
+@Transactional
 public class PetServiceImpl implements PetService, Serializable  {
 
     private static final long serialVersionUID = -2093524918552358722L;

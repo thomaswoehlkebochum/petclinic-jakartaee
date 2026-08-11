@@ -4,6 +4,7 @@ import jakarta.ejb.EJB;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
+import jakarta.transaction.Transactional;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 
@@ -18,6 +19,7 @@ import java.util.Optional;
 @Log
 @Named("specialtyService")
 @ApplicationScoped
+@Transactional
 public class SpecialtyServiceImpl implements SpecialtyService {
 
     private static final long serialVersionUID = 6145428275502469961L;
