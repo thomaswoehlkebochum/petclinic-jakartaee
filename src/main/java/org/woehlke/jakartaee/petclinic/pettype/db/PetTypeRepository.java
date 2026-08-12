@@ -16,7 +16,7 @@ public interface PetTypeRepository extends CrudRepository<PetType,Long> {
     @OrderBy("name")
     Stream<PetType> findAll();
 
-    @Query("select s FROM PetType s where s.searchindex like :pattern")
+    @Query("select s FROM PetType s where s.searchindex like :pattern order by s.name")
     List<PetType> findBySearchindexLike(@Param("pattern") String pattern);
 
 }

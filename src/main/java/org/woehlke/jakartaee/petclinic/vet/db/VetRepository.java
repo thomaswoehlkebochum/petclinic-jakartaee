@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface VetRepository extends CrudRepository<Vet,Long> {
 
-    @Query("select o FROM Vet o where o.searchindex like :pattern")
+    @Query("select o FROM Vet o where o.searchindex like :pattern order by o.lastName, o.firstName")
     List<Vet> findBySearchindexLike(@Param("pattern") String pattern);
 
 }

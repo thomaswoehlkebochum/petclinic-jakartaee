@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface OwnerRepository extends CrudRepository<Owner,Long> {
 
-    @Query("select s FROM Owner s where s.searchindex like :pattern")
+    @Query("select s FROM Owner s where s.searchindex like :pattern order by s.lastName, s.firstName")
     List<Owner> findBySearchindexLike(@Param("pattern") String pattern);
 
 }
