@@ -1,12 +1,10 @@
 package org.woehlke.jakartaee.petclinic.pet.db;
 
-import jakarta.ejb.EJB;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.transaction.Transactional;
 import lombok.extern.java.Log;
-import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 
 import jakarta.annotation.PostConstruct;
@@ -83,6 +81,6 @@ public class PetServiceImpl implements PetService, Serializable  {
 
     @Override
     public List<Visit> getVisits(Pet pet) {
-        return visitRepository.findBy(pet);
+        return visitRepository.findByPet(pet);
     }
 }

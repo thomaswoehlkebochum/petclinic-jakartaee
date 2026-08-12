@@ -1,6 +1,5 @@
 package org.woehlke.jakartaee.petclinic.specialty.db;
 
-import jakarta.ejb.EJB;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -66,10 +65,9 @@ public class SpecialtyServiceImpl implements SpecialtyService {
         return this.specialtyRepository.findBySearchindexLike(searchterm);
     }
 
-    //TODO remove? see View
     @Override
     public Specialty findSpecialtyByName(String name) {
-        return this.specialtyRepository.findSpecialtyByName(name);
+        return this.specialtyRepository.findByName(name);
     }
 
     @PostConstruct

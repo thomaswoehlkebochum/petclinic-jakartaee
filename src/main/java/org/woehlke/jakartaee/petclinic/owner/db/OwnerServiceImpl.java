@@ -34,7 +34,7 @@ public class OwnerServiceImpl implements OwnerService, Serializable {
 
     @Override
     public List<Pet> getPetsAsList(@NotNull Owner owner){
-        return petRepository.findBy(owner);
+        return petRepository.findByOwner(owner);
     }
 
     @Override

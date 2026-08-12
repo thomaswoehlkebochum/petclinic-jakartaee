@@ -1,9 +1,6 @@
 package org.woehlke.jakartaee.petclinic.visit.db;
 
-import jakarta.data.repository.CrudRepository;
-import jakarta.data.repository.Find;
-import jakarta.data.repository.OrderBy;
-import jakarta.data.repository.Repository;
+import jakarta.data.repository.*;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 
@@ -15,5 +12,5 @@ public interface VisitRepository extends CrudRepository<Visit, Long> {
 
     @Find
     @OrderBy("date")
-    List<Visit> findBy(Pet pet);
+    List<Visit> findByPet(@By("pet") Pet pet);
 }

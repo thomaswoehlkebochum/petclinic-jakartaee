@@ -11,8 +11,6 @@ public interface SpecialtyRepository extends CrudRepository<Specialty,Long> {
     @Query("select s FROM Specialty s where s.searchindex like :pattern order by s.name")
     List<Specialty> findBySearchindexLike(@Param("pattern") String pattern);
 
-    //TODO remove? see View
     @Find
-    @OrderBy("name")
-    Specialty findSpecialtyByName(String name);
+    Specialty findByName(@By("name") String name);
 }

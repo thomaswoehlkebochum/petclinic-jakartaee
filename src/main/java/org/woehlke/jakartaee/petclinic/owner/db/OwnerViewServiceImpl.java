@@ -44,8 +44,8 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
     @Override
     public void deleteOwner(long ownerId) {
         Owner owner = ownerRepository.findById(ownerId).get();
-        for(Pet pet:petRepository.findBy(owner)){
-            for(Visit visit:visitRepository.findBy(pet)){
+        for(Pet pet:petRepository.findByOwner(owner)){
+            for(Visit visit:visitRepository.findByPet(pet)){
                 visitRepository.delete(visit);
             }
             petRepository.delete(pet);
@@ -97,7 +97,7 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
 
     @Override
     public List<Pet> getPetsAsList(Owner owner) {
-        return petRepository.findBy(owner);
+        return petRepository.findByOwner(owner);
     }
 
     @Override
@@ -131,7 +131,7 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
 
     @Override
     public List<Visit> getVisits(Pet ownersPet) {
-        return visitRepository.findBy(ownersPet);
+        return visitRepository.findByPet(ownersPet);
     }
 
     @Override
