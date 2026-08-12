@@ -2,7 +2,6 @@ package org.woehlke.jakartaee.petclinic.owner.db;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
-import jakarta.ejb.EJB;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -10,13 +9,10 @@ import jakarta.transaction.Transactional;
 import lombok.extern.java.Log;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
-import org.woehlke.jakartaee.petclinic.pet.db.PetDao;
 import org.woehlke.jakartaee.petclinic.pet.db.PetRepository;
 import org.woehlke.jakartaee.petclinic.pettype.PetType;
-import org.woehlke.jakartaee.petclinic.pettype.db.PetTypeDao;
 import org.woehlke.jakartaee.petclinic.pettype.db.PetTypeRepository;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
-import org.woehlke.jakartaee.petclinic.visit.db.VisitDao;
 import org.woehlke.jakartaee.petclinic.visit.db.VisitRepository;
 
 import java.io.Serializable;
@@ -33,15 +29,6 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
 
     private static final long serialVersionUID = -553095668269912269L;
 
-    @EJB
-    private PetTypeDao petTypeDao;
-
-    @EJB
-    private VisitDao visitDao;
-
-    @EJB
-    private PetDao petDao;
-
     @Inject
     private PetTypeRepository petTypeRepository;
 
@@ -57,8 +44,8 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
     @Override
     public void deleteOwner(long ownerId) {
         Owner owner = ownerRepository.findById(ownerId).get();
-        for(Pet pet:petDao.getPetsAsList(owner)){
-            for(Visit visit:visitDao.getVisits(pet)){
+        for(Pet pet:petRepository.findBy(owner)){
+            for(Visit visit:visitRepository.findBy(pet)){
                 visitRepository.delete(visit);
             }
             petRepository.delete(pet);
@@ -98,17 +85,19 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
 
     @Override
     public PetType findPetTypeById(long petTypeId) {
-        return petTypeDao.findById(petTypeId);
+        return petTypeRepository.findById(petTypeId).get();
     }
 
     @Override
     public List<PetType> getAllPetType() {
-        return petTypeDao.getAll();
+        List<PetType> all = new ArrayList<>(petTypeRepository.findAll().toList());
+        Collections.sort(all);
+        return all;
     }
 
     @Override
     public List<Pet> getPetsAsList(Owner owner) {
-        return petDao.getPetsAsList(owner);
+        return petRepository.findBy(owner);
     }
 
     @Override
@@ -131,7 +120,7 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
 
     @Override
     public Pet findPetById(long id) {
-        return petDao.findById(id);
+        return petRepository.findById(id).get();
     }
 
     @Override
@@ -142,7 +131,7 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
 
     @Override
     public List<Visit> getVisits(Pet ownersPet) {
-        return visitDao.getVisits(ownersPet);
+        return visitRepository.findBy(ownersPet);
     }
 
     @Override

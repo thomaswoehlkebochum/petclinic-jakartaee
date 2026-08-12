@@ -1,17 +1,16 @@
 package org.woehlke.jakartaee.petclinic.owner.db;
 
-import jakarta.ejb.EJB;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.validation.constraints.NotNull;
 import lombok.extern.java.Log;
-import org.woehlke.jakartaee.petclinic.pet.db.PetDao;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
+import org.woehlke.jakartaee.petclinic.pet.db.PetRepository;
 
 import java.io.Serializable;
 import java.util.List;
@@ -27,15 +26,15 @@ public class OwnerServiceImpl implements OwnerService, Serializable {
 
     private static final long serialVersionUID = -553095693269912269L;
 
-    @EJB
-    private PetDao petDao;
+    @Inject
+    private PetRepository petRepository;
 
     @Inject
     private OwnerRepository ownerRepository;
 
     @Override
     public List<Pet> getPetsAsList(@NotNull Owner owner){
-        return petDao.getPetsAsList(owner);
+        return petRepository.findBy(owner);
     }
 
     @Override

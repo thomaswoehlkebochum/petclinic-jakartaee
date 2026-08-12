@@ -12,8 +12,11 @@ import org.woehlke.jakartaee.petclinic.pet.Pet;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
+import org.woehlke.jakartaee.petclinic.visit.db.VisitRepository;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,11 +32,11 @@ public class PetServiceImpl implements PetService, Serializable  {
 
     private static final long serialVersionUID = -2093524918552358722L;
 
-    @EJB
-    private PetDao petDao;
-
     @Inject
     private PetRepository petRepository;
+
+    @Inject
+    private VisitRepository visitRepository;
 
     @Override
     public Pet addNew(Pet pet) {
@@ -44,7 +47,9 @@ public class PetServiceImpl implements PetService, Serializable  {
 
     @Override
     public List<Pet> getAll() {
-        return this.petDao.getAll();
+        List<Pet> all = new ArrayList<>(this.petRepository.findAll().toList());
+        Collections.sort(all);
+        return all;
     }
 
     @Override
@@ -78,6 +83,6 @@ public class PetServiceImpl implements PetService, Serializable  {
 
     @Override
     public List<Visit> getVisits(Pet pet) {
-        return this.petDao.getVisits(pet);
+        return visitRepository.findBy(pet);
     }
 }

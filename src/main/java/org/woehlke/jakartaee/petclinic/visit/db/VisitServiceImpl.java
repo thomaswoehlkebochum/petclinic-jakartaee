@@ -4,13 +4,10 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import lombok.extern.java.Log;
-import org.woehlke.jakartaee.petclinic.owner.Owner;
-import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
-import jakarta.ejb.EJB;
 
 import java.io.Serializable;
 import java.util.List;
@@ -26,9 +23,6 @@ import java.util.Optional;
 public class VisitServiceImpl implements VisitService, Serializable {
 
     private static final long serialVersionUID = 4560958540651968289L;
-
-    @EJB
-    private VisitDao visitDao;
 
     @Inject
     private VisitRepository visitRepository;
@@ -61,12 +55,6 @@ public class VisitServiceImpl implements VisitService, Serializable {
     public void delete(long id) {
         log.info("delete: " + id);
         this.visitRepository.deleteById(id);
-    }
-
-    @Override
-    public List<Visit> getAllVisitsOfAnPet(Pet pet) {
-        //TODO
-        return this.visitDao.getVisits(pet);
     }
 
     @PostConstruct
