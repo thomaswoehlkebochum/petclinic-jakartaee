@@ -2,7 +2,6 @@ package org.woehlke.jakartaee.petclinic.application.framework.db;
 
 import org.woehlke.jakartaee.petclinic.application.framework.EntityBase;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -14,5 +13,4 @@ public interface SearchableService<T extends EntityBase> {
 
     List<T> search(String searchterm);
 
-    void resetSearchIndex();
 }

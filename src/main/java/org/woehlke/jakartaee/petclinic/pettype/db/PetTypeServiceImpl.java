@@ -1,6 +1,5 @@
 package org.woehlke.jakartaee.petclinic.pettype.db;
 
-import jakarta.ejb.EJB;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
@@ -24,9 +23,6 @@ import java.util.*;
 public class PetTypeServiceImpl implements PetTypeService, Serializable  {
 
     private static final long serialVersionUID = -6242995649030237034L;
-
-    @EJB
-    private PetTypeDao petTypeDao;
 
     @Inject
     private PetTypeRepository petTypeRepository;
@@ -59,27 +55,14 @@ public class PetTypeServiceImpl implements PetTypeService, Serializable  {
     @Override
     public PetType update(PetType petType) {
         petType.updateSearchindex();
-        log.info("about to update: " + petType.toString());
+        log.info("update: " + petType);
         return this.petTypeRepository.update(petType);
     }
 
     @Override
     public List<PetType> search(String searchterm) {
-        return this.petTypeDao.search(searchterm);
+        return this.petTypeRepository.findBySearchindexLike(searchterm);
     }
-
-    @Override
-    public void resetSearchIndex() {
-        for(PetType s:getAll()){
-            this.petTypeRepository.update(s);
-        }
-    }
-
-    @Override
-    public PetType findByName(String name) {
-        return this.petTypeDao.findByName(name);
-    }
-
 
     @PostConstruct
     public void postConstruct() {

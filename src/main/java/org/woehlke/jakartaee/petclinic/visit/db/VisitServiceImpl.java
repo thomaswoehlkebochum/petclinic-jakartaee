@@ -35,7 +35,7 @@ public class VisitServiceImpl implements VisitService, Serializable {
 
     @Override
     public List<Visit> getAll() {
-        return this.visitDao.getAll();
+        return this.visitRepository.findAll().toList();
     }
 
     @Override
@@ -65,6 +65,7 @@ public class VisitServiceImpl implements VisitService, Serializable {
 
     @Override
     public List<Visit> getAllVisitsOfAnPet(Pet pet) {
+        //TODO
         return this.visitDao.getVisits(pet);
     }
 

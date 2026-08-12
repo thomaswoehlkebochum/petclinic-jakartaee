@@ -80,9 +80,4 @@ public class PetServiceImpl implements PetService, Serializable  {
     public List<Visit> getVisits(Pet pet) {
         return this.petDao.getVisits(pet);
     }
-
-    @Override
-    public List<Pet> getAllPetsOfAnOwner(Owner owner) {
-        return this.petDao.getPetsAsList(owner);
-    }
 }

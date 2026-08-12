@@ -24,9 +24,6 @@ public class SpecialtyServiceImpl implements SpecialtyService {
 
     private static final long serialVersionUID = 6145428275502469961L;
 
-    @EJB
-    private SpecialtyDao specialtyDao;
-
     @Inject
     private SpecialtyRepository specialtyRepository;
 
@@ -66,19 +63,13 @@ public class SpecialtyServiceImpl implements SpecialtyService {
     @Override
     public List<Specialty> search(String searchterm) {
         log.info("search Specialty: " + searchterm);
-        return this.specialtyDao.search(searchterm);
+        return this.specialtyRepository.findBySearchindexLike(searchterm);
     }
 
-    @Override
-    public void resetSearchIndex() {
-        for(Specialty s:getAll()){
-            this.specialtyDao.update(s);
-        }
-    }
-
+    //TODO remove? see View
     @Override
     public Specialty findSpecialtyByName(String name) {
-        return this.specialtyDao.findSpecialtyByName(name);
+        return this.specialtyRepository.findSpecialtyByName(name);
     }
 
     @PostConstruct

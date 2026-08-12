@@ -1,18 +1,18 @@
 package org.woehlke.jakartaee.petclinic.specialty.db;
 
-import jakarta.data.repository.CrudRepository;
-import jakarta.data.repository.Find;
-import jakarta.data.repository.OrderBy;
-import jakarta.data.repository.Repository;
+import jakarta.data.repository.*;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 
-import java.util.stream.Stream;
+import java.util.List;
 
 @Repository
 public interface SpecialtyRepository extends CrudRepository<Specialty,Long> {
 
-    @Override
+    @Query("select s FROM Specialty s where s.searchindex like :pattern")
+    List<Specialty> findBySearchindexLike(@Param("pattern") String pattern);
+
+    //TODO remove? see View
     @Find
     @OrderBy("name")
-    Stream<Specialty> findAll();
+    Specialty findSpecialtyByName(String name);
 }

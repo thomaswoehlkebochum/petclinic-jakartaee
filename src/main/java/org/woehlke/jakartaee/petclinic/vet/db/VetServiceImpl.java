@@ -6,13 +6,10 @@ import jakarta.inject.Inject;
 import jakarta.inject.Named;
 import jakarta.transaction.Transactional;
 import lombok.extern.java.Log;
-import org.woehlke.jakartaee.petclinic.specialty.Specialty;
-import org.woehlke.jakartaee.petclinic.specialty.db.SpecialtyRepository;
 import org.woehlke.jakartaee.petclinic.vet.Vet;
 
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
-import jakarta.ejb.EJB;
 
 import java.io.Serializable;
 import java.util.*;
@@ -29,14 +26,8 @@ public class VetServiceImpl implements VetService, Serializable {
 
     private static final long serialVersionUID = 2698313227542867286L;
 
-    @EJB
-    private VetDao vetDao;
-
     @Inject
     private VetRepository vetRepository;
-
-    @Inject
-    private SpecialtyRepository specialtyRepository;
 
     @Override
     public List<Vet> getAll() {
@@ -52,7 +43,7 @@ public class VetServiceImpl implements VetService, Serializable {
 
     @Override
     public void delete(long id) {
-        log.info("update Vet: " + id);
+        log.info("delete Vet: " + id);
         this.vetRepository.deleteById(id);
     }
 
@@ -60,31 +51,21 @@ public class VetServiceImpl implements VetService, Serializable {
     public Vet addNew(Vet vet) {
         vet.setUuid(UUID.randomUUID());
         vet.updateSearchindex();
-        log.info("try to addNew: " + vet.toString());
+        log.info("try to addNew: " + vet);
         return this.vetRepository.insert(vet);
     }
 
     @Override
     public Vet update(Vet vet) {
         vet.updateSearchindex();
-        log.info("update Vet: " + vet.toString());
+        log.info("update Vet: " + vet);
         return this.vetRepository.update(vet);
     }
 
     @Override
     public List<Vet> search(String searchterm) {
         log.info("search: " + searchterm);
-        return this.vetDao.search(searchterm);
-    }
-
-    @Override
-    public void resetSearchIndex() {
-        for(Vet v: getAll()){
-            for(Specialty s:v.getSpecialties()){
-                this.specialtyRepository.update(s);
-            }
-            this.vetRepository.update(v);
-        }
+        return this.vetRepository.findBySearchindexLike(searchterm);
     }
 
     @PostConstruct

@@ -19,6 +19,4 @@ public interface PetService extends CrudService<Pet>, Serializable {
 
     List<Visit> getVisits(@NotNull Pet pet);
 
-    List<Pet> getAllPetsOfAnOwner(@NotNull Owner entity);
-
 }

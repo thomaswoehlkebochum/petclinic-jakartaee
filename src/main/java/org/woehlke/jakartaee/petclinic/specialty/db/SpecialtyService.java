@@ -5,8 +5,6 @@ import org.woehlke.jakartaee.petclinic.application.framework.db.CrudService;
 import org.woehlke.jakartaee.petclinic.application.framework.db.SearchableService;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 
-import java.io.Serializable;
-
 /**
  *
  */

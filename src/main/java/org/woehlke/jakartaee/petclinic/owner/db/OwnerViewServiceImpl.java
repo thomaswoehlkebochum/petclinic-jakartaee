@@ -37,9 +37,6 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
     private PetTypeDao petTypeDao;
 
     @EJB
-    private OwnerDao ownerDao;
-
-    @EJB
     private VisitDao visitDao;
 
     @EJB
@@ -59,7 +56,7 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
 
     @Override
     public void deleteOwner(long ownerId) {
-        Owner owner = ownerDao.findById(ownerId);
+        Owner owner = ownerRepository.findById(ownerId).get();
         for(Pet pet:petDao.getPetsAsList(owner)){
             for(Visit visit:visitDao.getVisits(pet)){
                 visitRepository.delete(visit);
@@ -78,7 +75,7 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
 
     @Override
     public Owner findOwnerById(long id) {
-        return ownerDao.findById(id);
+        return ownerRepository.findById(id).get();
     }
 
     @Override
@@ -96,7 +93,7 @@ public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
 
     @Override
     public List<Owner> searchOwner(String searchterm) {
-        return ownerDao.search(searchterm);
+        return ownerRepository.findBySearchindexLike(searchterm);
     }
 
     @Override

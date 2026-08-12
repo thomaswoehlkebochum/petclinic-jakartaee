@@ -3,7 +3,6 @@ package org.woehlke.jakartaee.petclinic.owner.db;
 import jakarta.validation.constraints.NotNull;
 import org.woehlke.jakartaee.petclinic.owner.Owner;
 import org.woehlke.jakartaee.petclinic.pet.Pet;
-import org.woehlke.jakartaee.petclinic.visit.Visit;
 import org.woehlke.jakartaee.petclinic.application.framework.db.CrudService;
 import org.woehlke.jakartaee.petclinic.application.framework.db.SearchableService;
 
@@ -16,10 +15,5 @@ public interface OwnerService extends CrudService<Owner>, SearchableService<Owne
 
     long serialVersionUID = -5744255576144969978L;
 
-    Visit addNewVisit(@NotNull Visit visit);
-
     List<Pet> getPetsAsList(@NotNull Owner owner);
-
-    String getPetsAsString(@NotNull Owner owner);
-
 }
