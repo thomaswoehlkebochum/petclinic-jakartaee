@@ -6,6 +6,7 @@ import org.woehlke.jakartaee.petclinic.pet.Pet;
 import org.woehlke.jakartaee.petclinic.application.framework.db.CrudService;
 import org.woehlke.jakartaee.petclinic.application.framework.db.SearchableService;
 
+import java.io.Serial;
 import java.util.List;
 
 /**
@@ -13,6 +14,7 @@ import java.util.List;
  */
 public interface OwnerService extends CrudService<Owner>, SearchableService<Owner> {
 
+    @Serial
     long serialVersionUID = -5744255576144969978L;
 
     List<Pet> getPetsAsList(@NotNull Owner owner);

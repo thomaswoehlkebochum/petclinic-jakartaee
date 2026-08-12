@@ -10,6 +10,7 @@ import org.woehlke.jakartaee.petclinic.pettype.PetType;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.*;
 
@@ -22,6 +23,7 @@ import java.util.*;
 @Transactional
 public class PetTypeServiceImpl implements PetTypeService, Serializable  {
 
+    @Serial
     private static final long serialVersionUID = -6242995649030237034L;
 
     @Inject

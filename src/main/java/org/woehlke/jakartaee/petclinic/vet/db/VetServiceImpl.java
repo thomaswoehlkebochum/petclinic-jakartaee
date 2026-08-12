@@ -11,6 +11,7 @@ import org.woehlke.jakartaee.petclinic.vet.Vet;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.*;
 
@@ -24,6 +25,7 @@ import java.util.*;
 @Transactional
 public class VetServiceImpl implements VetService, Serializable {
 
+    @Serial
     private static final long serialVersionUID = 2698313227542867286L;
 
     @Inject

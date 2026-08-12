@@ -5,11 +5,14 @@ import org.woehlke.jakartaee.petclinic.application.framework.db.CrudService;
 import org.woehlke.jakartaee.petclinic.application.framework.db.SearchableService;
 import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 
+import java.io.Serial;
+
 /**
  *
  */
 public interface SpecialtyService extends CrudService<Specialty>, SearchableService<Specialty> {
 
+    @Serial
     long serialVersionUID = -5259594533899166058L;
 
     Specialty findSpecialtyByName(@NotNull String name);

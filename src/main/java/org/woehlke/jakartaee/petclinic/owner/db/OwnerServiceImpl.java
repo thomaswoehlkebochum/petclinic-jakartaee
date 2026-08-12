@@ -12,6 +12,7 @@ import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 import org.woehlke.jakartaee.petclinic.pet.db.PetRepository;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
@@ -24,6 +25,7 @@ import java.util.Optional;
 @ApplicationScoped
 public class OwnerServiceImpl implements OwnerService, Serializable {
 
+    @Serial
     private static final long serialVersionUID = -553095693269912269L;
 
     @Inject

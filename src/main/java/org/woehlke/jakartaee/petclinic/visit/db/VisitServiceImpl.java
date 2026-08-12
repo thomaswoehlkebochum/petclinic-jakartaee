@@ -9,6 +9,7 @@ import org.woehlke.jakartaee.petclinic.visit.Visit;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Optional;
@@ -22,6 +23,7 @@ import java.util.Optional;
 @Transactional
 public class VisitServiceImpl implements VisitService, Serializable {
 
+    @Serial
     private static final long serialVersionUID = 4560958540651968289L;
 
     @Inject
@@ -40,14 +42,14 @@ public class VisitServiceImpl implements VisitService, Serializable {
     @Override
     public Visit addNew(Visit visit) {
         visit.updateSearchindex();
-        log.info("addNew Visit: " + visit.toString());
+        log.info("addNew Visit: " + visit);
         return this.visitRepository.insert(visit);
     }
 
     @Override
     public Visit update(Visit visit) {
         visit.updateSearchindex();
-        log.info("update Visit: " + visit.toString());
+        log.info("update Visit: " + visit);
         return this.visitRepository.update(visit);
     }
 

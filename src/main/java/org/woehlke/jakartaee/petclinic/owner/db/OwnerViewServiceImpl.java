@@ -15,6 +15,7 @@ import org.woehlke.jakartaee.petclinic.pettype.db.PetTypeRepository;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 import org.woehlke.jakartaee.petclinic.visit.db.VisitRepository;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -27,6 +28,7 @@ import java.util.UUID;
 @Transactional
 public class OwnerViewServiceImpl implements OwnerViewService, Serializable {
 
+    @Serial
     private static final long serialVersionUID = -553095668269912269L;
 
     @Inject

@@ -12,6 +12,7 @@ import jakarta.annotation.PreDestroy;
 import org.woehlke.jakartaee.petclinic.visit.Visit;
 import org.woehlke.jakartaee.petclinic.visit.db.VisitRepository;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -28,6 +29,7 @@ import java.util.Optional;
 @Transactional
 public class PetServiceImpl implements PetService, Serializable  {
 
+    @Serial
     private static final long serialVersionUID = -2093524918552358722L;
 
     @Inject
@@ -39,7 +41,7 @@ public class PetServiceImpl implements PetService, Serializable  {
     @Override
     public Pet addNew(Pet pet) {
         pet.updateSearchindex();
-        log.info("addNew Pet: " + pet.toString());
+        log.info("addNew Pet: " + pet);
         return this.petRepository.insert(pet);
     }
 
@@ -58,7 +60,7 @@ public class PetServiceImpl implements PetService, Serializable  {
     @Override
     public Pet update(Pet pet) {
         pet.updateSearchindex();
-        log.info("update Pet: " + pet.toString());
+        log.info("update Pet: " + pet);
         return this.petRepository.update(pet);
     }
 

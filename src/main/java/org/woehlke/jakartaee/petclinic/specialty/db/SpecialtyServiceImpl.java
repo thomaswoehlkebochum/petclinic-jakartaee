@@ -10,6 +10,7 @@ import org.woehlke.jakartaee.petclinic.specialty.Specialty;
 import jakarta.annotation.PostConstruct;
 import jakarta.annotation.PreDestroy;
 
+import java.io.Serial;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -21,6 +22,7 @@ import java.util.Optional;
 @Transactional
 public class SpecialtyServiceImpl implements SpecialtyService {
 
+    @Serial
     private static final long serialVersionUID = 6145428275502469961L;
 
     @Inject
@@ -42,14 +44,14 @@ public class SpecialtyServiceImpl implements SpecialtyService {
     @Override
     public Specialty addNew(Specialty specialty) {
         specialty.updateSearchindex();
-        log.info("addNew Specialty: " + specialty.toString());
+        log.info("addNew Specialty: " + specialty);
         return this.specialtyRepository.insert(specialty);
     }
 
     @Override
     public Specialty update(Specialty specialty) {
         specialty.updateSearchindex();
-        log.info("update Specialty: " + specialty.toString());
+        log.info("update Specialty: " + specialty);
         return this.specialtyRepository.update(specialty);
     }
 

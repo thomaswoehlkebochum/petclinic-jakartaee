@@ -9,8 +9,5 @@ import java.util.List;
  */
 public interface SearchableService<T extends EntityBase> {
 
-    long serialVersionUID = -1893303126489909752L;
-
     List<T> search(String searchterm);
-
 }
