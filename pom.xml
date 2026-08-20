@@ -717,6 +717,11 @@
             </dependency>
             <dependency>
                 <groupId>org.primefaces</groupId>
+                <artifactId>primefaces-themes</artifactId>
+                <version>${version.org.primefaces}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.primefaces</groupId>
                 <artifactId>primefaces-selenium-core</artifactId>
                 <version>${version.org.primefaces}</version>
                 <scope>test</scope>
@@ -938,7 +943,10 @@
             <artifactId>primefaces</artifactId>
             <classifier>jakarta</classifier>
         </dependency>
-
+        <dependency>
+            <groupId>org.primefaces</groupId>
+            <artifactId>primefaces-themes</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>org.primefaces</groupId>
