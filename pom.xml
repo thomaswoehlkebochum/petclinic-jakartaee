@@ -125,7 +125,7 @@
         <version.hibernate-jpamodelgen>7.4.5.Final</version.hibernate-jpamodelgen>
 
         <!-- Payara -->
-        <version.payara-runtime>7.2026.7</version.payara-runtime>
+        <version.payara-runtime>7.2026.8</version.payara-runtime>
         <version.payara>${version.payara-runtime}</version.payara>
         <version.payaramicro.maven.plugin>1.4.0</version.payaramicro.maven.plugin>
         <version.arquillian-payara>3.1</version.arquillian-payara>
