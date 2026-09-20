@@ -112,8 +112,8 @@
         <liberty.runtime.version>${version.openliberty-runtime}</liberty.runtime.version>
 
         <!-- Wildfly -->
-        <version.wildfly-runtime>40.0.1.Final</version.wildfly-runtime>
-        <version.wildfly-maven-plugin>6.0.0.Final</version.wildfly-maven-plugin>
+        <version.wildfly-runtime>41.0.1.Final</version.wildfly-runtime>
+        <version.wildfly-maven-plugin>6.0.1.Final</version.wildfly-maven-plugin>
         <version.wildfly-jar-maven-plugin>13.0.0.Final</version.wildfly-jar-maven-plugin>
         <version.wildfly-galleon-maven-plugin>5.2.8.Final</version.wildfly-galleon-maven-plugin>
         <version.jboss-logmanager>3.2.2.Final</version.jboss-logmanager>
@@ -138,7 +138,7 @@
         <!-- maven Plugin Versions -->
         <version.org.projectlombok.lombok>1.18.46</version.org.projectlombok.lombok>
         <version.lombok-maven-plugin>1.18.20.0</version.lombok-maven-plugin>
-        <version.cargo-maven3-plugin>1.10.28</version.cargo-maven3-plugin>
+        <version.cargo-maven3-plugin>1.10.29</version.cargo-maven3-plugin>
         <version.maven-compiler-plugin>3.15.0</version.maven-compiler-plugin>
         <version.maven-source-plugin>3.2.1</version.maven-source-plugin>
         <version.maven-jxr-plugin>3.2.0</version.maven-jxr-plugin>
@@ -2960,7 +2960,7 @@
                         <artifactId>cargo-maven3-plugin</artifactId>
                         <configuration>
                             <container>
-                                <containerId>wildfly40x</containerId>
+                                <containerId>wildfly41x</containerId>
                                 <artifactInstaller>
                                     <groupId>org.wildfly</groupId>
                                     <artifactId>wildfly-dist</artifactId>
@@ -2979,7 +2979,7 @@
                                     <cargo.servlet.port>${cargo.servlet.port}</cargo.servlet.port>
                                     <cargo.remote.username>wildfly</cargo.remote.username>
                                     <cargo.remote.password>wildflypwd</cargo.remote.password>
-                                    <cargo.jboss.configuration>standalone-full</cargo.jboss.configuration>
+                                    <cargo.jboss.configuration>standalone</cargo.jboss.configuration>
                                 </properties>
                             </configuration>
                         </configuration>

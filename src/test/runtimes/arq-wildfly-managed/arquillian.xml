@@ -15,8 +15,8 @@
 
     <container qualifier="wildfly-managed" default="true">
         <configuration>
-            <property name="jbossHome">${jbossHome:target/wildfly-40.0.1.Final}</property>
-            <property name="serverConfig">standalone-full.xml</property>
+            <property name="jbossHome">${jbossHome:target/wildfly-41.0.1.Final}</property>
+            <property name="serverConfig">standalone.xml</property>
             <property name="javaVmArguments">-Xmx512m</property>
             <property name="outputToConsole">true</property>
             <property name="instantiationTimeoutInSeconds">300</property>
