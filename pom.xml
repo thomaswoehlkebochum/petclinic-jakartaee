@@ -101,8 +101,8 @@
         <version.org.primefaces>15.0.17</version.org.primefaces>
 
         <!-- OpenLiberty -->
-        <version.openliberty-runtime>26.0.0.8</version.openliberty-runtime>
-        <version.liberty-maven-plugin>3.12.1</version.liberty-maven-plugin>
+        <version.openliberty-runtime>26.0.0.9</version.openliberty-runtime>
+        <version.liberty-maven-plugin>3.12.3</version.liberty-maven-plugin>
         <generateFeatures>false</generateFeatures>
         <runtime.jakartaee.server.openliberty.remote>/opt/openliberty/wlp</runtime.jakartaee.server.openliberty.remote>
         <runtime.jakartaee.server.openliberty.ServerName>petclinicServer</runtime.jakartaee.server.openliberty.ServerName>
