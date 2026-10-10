@@ -125,14 +125,14 @@
         <version.hibernate-jpamodelgen>7.4.5.Final</version.hibernate-jpamodelgen>
 
         <!-- Payara -->
-        <version.payara-runtime>7.2026.8</version.payara-runtime>
+        <version.payara-runtime>7.2026.9</version.payara-runtime>
         <version.payara>${version.payara-runtime}</version.payara>
         <version.payaramicro.maven.plugin>1.4.0</version.payaramicro.maven.plugin>
         <version.arquillian-payara>3.1</version.arquillian-payara>
         <payara-arquillian-container.version>3.1</payara-arquillian-container.version>
 
         <!-- Glassfish -->
-        <glassfish.version>8.0.4</glassfish.version>
+        <glassfish.version>8.0.5</glassfish.version>
         <version.arquillian-glassfish-server-managed>2.2.1</version.arquillian-glassfish-server-managed>
 
         <!-- maven Plugin Versions -->
